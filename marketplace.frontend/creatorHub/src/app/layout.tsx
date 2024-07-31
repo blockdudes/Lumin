@@ -4,6 +4,7 @@ import "./globals.css";
 import StoreProvider from "@/lib/StoreProvider";
 import { ConnectButton, ThirdwebProvider } from "thirdweb/react";
 import { client } from "@/lib/client";
+import { Toaster } from "react-hot-toast";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -23,7 +24,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <ThirdwebProvider>
           <StoreProvider>
-          <div className="absolute top-3 right-3">
+            <div className="absolute top-3 right-3">
               <div className="flex justify-center mb-20">
                 <ConnectButton
                   client={client}
@@ -32,8 +33,12 @@ export default function RootLayout({
                     url: "https://example.com",
                   }}
                 />
-                </div>
               </div>
+            </div>
+            <Toaster
+              position="top-center"
+              reverseOrder={false}
+            />
             {children}
           </StoreProvider>
         </ThirdwebProvider>

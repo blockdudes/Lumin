@@ -20,7 +20,7 @@ import {
   Cog6ToothIcon,
   InboxIcon,
   PowerIcon,
-  RectangleGroupIcon,
+  RectangleGroupIcon
 } from "@heroicons/react/24/solid";
 import {
   ChevronRightIcon,
@@ -51,7 +51,7 @@ export function Sidebar() {
           className="mb-2 py-4 flex items-center gap-2 cursor-pointer"
           onClick={() => router.push("/")}
         >
-          <CubeTransparentIcon className="mb-4 h-12 w-12 text-blue-500" />
+          <CubeTransparentIcon className="mb-4 h-12 w-12 text-red-500" /> 
           <Typography
             variant="h5"
             color="blue-gray"
@@ -59,7 +59,7 @@ export function Sidebar() {
             onPointerEnterCapture={undefined}
             onPointerLeaveCapture={undefined}
           >
-            Creator Hub
+            Market Hub
           </Typography>
         </div>
         <List
@@ -219,7 +219,7 @@ export function Sidebar() {
                   >
                     <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
                   </ListItemPrefix>
-                  Create Course
+                  Create Marketplace
                 </ListItem>
               </List>
             </AccordionBody>

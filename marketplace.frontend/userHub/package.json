@@ -1,5 +1,5 @@
 {
-  "name": "markethub",
+  "name": "creatorhub",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,9 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@nextui-org/button": "^2.0.37",
-    "@nextui-org/system": "^2.2.5",
-    "@nextui-org/theme": "^2.2.9",
+    "@heroicons/react": "^2.1.5",
+    "@material-tailwind/react": "^2.1.9",
     "@reduxjs/toolkit": "^2.2.7",
     "framer-motion": "^11.3.19",
     "next": "14.2.5",

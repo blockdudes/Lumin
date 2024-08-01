@@ -20,7 +20,6 @@ import {
   Cog6ToothIcon,
   InboxIcon,
   PowerIcon,
-  RectangleGroupIcon,
 } from "@heroicons/react/24/solid";
 import {
   ChevronRightIcon,
@@ -51,7 +50,7 @@ export function Sidebar() {
           className="mb-2 py-4 flex items-center gap-2 cursor-pointer"
           onClick={() => router.push("/")}
         >
-          <CubeTransparentIcon className="mb-4 h-12 w-12 text-blue-500" />
+          <CubeTransparentIcon className="mb-4 h-12 w-12" />
           <Typography
             variant="h5"
             color="blue-gray"
@@ -59,7 +58,7 @@ export function Sidebar() {
             onPointerEnterCapture={undefined}
             onPointerLeaveCapture={undefined}
           >
-            Creator Hub
+            Edu Mart
           </Typography>
         </div>
         <List
@@ -135,21 +134,6 @@ export function Sidebar() {
                   </ListItemPrefix>
                   Analytics
                 </ListItem>
-                <ListItem
-                  placeholder={undefined}
-                  onPointerEnterCapture={undefined}
-                  onPointerLeaveCapture={undefined}
-                  onClick={() => router.push("/dashboard")}
-                >
-                  <ListItemPrefix
-                    placeholder={undefined}
-                    onPointerEnterCapture={undefined}
-                    onPointerLeaveCapture={undefined}
-                  >
-                    <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
-                  </ListItemPrefix>
-                  Revenue
-                </ListItem>
               </List>
             </AccordionBody>
           </Accordion>
@@ -186,7 +170,7 @@ export function Sidebar() {
                   onPointerEnterCapture={undefined}
                   onPointerLeaveCapture={undefined}
                 >
-                  <RectangleGroupIcon className="h-5 w-5" />
+                  <ShoppingBagIcon className="h-5 w-5" />
                 </ListItemPrefix>
                 <Typography
                   color="blue-gray"
@@ -195,7 +179,7 @@ export function Sidebar() {
                   onPointerEnterCapture={undefined}
                   onPointerLeaveCapture={undefined}
                 >
-                  Create
+                  Shop
                 </Typography>
               </AccordionHeader>
             </ListItem>
@@ -210,7 +194,7 @@ export function Sidebar() {
                   placeholder={undefined}
                   onPointerEnterCapture={undefined}
                   onPointerLeaveCapture={undefined}
-                  onClick={() => router.push("/create")}
+                  onClick={() => router.push("/course")}
                 >
                   <ListItemPrefix
                     placeholder={undefined}
@@ -219,7 +203,7 @@ export function Sidebar() {
                   >
                     <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
                   </ListItemPrefix>
-                  Create Course
+                  Courses
                 </ListItem>
               </List>
             </AccordionBody>

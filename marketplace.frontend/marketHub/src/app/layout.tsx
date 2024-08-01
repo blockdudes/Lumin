@@ -5,7 +5,7 @@ import StoreProvider from "@/lib/StoreProvider";
 import { ConnectButton, ThirdwebProvider } from "thirdweb/react";
 import { client } from "@/lib/client";
 import { Toaster } from "react-hot-toast";
-
+import { Sidebar } from "@/components/sidebar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,22 +24,25 @@ export default function RootLayout({
       <body className={inter.className}>
         <ThirdwebProvider>
           <StoreProvider>
-            <div className="absolute top-3 right-3">
-              <div className="flex justify-center mb-20">
-                <ConnectButton
-                  client={client}
-                  appMetadata={{
-                    name: "Example App",
-                    url: "https://example.com",
-                  }}
-                />
+            <div className="flex min-h-screen">
+              <Sidebar />
+              <div className="flex-grow">
+                <div className="absolute top-3 right-3">
+                  <div className="flex justify-center mb-20">
+                    <ConnectButton
+                      client={client}
+                      theme={"light"}
+                      appMetadata={{
+                        name: "Example App",
+                        url: "https://example.com",
+                      }}
+                    />
+                  </div>
+                </div>
+                <main className="p-6">{children}</main>
               </div>
             </div>
-            <Toaster
-              position="top-center"
-              reverseOrder={false}
-            />
-            {children}
+            <Toaster position="top-center" reverseOrder={false} />
           </StoreProvider>
         </ThirdwebProvider>
       </body>

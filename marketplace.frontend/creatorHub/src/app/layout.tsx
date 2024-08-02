@@ -41,7 +41,7 @@ export default function RootLayout({
                   />
                 </div>
               </div>
-              <div className=" h-full ml-64 pl-4 bg-red-600">
+              <div className=" ml-72 h-full p-2">
                 <div className="flex flex-col gap-4">
                   <div>
                     <DynamicBreadcrumb />

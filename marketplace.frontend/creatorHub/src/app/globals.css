@@ -6,9 +6,3 @@
   background-color: #fff;
 }
 
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-}

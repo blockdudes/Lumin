@@ -6,6 +6,7 @@ import { ConnectButton, ThirdwebProvider } from "thirdweb/react";
 import { client } from "@/lib/client";
 import { Toaster } from "react-hot-toast";
 import { Sidebar } from "@/components/sidebar";
+import { Breadcrumb } from "@/components/breadcrumbs";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -39,7 +40,14 @@ export default function RootLayout({
                     />
                   </div>
                 </div>
-                <main className="p-6">{children}</main>
+                <main className="p-6">
+                  <div className="flex flex-col gap-4">
+                    <div>
+                      <Breadcrumb />
+                    </div>
+                    <div>{children}</div>
+                  </div>
+                </main>
               </div>
             </div>
             <Toaster position="top-center" reverseOrder={false} />

@@ -40,7 +40,7 @@ export function Sidebar() {
   const router = useRouter();
 
   return (
-    <div className="w-[270px] flex-shrink-0 h-screen">
+    <div className="w-[270px] h-screen">
       <Card
         className="p-4 shadow-lg rounded-none h-full w-full"
         placeholder={undefined}
@@ -108,6 +108,7 @@ export function Sidebar() {
                   placeholder={undefined}
                   onPointerEnterCapture={undefined}
                   onPointerLeaveCapture={undefined}
+                  onClick={() => router.push("/dashboard")}
                 >
                   Dashboard
                 </Typography>
@@ -121,7 +122,7 @@ export function Sidebar() {
                 onPointerLeaveCapture={undefined}
               >
                 <ListItem
-                  onClick={() => router.push("/dashboard")}
+                  onClick={() => router.push("/dashboard/analytics")}
                   placeholder={undefined}
                   onPointerEnterCapture={undefined}
                   onPointerLeaveCapture={undefined}
@@ -139,7 +140,7 @@ export function Sidebar() {
                   placeholder={undefined}
                   onPointerEnterCapture={undefined}
                   onPointerLeaveCapture={undefined}
-                  onClick={() => router.push("/dashboard")}
+                  onClick={() => router.push("/dashboard/revenue")}
                 >
                   <ListItemPrefix
                     placeholder={undefined}

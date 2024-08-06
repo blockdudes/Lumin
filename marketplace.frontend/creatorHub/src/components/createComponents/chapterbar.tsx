@@ -10,7 +10,9 @@ interface Chapter {
 }
 
 export function Chapterbar() {
-  const [chapters, setChapters] = useState<Chapter[]>([]);
+  const [chapters, setChapters] = useState<Chapter[]>([
+    { id: 1, name: "Chapter: 1" }
+  ]);
 
   const addChapter = () => {
     const newChapter: Chapter = {
@@ -43,7 +45,7 @@ export function Chapterbar() {
             >
               Chapters
             </Typography>
-            {chapters.map((chapter: Chapter) => (
+            {chapters.map((chapter: Chapter, index: number) => (
               <Card
                 className="p-4 m-2"
                 key={chapter.id}
@@ -59,14 +61,16 @@ export function Chapterbar() {
                   >
                     {chapter.name}
                   </Typography>
-                  <IconButton
-                    onClick={() => deleteChapter(chapter.id)}
-                    placeholder={undefined}
-                    onPointerEnterCapture={undefined}
-                    onPointerLeaveCapture={undefined}
-                  >
-                    <TrashIcon className="w-5 h-5" />
-                  </IconButton>
+                  {index === chapters.length - 1 && (
+                    <IconButton
+                      onClick={() => deleteChapter(chapter.id)}
+                      placeholder={undefined}
+                      onPointerEnterCapture={undefined}
+                      onPointerLeaveCapture={undefined}
+                    >
+                      <TrashIcon className="w-5 h-5" />
+                    </IconButton>
+                  )}
                 </div>
               </Card>
             ))}

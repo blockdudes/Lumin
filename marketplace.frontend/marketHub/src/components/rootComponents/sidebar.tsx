@@ -20,7 +20,7 @@ import {
   Cog6ToothIcon,
   InboxIcon,
   PowerIcon,
-  RectangleGroupIcon
+  RectangleGroupIcon,
 } from "@heroicons/react/24/solid";
 import {
   ChevronRightIcon,
@@ -28,6 +28,7 @@ import {
   CubeTransparentIcon,
 } from "@heroicons/react/24/outline";
 import { useRouter } from "next/navigation";
+
 
 export function Sidebar() {
   const [open, setOpen] = React.useState(0);
@@ -40,7 +41,7 @@ export function Sidebar() {
   const router = useRouter();
 
   return (
-    <div className="w-[270px] flex-shrink-0 h-screen">
+    <div className="w-[270px] h-screen">
       <Card
         className="p-4 shadow-lg rounded-none h-full w-full"
         placeholder={undefined}
@@ -51,7 +52,7 @@ export function Sidebar() {
           className="mb-2 py-4 flex items-center gap-2 cursor-pointer"
           onClick={() => router.push("/")}
         >
-          <CubeTransparentIcon className="mb-4 h-12 w-12 text-red-500" /> 
+          <CubeTransparentIcon className="mb-4 h-12 w-12 text-red-500" />
           <Typography
             variant="h5"
             color="blue-gray"
@@ -108,6 +109,7 @@ export function Sidebar() {
                   placeholder={undefined}
                   onPointerEnterCapture={undefined}
                   onPointerLeaveCapture={undefined}
+                  onClick={() => router.push("/dashboard")}
                 >
                   Dashboard
                 </Typography>
@@ -121,7 +123,7 @@ export function Sidebar() {
                 onPointerLeaveCapture={undefined}
               >
                 <ListItem
-                  onClick={() => router.push("/dashboard")}
+                  onClick={() => router.push("/dashboard/analytics")}
                   placeholder={undefined}
                   onPointerEnterCapture={undefined}
                   onPointerLeaveCapture={undefined}
@@ -139,7 +141,7 @@ export function Sidebar() {
                   placeholder={undefined}
                   onPointerEnterCapture={undefined}
                   onPointerLeaveCapture={undefined}
-                  onClick={() => router.push("/dashboard")}
+                  onClick={() => router.push("/dashboard/revenue")}
                 >
                   <ListItemPrefix
                     placeholder={undefined}

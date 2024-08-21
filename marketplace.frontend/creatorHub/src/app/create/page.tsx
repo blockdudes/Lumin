@@ -1,30 +1,14 @@
 "use client";
 import { Chapterbar } from "@/components/createComponents/chapterbar";
-import { CreateCourseDialog } from "@/components/createComponents/CreateCourseDialog";
+import {CreateCourseDialog} from "@/components/createComponents/createCourseDialog";
 import FileUpload from "@/components/createComponents/FileUpload";
 import { Chapter, Course } from "@/types/types";
 import { Card, CardBody, Input, Textarea } from "@material-tailwind/react";
-import {
-  BlockTypeSelect,
-  BoldItalicUnderlineToggles,
-  CodeToggle,
-  CreateLink,
-  headingsPlugin,
-  InsertCodeBlock,
-  linkDialogPlugin,
-  listsPlugin,
-  ListsToggle,
-  MDXEditor,
-  MDXEditorMethods,
-  Separator,
-  toolbarPlugin,
-  UndoRedo,
-} from "@mdxeditor/editor";
 import "@mdxeditor/editor/style.css";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { MarkdownEditor } from "@/components/createComponents/markdownEdditor";
 
 const CreateCourse = () => {
-  const ref = useRef<MDXEditorMethods>(null);
   const [isClient, setIsClient] = useState(false);
   const [open, setOpen] = useState(false);
   const [selectedChapterIndex, setSelectedChapterIndex] = useState<number>(0);
@@ -166,35 +150,9 @@ const CreateCourse = () => {
                   onPointerLeaveCapture={undefined}
                   className="shadow-none h-[400px]"
                 >
-                  <MDXEditor
-                    markdown={data.chapters[selectedChapterIndex].content}
-                    onChange={(e) => setSelectedChapterContent(e)}
-                    className="rounded-lg max-h-[400px] overflow-y-auto "
-                    plugins={[
-                      headingsPlugin(),
-                      listsPlugin(),
-                      linkDialogPlugin(),
-                      toolbarPlugin({
-                        toolbarContents: () => (
-                          <>
-                            <UndoRedo />
-                            <Separator />
-                            <BoldItalicUnderlineToggles />
-                            <Separator />
-                            <ListsToggle />
-                            <Separator />
-                            <BlockTypeSelect />
-                            <Separator />
-                            <CreateLink />
-                            <Separator />
-                            <InsertCodeBlock />
-                            <Separator />
-                            <CodeToggle />
-                          </>
-                        ),
-                      }),
-                    ]}
-                    ref={ref}
+                  <MarkdownEditor
+                    value={data.chapters[selectedChapterIndex].content}
+                    onChange={(val) => setSelectedChapterContent(val)}
                   />
                 </Card>
               </Card>

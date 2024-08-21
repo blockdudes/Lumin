@@ -7,6 +7,7 @@ import {
   DialogFooter,
   Switch,
   Input,
+  Textarea,
 } from "@material-tailwind/react";
 
 interface CreateCourseDialogProps {
@@ -55,17 +56,24 @@ export function CreateCourseDialog({
             />
           </div>
           <div className="flex flex-col gap-4">
-            <div className="border border-gray-400 p-4 text-sm rounded-md px-4 py-2 flex items-center justify-start">
-              <span>Course Name : </span>
-              <span>{data.title}</span>
-            </div>
-            <div className="border border-gray-400 p-4 text-sm rounded-md px-4 py-2 flex items-center justify-start">
-              <span>Course Description : </span>
-              <span>{data.description}</span>
-            </div>
+            <Input
+              label="Course Name"
+              type="text"
+              color="blue"
+              variant="outlined"
+              onPointerEnterCapture={undefined}
+              onPointerLeaveCapture={undefined}
+              crossOrigin={undefined}
+            />
+            <Textarea
+              label="Course Description"
+              color="blue"
+              variant="outlined"
+              onPointerEnterCapture={undefined}
+              onPointerLeaveCapture={undefined}
+            />
             <Input
               label="Price"
-              placeholder="Enter Price"
               type="number"
               color="blue"
               variant="outlined"

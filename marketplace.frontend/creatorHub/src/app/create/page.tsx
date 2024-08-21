@@ -1,6 +1,6 @@
 "use client";
 import { Chapterbar } from "@/components/createComponents/chapterbar";
-import {CreateCourseDialog} from "@/components/createComponents/createCourseDialog";
+import { CreateCourseDialog } from "@/components/createComponents/createCourseDialog";
 import FileUpload from "@/components/createComponents/FileUpload";
 import { Chapter, Course } from "@/types/types";
 import { Card, CardBody, Input, Textarea } from "@material-tailwind/react";
@@ -90,7 +90,7 @@ const CreateCourse = () => {
                   className="w-full"
                   color="blue"
                   label="Title"
-                  value={data.chapters[selectedChapterIndex].title}
+                  value={data.chapters[selectedChapterIndex]?.title || ""}
                   onChange={(e) => setSelectedChapterTitle(e.target.value)}
                   onPointerEnterCapture={undefined}
                   onPointerLeaveCapture={undefined}
@@ -115,7 +115,7 @@ const CreateCourse = () => {
                   className="w-full"
                   color="blue"
                   label="Description"
-                  value={data.chapters[selectedChapterIndex].description}
+                  value={data.chapters[selectedChapterIndex]?.description || ""}
                   onChange={(e) =>
                     setSelectedChapterDescription(e.target.value)
                   }
@@ -132,7 +132,7 @@ const CreateCourse = () => {
             >
               <div className="text-xl font-bold">Upload Files</div>
               <FileUpload
-                files={data.chapters[selectedChapterIndex].files}
+                files={data.chapters[selectedChapterIndex]?.files || []}
                 setFiles={setSelectedChapterFiles}
               />
             </Card>
@@ -151,7 +151,7 @@ const CreateCourse = () => {
                   className="shadow-none h-[400px]"
                 >
                   <MarkdownEditor
-                    value={data.chapters[selectedChapterIndex].content}
+                    value={data.chapters[selectedChapterIndex]?.content || ""}
                     onChange={(val) => setSelectedChapterContent(val)}
                   />
                 </Card>
@@ -165,6 +165,7 @@ const CreateCourse = () => {
             setChapters={setChapters}
             selectedChapterIndex={selectedChapterIndex}
             setSelectedChapterIndex={setSelectedChapterIndex}
+            toggleDialog={toggleDialog}
           />
         </div>
       </div>

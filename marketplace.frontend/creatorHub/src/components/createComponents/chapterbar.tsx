@@ -6,11 +6,13 @@ import { Chapter } from "@/types/types";
 import toast from "react-hot-toast";
 
 export function Chapterbar({
+  toggleDialog,
   selectedChapterIndex,
   chapters,
   setSelectedChapterIndex,
   setChapters,
 }: {
+  toggleDialog: () => void;
   selectedChapterIndex: number;
   chapters: Chapter[];
   setSelectedChapterIndex: Dispatch<SetStateAction<number>>;
@@ -33,6 +35,9 @@ export function Chapterbar({
       return;
     }
     setChapters(chapters.filter((_, i) => i !== index));
+    if (selectedChapterIndex === index) {
+      setSelectedChapterIndex(index - 1);
+    }
   };
 
   return (
@@ -76,7 +81,11 @@ export function Chapterbar({
                   </Typography>
                   {index === chapters.length - 1 && (
                     <IconButton
-                      onClick={() => deleteChapter(index)}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        deleteChapter(index);
+                      }}
                       placeholder={undefined}
                       onPointerEnterCapture={undefined}
                       onPointerLeaveCapture={undefined}
@@ -102,6 +111,7 @@ export function Chapterbar({
               Add chapter
             </Button>
             <IconButton
+              onClick={toggleDialog}
               variant="gradient"
               size="lg"
               color="blue"

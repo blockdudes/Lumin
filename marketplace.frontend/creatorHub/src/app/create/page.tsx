@@ -1,6 +1,6 @@
 "use client";
 import { Chapterbar } from "@/components/createComponents/chapterbar";
-import { CreateCourseDialog } from "@/components/createComponents/CreateCourseDialog";
+import {CreateCourseDialog} from "@/components/createComponents/createCourseDialog";
 import FileUpload from "@/components/createComponents/FileUpload";
 import { Chapter, Course } from "@/types/types";
 import { Card, CardBody, Input, Textarea } from "@material-tailwind/react";

@@ -3,11 +3,9 @@ import { Breadcrumbs } from "@material-tailwind/react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
-export function DynamicBreadcrumb() {
+export default function DynamicBreadcrumb() {
   const pathname = usePathname();
 
-  // Debug: Log the pathname to ensure it is correct
-  console.log("Current Pathname:", pathname);
 
   const pathnames = pathname.split("/").filter((x) => x);
 
@@ -16,6 +14,7 @@ export function DynamicBreadcrumb() {
       placeholder={undefined}
       onPointerEnterCapture={undefined}
       onPointerLeaveCapture={undefined}
+      className="bg-transparent"
     >
       <Link href="/" className="opacity-60">
         <svg
@@ -31,8 +30,6 @@ export function DynamicBreadcrumb() {
         const routeTo = `/${pathnames.slice(0, index + 1).join("/")}`;
         const isLast = index === pathnames.length - 1;
 
-        // Debug: Log each breadcrumb segment
-        console.log(`Breadcrumb Segment: ${name}, Route: ${routeTo}`);
 
         return isLast ? (
           <span key={name}>{name}</span>

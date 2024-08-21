@@ -7,6 +7,7 @@ import { Toaster } from "react-hot-toast";
 import { Sidebar } from "@/components/rootComponents/sidebar";
 import DynamicBreadcrumb from "@/components/rootComponents/breadcrumbs";
 import ConnectWalletButton from "@/components/rootComponents/connectWalletButton";
+import { ReactNode } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
   return (
     <html lang="en">

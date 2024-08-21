@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import {
   Card,
   Typography,
@@ -27,7 +27,7 @@ import { useActiveWallet, useDisconnect } from "thirdweb/react";
 import toast from "react-hot-toast";
 
 export function Sidebar() {
-  const [open, setOpen] = React.useState(0);
+  const [open, setOpen] = useState(0);
   const { disconnect } = useDisconnect();
   const wallet = useActiveWallet();
 

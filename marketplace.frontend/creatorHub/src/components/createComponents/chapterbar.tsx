@@ -1,29 +1,38 @@
 "use client";
-
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { Card, Typography, Button, IconButton } from "@material-tailwind/react";
 import { PaperAirplaneIcon, TrashIcon } from "@heroicons/react/24/solid";
+import { Chapter } from "@/types/types";
+import toast from "react-hot-toast";
 
-interface Chapter {
-  id: number;
-  name: string;
-}
-
-export function Chapterbar() {
-  const [chapters, setChapters] = useState<Chapter[]>([
-    { id: 1, name: "Chapter: 1" }
-  ]);
-
+export function Chapterbar({
+  selectedChapterIndex,
+  chapters,
+  setSelectedChapterIndex,
+  setChapters,
+}: {
+  selectedChapterIndex: number;
+  chapters: Chapter[];
+  setSelectedChapterIndex: Dispatch<SetStateAction<number>>;
+  setChapters: (chapters: Chapter[]) => void;
+}) {
   const addChapter = () => {
     const newChapter: Chapter = {
-      id: chapters.length + 1,
-      name: `Chapter: ${chapters.length + 1}`,
+      title: `Chapter: ${chapters.length + 1}`,
+      description: "",
+      content: "",
+      files: [],
     };
     setChapters([...chapters, newChapter]);
+    setSelectedChapterIndex(chapters.length);
   };
 
-  const deleteChapter = (id: number) => {
-    setChapters(chapters.filter((chapter) => chapter.id !== id));
+  const deleteChapter = (index: number) => {
+    if (chapters.length === 1) {
+      toast.error("You cannot delete the last chapter");
+      return;
+    }
+    setChapters(chapters.filter((_, i) => i !== index));
   };
 
   return (
@@ -48,22 +57,26 @@ export function Chapterbar() {
             {chapters.map((chapter: Chapter, index: number) => (
               <Card
                 className="p-4 m-2"
-                key={chapter.id}
+                key={index}
                 placeholder={undefined}
                 onPointerEnterCapture={undefined}
                 onPointerLeaveCapture={undefined}
+                onClick={() => setSelectedChapterIndex(index)}
               >
                 <div className="flex items-center justify-between">
                   <Typography
+                    variant="lead"
+                    className="!font-bold"
+                    color={selectedChapterIndex === index ? "blue" : "black"}
                     placeholder={undefined}
                     onPointerEnterCapture={undefined}
                     onPointerLeaveCapture={undefined}
                   >
-                    {chapter.name}
+                    Chapter {index + 1}
                   </Typography>
                   {index === chapters.length - 1 && (
                     <IconButton
-                      onClick={() => deleteChapter(chapter.id)}
+                      onClick={() => deleteChapter(index)}
                       placeholder={undefined}
                       onPointerEnterCapture={undefined}
                       onPointerLeaveCapture={undefined}

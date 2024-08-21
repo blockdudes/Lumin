@@ -20,7 +20,7 @@ const data = {
 
 
 const SalesChart = () => {
-  return <PolarArea data={data} />;
+  return <PolarArea data={data} className="w-full h-full" />;
 };
         
 export default SalesChart;

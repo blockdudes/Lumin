@@ -7,7 +7,11 @@ interface FileDetails {
   url: string;
 }
 
-const FileUpload: React.FC = () => {
+interface FileUploadProps {
+  handleInputChange: (field: string, value: string | File) => void;
+}
+
+const FileUpload: React.FC<FileUploadProps> = ({ handleInputChange }) => {
   const [files, setFiles] = useState<FileDetails[]>([]);
 
   const handleDragOver = (event: React.DragEvent<HTMLDivElement>) => {
@@ -54,7 +58,11 @@ const FileUpload: React.FC = () => {
             type="file"
             multiple
             className="hidden"
-            onChange={handleFileSelect}
+            onChange={(e) => {
+              if (e.target.files) {
+                handleInputChange("files", e.target.files[0])
+              }
+            }}
           />
           <button
             className="mt-2 rounded px-4 py-2 bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"

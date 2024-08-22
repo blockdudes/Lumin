@@ -53,32 +53,6 @@ async function bufferToFormData(buffer: Buffer): Promise<FormData> {
     return formData;
 }
 
-// async function formDataToResponseData(formData: FormData): Promise<any[]> {
-//     const tempData: { [key: string]: any } = {};
-
-//     for (const [key, value] of Array.from(formData.entries())) {
-//         const [type, index] = key.split('-');
-//         if (!tempData[index]) tempData[index] = {};
-
-//         if (type === 'chapter') {
-//             tempData[index][`chapter-${index}`] = JSON.parse(value as string);
-//         } else if (type === 'files') {
-//             const file = value as File;
-//             const arrayBuffer = await file.arrayBuffer();
-//             const base64 = Buffer.from(arrayBuffer).toString('base64');
-//             tempData[index][`file-${index}`] = {
-//                 name: file.name,
-//                 size: file.size,
-//                 type: file.type,
-//                 lastModified: file.lastModified,
-//                 content: `data:${file.type};base64,${base64}`
-//             };
-//         }
-//     }
-
-//     return Object.values(tempData);
-// }
-
 async function formDataToResponseData(formData: FormData): Promise<any[]> {
     const tempData: { [key: string]: any } = {};
 

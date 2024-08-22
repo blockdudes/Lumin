@@ -2,6 +2,7 @@ import JSZip from "jszip";
 import { UserResourceData } from "@/models/userDataModel";
 import { connection } from "@/database/connection";
 import pinataSDK from "@pinata/sdk";
+import { Readable } from 'stream';
 
 
 const pinata = new pinataSDK(
@@ -13,16 +14,32 @@ const pinata = new pinataSDK(
 export const POST = async (req: Request) => {
     try {
         await connection();
-
         const data = await req.formData();
 
         const hash = data.get("hash") as string;
         const title = data.get("title") as string;
         const description = data.get("description") as string;
-        const thumbnail = data.get("thumbnail") as File;
+        const thumbnailFile = data.get("thumbnail") as File;
 
-        const cid = await pinata.pinFileToIPFS(thumbnail);
-        const thumbnailUrl = `https://gateway.pinata.cloud/ipfs/${cid}`;
+        if (!thumbnailFile) {
+            return Response.json({ error: "Thumbnail file is missing" }, { status: 400 });
+        }
+
+        const arrayBufferImg = await thumbnailFile.arrayBuffer();
+        const bufferImg = Buffer.from(arrayBufferImg);
+
+        const readableStream = new Readable();
+        readableStream.push(bufferImg);
+        readableStream.push(null);
+
+        const options = {
+            pinataMetadata: {
+                name: thumbnailFile.name || "thumbnail"
+            }
+        };
+
+        const result = await pinata.pinFileToIPFS(readableStream, options);
+        const thumbnailUrl = `https://gateway.pinata.cloud/ipfs/${result.IpfsHash}`;
 
         const zip = new JSZip();
         const chaptersFolder = zip.folder("chapters");
@@ -68,52 +85,14 @@ export const POST = async (req: Request) => {
             hash,
             title,
             description,
-            thumbnailUrl,
-            resource: buffer
+            thumbnail: thumbnailUrl,
+            resource: "0x"
         });
 
         await newResource.save();
-
-        // const formData = await bufferToFormData(buffer);
-
         return Response.json({ message: "Resource created successfully" });
     } catch (error) {
+        console.log("error", error);
         return Response.error();
     }
-}
-
-
-async function bufferToFormData(buffer: Buffer): Promise<FormData> {
-    const zip = new JSZip();
-    await zip.loadAsync(buffer);
-
-    const formData = new FormData();
-
-    // console.log("zip", Object.entries(zip.files));
-
-    for (const [relativePath, zipEntry] of Object.entries(zip.files)) {
-        console.log("1");
-        if (!zipEntry.dir) {
-            const content = await zipEntry.async('blob');
-            // console.log("content", content);
-            const pathParts = relativePath.split('/');
-            console.log("pathParts", pathParts);
-
-            if (pathParts[2] === 'chapter-data.json') {
-                // console.log("chapter-data.json");
-                const jsonContent = await content.text();
-                console.log(`chapter-${pathParts[1].split('-')[1]}`, jsonContent);
-                formData.append(`chapter-${pathParts[1].split('-')[1]}`, jsonContent);
-            } else if (pathParts.length === 3) {
-                // This is a file entry
-                const chapterIndex = pathParts[1].split('-')[1];
-                const fileName = pathParts[2];
-                formData.append(`files-${chapterIndex}`, new File([content], fileName));
-            }
-        }
-    }
-
-    // console.log("GET", formData.get("chapter-1"));
-
-    return formData;
 }

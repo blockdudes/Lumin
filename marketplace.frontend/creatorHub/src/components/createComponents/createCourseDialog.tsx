@@ -8,6 +8,8 @@ import {
   Switch,
   Input,
   Textarea,
+  Select,
+  Option,
 } from "@material-tailwind/react";
 import { Chapter } from "@/types/types";
 import { prepareContractCall, sendAndConfirmTransaction } from "thirdweb";
@@ -18,8 +20,6 @@ import { useActiveAccount, useReadContract } from "thirdweb/react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import axios from "axios";
-import FileUpload from "./FileUpload";
-
 interface CreateCourseDialogProps {
   open: boolean;
   onClose: () => void;
@@ -35,6 +35,7 @@ export function CreateCourseDialog({
   const [courseDescription, setCourseDescription] = useState<string>("");
   const [coursePrice, setCoursePrice] = useState<number>(0);
   const [isPublic, setIsPublic] = useState<boolean>(false);
+  const [isCustomCategory, setIsCustomCategory] = useState<boolean>(false);
   // TODO: get Image from the user
   const [thumbnail, setThumbnail] = useState<File | null>(null);
   // TODO: select category from the user
@@ -199,20 +200,57 @@ export function CreateCourseDialog({
               onPointerLeaveCapture={undefined}
               crossOrigin={undefined}
             />
-            <Input
-              label="Thumbnail"
-              type="file"
-              color="blue"
-              variant="outlined"
-              onChange={(e) => {
-                if (e.target.files) {
-                  setThumbnail(e.target.files[0]);
-                }
-              }}
-              onPointerEnterCapture={undefined}
-              onPointerLeaveCapture={undefined}
-              crossOrigin={undefined}
-            />
+            <div className="border-1 border-blue-gray-300 border w-full h-full px-2 py-1 justify-start items-center rounded-lg flex gap-4">
+              <span>Thumbnail: </span>
+              <input
+                id="thumbnail-input"
+                type="file"
+                color="blue"
+                onChange={(e) => {
+                  if (e.target.files) {
+                    setThumbnail(e.target.files[0]);
+                  }
+                }}
+              />
+            </div>
+            <div className="flex flex-col gap-4">
+              <div className="flex gap-4 items-center justify-end">
+                <span>Custom Category</span>
+                <Switch
+                  checked={isCustomCategory}
+                  onChange={(e) => setIsCustomCategory(e.target.checked)}
+                  onPointerEnterCapture={undefined}
+                  onPointerLeaveCapture={undefined}
+                  crossOrigin={undefined}
+                  color="blue"
+                />
+              </div>
+              <Select
+                label="Select Version"
+                disabled={isCustomCategory} // Disable Select when isCustomCategory is true
+                placeholder={undefined}
+                onPointerEnterCapture={undefined}
+                onPointerLeaveCapture={undefined}
+              >
+                <Option>Material Tailwind HTML</Option>
+                <Option>Material Tailwind React</Option>
+                <Option>Material Tailwind Vue</Option>
+                <Option>Material Tailwind Angular</Option>
+                <Option>Material Tailwind Svelte</Option>
+              </Select>
+              <Input
+                label="Category"
+                type="text"
+                color="blue"
+                variant="outlined"
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+                disabled={!isCustomCategory} // Disable Input when isCustomCategory is false
+                onPointerEnterCapture={undefined}
+                onPointerLeaveCapture={undefined}
+                crossOrigin={undefined}
+              />
+            </div>
           </div>
         </DialogBody>
         <DialogFooter

@@ -47,12 +47,12 @@ const data: Course[] = [
   },
 ];
 
-const Course = () => {
+const CreatedCourses = () => {
   const router = useRouter();
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
 
   const handleOpen = (course: Course) => {
-    router.push(`/owned/${course.id}`);
+      console.log("clicked")
   };
 
   const handleCategoryChange = (categories: string[]) => {
@@ -86,4 +86,4 @@ const Course = () => {
   );
 };
 
-export default Course;
+export default CreatedCourses;

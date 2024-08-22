@@ -1,10 +1,14 @@
+"use client";
+import { PurchasedCard } from "@/components/dashboardComponents/purchasedCard";
+import { PurchasedTable } from "@/components/dashboardComponents/purchasedTable";
 import React from "react";
 
 const CreatorDashboard = () => {
   return (
     <>
-      <div>
-        <h1>Dashboard</h1>
+      <div className="flex flex-col gap-4">
+        <PurchasedCard />
+        <PurchasedTable />
       </div>
     </>
   );

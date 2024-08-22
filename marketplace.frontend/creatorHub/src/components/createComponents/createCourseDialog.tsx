@@ -46,7 +46,7 @@ export function CreateCourseDialog({
     status,
   } = useReadContract({
     contract: contract(tenderlyEduChain),
-    method: "categories",
+    method: "function getCategories() external view returns (string[])",
     params: [],
   });
 

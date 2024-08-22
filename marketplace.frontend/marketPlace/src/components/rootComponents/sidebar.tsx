@@ -20,6 +20,7 @@ import {
   Cog6ToothIcon,
   InboxIcon,
   PowerIcon,
+  FolderOpenIcon
 } from "@heroicons/react/24/solid";
 import {
   ChevronRightIcon,
@@ -195,6 +196,77 @@ export function Sidebar() {
                   onPointerEnterCapture={undefined}
                   onPointerLeaveCapture={undefined}
                   onClick={() => router.push("/course")}
+                >
+                  <ListItemPrefix
+                    placeholder={undefined}
+                    onPointerEnterCapture={undefined}
+                    onPointerLeaveCapture={undefined}
+                  >
+                    <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
+                  </ListItemPrefix>
+                  Courses
+                </ListItem>
+              </List>
+            </AccordionBody>
+          </Accordion>
+          <Accordion
+            open={open === 3}
+            icon={
+              <ChevronDownIcon
+                strokeWidth={2.5}
+                className={`mx-auto h-4 w-4 transition-transform ${
+                  open === 3 ? "rotate-180" : ""
+                }`}
+              />
+            }
+            placeholder={undefined}
+            onPointerEnterCapture={undefined}
+            onPointerLeaveCapture={undefined}
+          >
+            <ListItem
+              className="p-0"
+              selected={open === 3}
+              placeholder={undefined}
+              onPointerEnterCapture={undefined}
+              onPointerLeaveCapture={undefined}
+            >
+              <AccordionHeader
+                onClick={() => handleOpen(3)}
+                className="border-b-0 p-3"
+                placeholder={undefined}
+                onPointerEnterCapture={undefined}
+                onPointerLeaveCapture={undefined}
+              >
+                <ListItemPrefix
+                  placeholder={undefined}
+                  onPointerEnterCapture={undefined}
+                  onPointerLeaveCapture={undefined}
+                >
+                  <FolderOpenIcon className="h-5 w-5" />
+                </ListItemPrefix>
+                <Typography
+                  color="blue-gray"
+                  className="mr-auto font-normal"
+                  placeholder={undefined}
+                  onPointerEnterCapture={undefined}
+                  onPointerLeaveCapture={undefined}
+                >
+                  Owned
+                </Typography>
+              </AccordionHeader>
+            </ListItem>
+            <AccordionBody className="py-1">
+              <List
+                className="p-0"
+                placeholder={undefined}
+                onPointerEnterCapture={undefined}
+                onPointerLeaveCapture={undefined}
+              >
+                <ListItem
+                  onClick={() => router.push("/owned")}
+                  placeholder={undefined}
+                  onPointerEnterCapture={undefined}
+                  onPointerLeaveCapture={undefined}
                 >
                   <ListItemPrefix
                     placeholder={undefined}

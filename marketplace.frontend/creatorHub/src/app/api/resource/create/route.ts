@@ -4,12 +4,10 @@ import { connection } from "@/database/connection";
 import pinataSDK from "@pinata/sdk";
 import { Readable } from 'stream';
 
-
 const pinata = new pinataSDK(
     process.env.NEXT_PUBLIC_PINATA_KEY,
     process.env.NEXT_PUBLIC_PINATA_SECRET
 );
-
 
 export const POST = async (req: Request) => {
     try {
@@ -86,7 +84,7 @@ export const POST = async (req: Request) => {
             title,
             description,
             thumbnail: thumbnailUrl,
-            resource: "0x"
+            resource: buffer
         });
 
         await newResource.save();

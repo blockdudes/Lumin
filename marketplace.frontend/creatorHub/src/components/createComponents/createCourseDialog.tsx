@@ -18,6 +18,7 @@ import { useActiveAccount, useReadContract } from "thirdweb/react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import axios from "axios";
+import FileUpload from "./FileUpload";
 
 interface CreateCourseDialogProps {
   open: boolean;
@@ -121,6 +122,7 @@ export function CreateCourseDialog({
       });
       if (res.status === "success") {
         toast.success("Course created successfully");
+        onClose();
         router.push("/");
       } else {
         toast.error("Error creating course");
@@ -130,7 +132,6 @@ export function CreateCourseDialog({
       console.error(e);
     }
     toast.dismiss(loader);
-    onClose();
   };
 
   return (
@@ -194,6 +195,20 @@ export function CreateCourseDialog({
               variant="outlined"
               value={coursePrice}
               onChange={(e) => setCoursePrice(Number(e.target.value))}
+              onPointerEnterCapture={undefined}
+              onPointerLeaveCapture={undefined}
+              crossOrigin={undefined}
+            />
+            <Input
+              label="Thumbnail"
+              type="file"
+              color="blue"
+              variant="outlined"
+              onChange={(e) => {
+                if (e.target.files) {
+                  setThumbnail(e.target.files[0]);
+                }
+              }}
               onPointerEnterCapture={undefined}
               onPointerLeaveCapture={undefined}
               crossOrigin={undefined}

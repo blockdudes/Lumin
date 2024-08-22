@@ -20,6 +20,20 @@ const chapter: Chapter[] = [
     content:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut iure possimus quasi in numquam, tenetur nihil. Accusantium fugiat mollitia dolore ab veritatis totam, vel nostrum quasi, hic est, minus sapiente repudiandae at magni quae expedita reiciendis pariatur animi voluptatibus eaque voluptates cum! Iusto, dignissimos quam. Culpa commodi tenetur facere quas.",
   },
+  {
+    title: "Introduction to React 3",
+    description: "This is the introduction to React",
+    files: [],
+    content:
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut iure possimus quasi in numquam, tenetur nihil. Accusantium fugiat mollitia dolore ab veritatis totam, vel nostrum quasi, hic est, minus sapiente repudiandae at magni quae expedita reiciendis pariatur animi voluptatibus eaque voluptates cum! Iusto, dignissimos quam. Culpa commodi tenetur facere quas.",
+  },
+  {
+    title: "Introduction to React 4",
+    description: "This is the introduction to React",
+    files: [],
+    content:
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut iure possimus quasi in numquam, tenetur nihil. Accusantium fugiat mollitia dolore ab veritatis totam, vel nostrum quasi, hic est, minus sapiente repudiandae at magni quae expedita reiciendis pariatur animi voluptatibus eaque voluptates cum! Iusto, dignissimos quam. Culpa commodi tenetur facere quas.",
+  },
 ];
 
 const course: Course = {

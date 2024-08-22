@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import appLoaderSlice from "./features/counter/appLoaderSlice";
+import appLoaderSlice from "./features/appLoader/appLoaderSlice";
 
 export const makeStore = () => {
   return configureStore({

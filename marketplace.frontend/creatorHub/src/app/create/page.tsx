@@ -60,7 +60,6 @@ const CreateCourse = () => {
   useEffect(() => {
     setIsClient(true);
   }, []);
-
   return (
     <>
       <div className="w-full h-full">

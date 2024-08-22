@@ -2,9 +2,14 @@
 
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import axios from "axios";
 
 export default function Home() {
+
   const router = useRouter();
+
+
+
   return (
     <main className="w-full h-full">
       <div className="text-3xl font-bold flex pb-4">

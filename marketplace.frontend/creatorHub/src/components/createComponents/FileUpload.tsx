@@ -9,7 +9,6 @@ const FileUpload = ({
   file: File | null;
   setFile: (file: File | null) => void;
 }) => {
-  ``;
   const handleDragOver = (event: DragEvent<HTMLDivElement>) => {
     event.preventDefault();
   };

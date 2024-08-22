@@ -212,7 +212,7 @@ export function Sidebar() {
                     placeholder={undefined}
                     onPointerEnterCapture={undefined}
                     onPointerLeaveCapture={undefined}
-                    onClick={() => router.push("/marketplace")}
+                    onClick={() => router.push("/created")}
                   >
                     <ListItemPrefix
                       placeholder={undefined}

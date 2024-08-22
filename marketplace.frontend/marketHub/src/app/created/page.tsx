@@ -47,7 +47,7 @@ const data: Course[] = [
   },
 ];
 
-const CreatedCourses = () => {
+const MarketplacePage = () => {
   const router = useRouter();
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
 
@@ -86,4 +86,4 @@ const CreatedCourses = () => {
   );
 };
 
-export default CreatedCourses;
+export default MarketplacePage;

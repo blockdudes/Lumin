@@ -2,7 +2,7 @@
 import { Chapterbar } from "@/components/createComponents/chapterbar";
 import { CreateCourseDialog } from "@/components/createComponents/createCourseDialog";
 import FileUpload from "@/components/createComponents/FileUpload";
-import { Chapter, Course } from "@/types/types";
+import { Chapter } from "@/types/types";
 import { Card, CardBody, Input, Textarea } from "@material-tailwind/react";
 import "@mdxeditor/editor/style.css";
 import React, { useEffect, useState } from "react";
@@ -12,55 +12,49 @@ const CreateCourse = () => {
   const [isClient, setIsClient] = useState(false);
   const [open, setOpen] = useState(false);
   const [selectedChapterIndex, setSelectedChapterIndex] = useState<number>(0);
+  const [chapters, setChapters] = useState<Chapter[]>([
+    {
+      title: "Chapter: 1",
+      description: "",
+      content: "",
+      file: null,
+    },
+  ]);
+
   const toggleDialog = () => {
     setOpen(!open);
   };
-  const [data, setData] = useState<Course>({
-    title: "",
-    description: "",
-    chapters: [
-      {
-        title: "Chapter: 1",
-        description: "",
-        files: [],
-        content: "",
-      },
-    ],
-  });
-
-  const setChapters = (chapters: Chapter[]) => {
-    setData((prev) => ({ ...prev, chapters }));
-  };
-
-  const editSelectedChapter = (index: number, chapter: Chapter) => {
-    setData((prev) => ({
-      ...prev,
-      chapters: prev.chapters.map((c, i) => (i === index ? chapter : c)),
-    }));
-  };
 
   const setSelectedChapterTitle = (title: string) => {
-    const updatedChapter = data.chapters[selectedChapterIndex];
+    const updatedChapter = chapters[selectedChapterIndex];
     updatedChapter.title = title;
-    editSelectedChapter(selectedChapterIndex, updatedChapter);
+    setChapters((prev) =>
+      prev.map((c, i) => (i === selectedChapterIndex ? updatedChapter : c))
+    );
   };
 
   const setSelectedChapterDescription = (description: string) => {
-    const updatedChapter = data.chapters[selectedChapterIndex];
+    const updatedChapter = chapters[selectedChapterIndex];
     updatedChapter.description = description;
-    editSelectedChapter(selectedChapterIndex, updatedChapter);
+    setChapters((prev) =>
+      prev.map((c, i) => (i === selectedChapterIndex ? updatedChapter : c))
+    );
   };
 
-  const setSelectedChapterFiles = (files: File[]) => {
-    const updatedChapter = data.chapters[selectedChapterIndex];
-    updatedChapter.files = files;
-    editSelectedChapter(selectedChapterIndex, updatedChapter);
+  const setSelectedChapterFile = (file: File | null) => {
+    const updatedChapter = chapters[selectedChapterIndex];
+    updatedChapter.file = file;
+    setChapters((prev) =>
+      prev.map((c, i) => (i === selectedChapterIndex ? updatedChapter : c))
+    );
   };
 
   const setSelectedChapterContent = (content: string) => {
-    const updatedChapter = data.chapters[selectedChapterIndex];
+    const updatedChapter = chapters[selectedChapterIndex];
     updatedChapter.content = content;
-    editSelectedChapter(selectedChapterIndex, updatedChapter);
+    setChapters((prev) =>
+      prev.map((c, i) => (i === selectedChapterIndex ? updatedChapter : c))
+    );
   };
 
   useEffect(() => {
@@ -90,7 +84,7 @@ const CreateCourse = () => {
                   className="w-full"
                   color="blue"
                   label="Title"
-                  value={data.chapters[selectedChapterIndex]?.title || ""}
+                  value={chapters[selectedChapterIndex]?.title || ""}
                   onChange={(e) => setSelectedChapterTitle(e.target.value)}
                   onPointerEnterCapture={undefined}
                   onPointerLeaveCapture={undefined}
@@ -115,7 +109,7 @@ const CreateCourse = () => {
                   className="w-full"
                   color="blue"
                   label="Description"
-                  value={data.chapters[selectedChapterIndex]?.description || ""}
+                  value={chapters[selectedChapterIndex]?.description || ""}
                   onChange={(e) =>
                     setSelectedChapterDescription(e.target.value)
                   }
@@ -132,8 +126,8 @@ const CreateCourse = () => {
             >
               <div className="text-xl font-bold">Upload Files</div>
               <FileUpload
-                files={data.chapters[selectedChapterIndex]?.files || []}
-                setFiles={setSelectedChapterFiles}
+                file={chapters[selectedChapterIndex]?.file || null}
+                setFile={setSelectedChapterFile}
               />
             </Card>
             {isClient && (
@@ -151,7 +145,7 @@ const CreateCourse = () => {
                   className="shadow-none h-[400px]"
                 >
                   <MarkdownEditor
-                    value={data.chapters[selectedChapterIndex]?.content || ""}
+                    value={chapters[selectedChapterIndex]?.content || ""}
                     onChange={(val) => setSelectedChapterContent(val)}
                   />
                 </Card>
@@ -161,7 +155,7 @@ const CreateCourse = () => {
         </div>
         <div className="fixed h-full w-[350px] top-0 right-0">
           <Chapterbar
-            chapters={data.chapters}
+            chapters={chapters}
             setChapters={setChapters}
             selectedChapterIndex={selectedChapterIndex}
             setSelectedChapterIndex={setSelectedChapterIndex}
@@ -169,7 +163,11 @@ const CreateCourse = () => {
           />
         </div>
       </div>
-      <CreateCourseDialog open={open} onClose={toggleDialog} data={data} />
+      <CreateCourseDialog
+        open={open}
+        onClose={toggleDialog}
+        chapters={chapters}
+      />
     </>
   );
 };

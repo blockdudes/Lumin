@@ -8,6 +8,7 @@ import { Sidebar } from "@/components/rootComponents/sidebar";
 import DynamicBreadcrumb from "@/components/rootComponents/breadcrumbs";
 import ConnectWalletButton from "@/components/rootComponents/connectWalletButton";
 import { ReactNode } from "react";
+import AppLoader from "@/components/rootComponents/appLoader";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,7 +28,9 @@ export default function RootLayout({
         <ThirdwebProvider>
           <StoreProvider>
             <div className="w-full flex ">
-              <Sidebar />
+              <div className="mr-72">
+                <Sidebar />
+              </div>
               <div className="absolute top-3 right-3">
                 <div className="flex justify-center mb-20">
                   <ConnectWalletButton />
@@ -48,6 +51,7 @@ export default function RootLayout({
                   zIndex: 99999,
                 }}
               />
+              <AppLoader />
             </div>
           </StoreProvider>
         </ThirdwebProvider>

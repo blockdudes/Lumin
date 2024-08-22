@@ -1,7 +1,7 @@
 export type Chapter = {
   title: string;
   description: string;
-  files: File[];
+  file: File | null;
   content: string;
 };
 

@@ -3,11 +3,11 @@ import DocumentTextIcon from "@heroicons/react/24/outline/DocumentTextIcon";
 import TrashIcon from "@heroicons/react/24/solid/TrashIcon";
 
 const FileUpload = ({
-  files,
-  setFiles,
+  file,
+  setFile,
 }: {
-  files: File[];
-  setFiles: (files: File[]) => void;
+  file: File | null;
+  setFile: (file: File | null) => void;
 }) => {
   ``;
   const handleDragOver = (event: DragEvent<HTMLDivElement>) => {
@@ -17,25 +17,20 @@ const FileUpload = ({
   const handleFileDrop = (event: DragEvent<HTMLDivElement>) => {
     event.preventDefault();
     Array.from(event.dataTransfer.files).map((file) => {
-      setFiles([...files, file]);
+      setFile(file);
     });
   };
 
   const handleFileSelect = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {
       const newFiles = Array.from(event.target.files).map((file) => {
-        setFiles([...files, file]);
+        setFile(file);
       });
     }
   };
 
   const handleDelete = (file: File) => {
-    setFiles(
-      files.filter(
-        (f) =>
-          f.name !== file.name && f.size !== file.size && f.type !== file.type
-      )
-    );
+    setFile(null);
   };
 
   return (
@@ -64,9 +59,9 @@ const FileUpload = ({
           </button>
         </div>
         <ul className="mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-          {files.map((file, index) => (
+          {file && (
             <li
-              key={index}
+              key={file.name}
               className="flex flex-col items-center p-2 bg-gray-100 rounded shadow relative group"
             >
               {file.type.startsWith("image") ? (
@@ -90,7 +85,7 @@ const FileUpload = ({
                 <TrashIcon className="w-6 h-6" />
               </button>
             </li>
-          ))}
+          )}
         </ul>
       </div>
     </div>

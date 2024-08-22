@@ -23,7 +23,7 @@ export function Chapterbar({
       title: `Chapter: ${chapters.length + 1}`,
       description: "",
       content: "",
-      files: [],
+      file: null, 
     };
     setChapters([...chapters, newChapter]);
     setSelectedChapterIndex(chapters.length);

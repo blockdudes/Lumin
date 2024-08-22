@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Button,
   Dialog,
@@ -9,21 +9,130 @@ import {
   Input,
   Textarea,
 } from "@material-tailwind/react";
+import { Chapter } from "@/types/types";
+import { prepareContractCall, sendAndConfirmTransaction } from "thirdweb";
+import { tenderlyEduChain } from "@/constants/chains";
+import { contract } from "@/constants/contracts";
+import { ethers, hashMessage } from "ethers";
+import { useActiveAccount, useReadContract } from "thirdweb/react";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
+import axios from "axios";
 
 interface CreateCourseDialogProps {
   open: boolean;
   onClose: () => void;
-  data: {
-    title: string;
-    description: string;
-  };
+  chapters: Chapter[];
 }
 
 export function CreateCourseDialog({
   open,
   onClose,
-  data,
+  chapters,
 }: CreateCourseDialogProps) {
+  const [courseName, setCourseName] = useState<string>("");
+  const [courseDescription, setCourseDescription] = useState<string>("");
+  const [coursePrice, setCoursePrice] = useState<number>(0);
+  const [isPublic, setIsPublic] = useState<boolean>(false);
+  // TODO: get Image from the user
+  const [thumbnail, setThumbnail] = useState<File | null>(null);
+  // TODO: select category from the user
+  const [category, setCategory] = useState<string>("");
+  const account = useActiveAccount();
+  const router = useRouter();
+  const {
+    data: categoryOptions,
+    error,
+    status,
+  } = useReadContract({
+    contract: contract(tenderlyEduChain),
+    method: "categories",
+    params: [],
+  });
+
+  const handleCreateCourse = async () => {
+    var loader = toast.loading("Creating Course", {
+      duration: Infinity,
+    });
+    try {
+      const hash = hashMessage(
+        courseName +
+          courseDescription +
+          coursePrice.toString() +
+          isPublic.toString() +
+          chapters.toString()
+      );
+
+      const formData = new FormData();
+      formData.append("hash", "hash");
+      formData.append("title", courseName);
+      formData.append("description", courseDescription);
+      if (thumbnail) {
+        formData.append("thumbnail", thumbnail);
+      }
+      chapters.forEach((chapter, index) => {
+        const { file, ...chapterData } = chapter;
+
+        formData.append(`chapter-${index}`, JSON.stringify(chapterData));
+        if (file) {
+          formData.append(`files-${index}`, file);
+        }
+      });
+
+      const response = await axios.post("/api/resource/create", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
+      console.log(response);
+      if (response.status == 200) {
+        toast.success("Course Files Uploaded Successfully");
+        toast.dismiss(loader);
+        loader = toast.loading("Deploying Course on Blockchain");
+      } else {
+        toast.error("Error Uploading Course Files");
+        return;
+      }
+
+      const tx = prepareContractCall({
+        contract: contract(tenderlyEduChain),
+        method:
+          "function addResource(string memory title, string memory description, string memory category, string memory image_url, string memory resourceIpfsHash, bool allowListingAccess, uint256 price) external",
+        params: [
+          courseName,
+          courseDescription,
+          category,
+          thumbnail ? URL.createObjectURL(thumbnail) : "",
+          hash,
+          isPublic,
+          ethers.parseEther(coursePrice.toString()),
+        ],
+      });
+
+      if (!account) {
+        toast.error("Account not found");
+        return;
+      }
+
+      const res = await sendAndConfirmTransaction({
+        account: account,
+        transaction: tx,
+      });
+      if (res.status === "success") {
+        toast.success("Course created successfully");
+        router.push("/");
+      } else {
+        toast.error("Error creating course");
+      }
+    } catch (e) {
+      toast.error("Error creating course");
+      console.error(e);
+    }
+    toast.dismiss(loader);
+    onClose();
+  };
+
   return (
     <>
       <Dialog
@@ -49,6 +158,8 @@ export function CreateCourseDialog({
           <div className="flex gap-4 items-center justify-end">
             <span>Public</span>
             <Switch
+              checked={isPublic}
+              onChange={(e) => setIsPublic(e.target.checked)}
               onPointerEnterCapture={undefined}
               onPointerLeaveCapture={undefined}
               crossOrigin={undefined}
@@ -61,6 +172,8 @@ export function CreateCourseDialog({
               type="text"
               color="blue"
               variant="outlined"
+              value={courseName}
+              onChange={(e) => setCourseName(e.target.value)}
               onPointerEnterCapture={undefined}
               onPointerLeaveCapture={undefined}
               crossOrigin={undefined}
@@ -69,6 +182,8 @@ export function CreateCourseDialog({
               label="Course Description"
               color="blue"
               variant="outlined"
+              value={courseDescription}
+              onChange={(e) => setCourseDescription(e.target.value)}
               onPointerEnterCapture={undefined}
               onPointerLeaveCapture={undefined}
             />
@@ -77,6 +192,8 @@ export function CreateCourseDialog({
               type="number"
               color="blue"
               variant="outlined"
+              value={coursePrice}
+              onChange={(e) => setCoursePrice(Number(e.target.value))}
               onPointerEnterCapture={undefined}
               onPointerLeaveCapture={undefined}
               crossOrigin={undefined}
@@ -91,7 +208,7 @@ export function CreateCourseDialog({
           <Button
             variant="text"
             color="gray"
-            onClick={onClose} // Use onClose for button click
+            onClick={onClose}
             className="mr-1"
             placeholder={undefined}
             onPointerEnterCapture={undefined}
@@ -102,7 +219,7 @@ export function CreateCourseDialog({
           <Button
             variant="gradient"
             color="blue"
-            onClick={onClose} // Use onClose for button click
+            onClick={handleCreateCourse}
             placeholder={undefined}
             onPointerEnterCapture={undefined}
             onPointerLeaveCapture={undefined}

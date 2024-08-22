@@ -1,14 +1,14 @@
 import { defineChain } from "thirdweb";
 
 export const tenderlyEduChain = defineChain({
-  id: 5555,
+  id: 1,
   name: "Tenderly Edu",
   nativeCurrency: {
     name: "Tenderly Edu",
     symbol: "ETH",
     decimals: 18,
   },
-  rpc: "https://virtual.mainnet.rpc.tenderly.co/710c35dd-84e9-400a-9f54-7317aeedcdc6",
+  rpc: "https://virtual.mainnet.rpc.tenderly.co/fb47656a-9c0a-4215-8df3-f520a29b2548",
 });
 
 export const eduChain = defineChain({

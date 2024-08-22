@@ -50,16 +50,20 @@ export function Sidebar() {
           className="mb-2 py-4 flex items-center gap-2 cursor-pointer"
           onClick={() => router.push("/")}
         >
-          <CubeTransparentIcon className="mb-4 h-12 w-12 text-green-500" />
-          <Typography
-            variant="h5"
-            color="blue-gray"
-            placeholder={undefined}
-            onPointerEnterCapture={undefined}
-            onPointerLeaveCapture={undefined}
-          >
-            User Hub
-          </Typography>
+          <div className="flex items-center justify-center">
+            <CubeTransparentIcon className="mb-4 h-12 w-12 text-green-500" />
+          </div>
+          <div className="flex items-center justify-center">
+            <Typography
+              variant="h5"
+              color="blue-gray"
+              placeholder={undefined}
+              onPointerEnterCapture={undefined}
+              onPointerLeaveCapture={undefined}
+            >
+              User Hub
+            </Typography>
+          </div>
         </div>
         <List
           placeholder={undefined}

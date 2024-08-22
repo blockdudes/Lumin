@@ -1,47 +1,35 @@
-import React, { useState } from 'react';
+import React, { ChangeEvent, DragEvent, FC, useState } from "react";
 import DocumentTextIcon from "@heroicons/react/24/outline/DocumentTextIcon";
 import TrashIcon from "@heroicons/react/24/solid/TrashIcon";
 
-interface FileDetails {
-  file: File;
-  url: string;
-}
-
-interface FileUploadProps {
-  handleInputChange: (field: string, value: string | File) => void;
-}
-
-const FileUpload: React.FC<FileUploadProps> = ({ handleInputChange }) => {
-  const [files, setFiles] = useState<FileDetails[]>([]);
-
-  const handleDragOver = (event: React.DragEvent<HTMLDivElement>) => {
+const FileUpload = ({
+  file,
+  setFile,
+}: {
+  file: File | null;
+  setFile: (file: File | null) => void;
+}) => {
+  const handleDragOver = (event: DragEvent<HTMLDivElement>) => {
     event.preventDefault();
   };
 
-  const handleFileDrop = (event: React.DragEvent<HTMLDivElement>) => {
+  const handleFileDrop = (event: DragEvent<HTMLDivElement>) => {
     event.preventDefault();
-    const newFiles = Array.from(event.dataTransfer.files).map(file => ({
-      file,
-      url: file.type.startsWith('image') ? URL.createObjectURL(file) : ''
-    }));
-
-    setFiles(prev => [...prev, ...newFiles]);
+    Array.from(event.dataTransfer.files).map((file) => {
+      setFile(file);
+    });
   };
 
-  const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileSelect = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {
-      const newFiles = Array.from(event.target.files).map(file => ({
-        file,
-        url: file.type.startsWith('image') ? URL.createObjectURL(file) : ''
-      }));
-
-      setFiles(prev => [...prev, ...newFiles]);
+      const newFiles = Array.from(event.target.files).map((file) => {
+        setFile(file);
+      });
     }
   };
 
-  const handleDelete = (url: string) => {
-    URL.revokeObjectURL(url);
-    setFiles(prev => prev.filter(file => file.url !== url));
+  const handleDelete = (file: File) => {
+    setFile(null);
   };
 
   return (
@@ -52,44 +40,51 @@ const FileUpload: React.FC<FileUploadProps> = ({ handleInputChange }) => {
           onDrop={handleFileDrop}
           onDragOver={handleDragOver}
         >
-          <p className="mb-3 font-semibold text-gray-900">Drag and drop your files here or</p>
+          <p className="mb-3 font-semibold text-gray-900">
+            Drag and drop your files here or
+          </p>
           <input
             id="hidden-input"
             type="file"
             multiple
             className="hidden"
-            onChange={(e) => {
-              if (e.target.files) {
-                handleInputChange("files", e.target.files[0])
-              }
-            }}
+            onChange={handleFileSelect}
           />
           <button
             className="mt-2 rounded px-4 py-2 bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
-            onClick={() => document.getElementById('hidden-input')?.click()}
+            onClick={() => document.getElementById("hidden-input")?.click()}
           >
             Select Files
           </button>
         </div>
         <ul className="mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-          {files.map(({ file, url }) => (
-            <li key={url} className="flex flex-col items-center p-2 bg-gray-100 rounded shadow relative group">
-              {url ? (
-                <img src={url} alt={file.name} className="w-full h-32 object-cover rounded" />
+          {file && (
+            <li
+              key={file.name}
+              className="flex flex-col items-center p-2 bg-gray-100 rounded shadow relative group"
+            >
+              {file.type.startsWith("image") ? (
+                <img
+                  src={URL.createObjectURL(file)}
+                  alt={file.name}
+                  className="w-full h-32 object-cover rounded"
+                />
               ) : (
                 <div className="flex items-center justify-center w-full h-32 bg-gray-200 rounded">
                   <DocumentTextIcon className="w-16 h-16 text-gray-400" />
                 </div>
               )}
-              <span className="mt-2 text-sm text-gray-700 truncate w-full px-2">{file.name}</span>
+              <span className="mt-2 text-sm text-gray-700 truncate w-full px-2">
+                {file.name}
+              </span>
               <button
                 className="absolute top-2 right-2 text-red-500 hover:text-red-700 font-bold py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out z-10"
-                onClick={() => handleDelete(url)}
+                onClick={() => handleDelete(file)}
               >
                 <TrashIcon className="w-6 h-6" />
               </button>
             </li>
-          ))}
+          )}
         </ul>
       </div>
     </div>

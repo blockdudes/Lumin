@@ -20,6 +20,7 @@ import {
   Cog6ToothIcon,
   InboxIcon,
   PowerIcon,
+  RectangleGroupIcon,
 } from "@heroicons/react/24/solid";
 import {
   ChevronRightIcon,
@@ -27,6 +28,7 @@ import {
   CubeTransparentIcon,
 } from "@heroicons/react/24/outline";
 import { useRouter } from "next/navigation";
+
 
 export function Sidebar() {
   const [open, setOpen] = React.useState(0);
@@ -39,7 +41,7 @@ export function Sidebar() {
   const router = useRouter();
 
   return (
-    <div className="w-[270px] flex-shrink-0 h-screen">
+    <div className="w-[270px] h-screen">
       <Card
         className="p-4 shadow-lg rounded-none h-full w-full"
         placeholder={undefined}
@@ -50,7 +52,7 @@ export function Sidebar() {
           className="mb-2 py-4 flex items-center gap-2 cursor-pointer"
           onClick={() => router.push("/")}
         >
-          <CubeTransparentIcon className="mb-4 h-12 w-12 text-green-500" />
+          <CubeTransparentIcon className="mb-4 h-12 w-12 text-red-500" />
           <Typography
             variant="h5"
             color="blue-gray"
@@ -58,7 +60,7 @@ export function Sidebar() {
             onPointerEnterCapture={undefined}
             onPointerLeaveCapture={undefined}
           >
-            User Hub
+            Market Hub
           </Typography>
         </div>
         <List
@@ -107,6 +109,7 @@ export function Sidebar() {
                   placeholder={undefined}
                   onPointerEnterCapture={undefined}
                   onPointerLeaveCapture={undefined}
+                  onClick={() => router.push("/dashboard")}
                 >
                   Dashboard
                 </Typography>
@@ -120,7 +123,7 @@ export function Sidebar() {
                 onPointerLeaveCapture={undefined}
               >
                 <ListItem
-                  onClick={() => router.push("/dashboard")}
+                  onClick={() => router.push("/dashboard/analytics")}
                   placeholder={undefined}
                   onPointerEnterCapture={undefined}
                   onPointerLeaveCapture={undefined}
@@ -133,6 +136,92 @@ export function Sidebar() {
                     <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
                   </ListItemPrefix>
                   Analytics
+                </ListItem>
+                <ListItem
+                  placeholder={undefined}
+                  onPointerEnterCapture={undefined}
+                  onPointerLeaveCapture={undefined}
+                  onClick={() => router.push("/dashboard/revenue")}
+                >
+                  <ListItemPrefix
+                    placeholder={undefined}
+                    onPointerEnterCapture={undefined}
+                    onPointerLeaveCapture={undefined}
+                  >
+                    <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
+                  </ListItemPrefix>
+                  Revenue
+                </ListItem>
+              </List>
+            </AccordionBody>
+          </Accordion>
+          <Accordion
+            open={open === 2}
+            icon={
+              <ChevronDownIcon
+                strokeWidth={2.5}
+                className={`mx-auto h-4 w-4 transition-transform ${
+                  open === 2 ? "rotate-180" : ""
+                }`}
+              />
+            }
+            placeholder={undefined}
+            onPointerEnterCapture={undefined}
+            onPointerLeaveCapture={undefined}
+          >
+            <ListItem
+              className="p-0"
+              selected={open === 2}
+              placeholder={undefined}
+              onPointerEnterCapture={undefined}
+              onPointerLeaveCapture={undefined}
+            >
+              <AccordionHeader
+                onClick={() => handleOpen(2)}
+                className="border-b-0 p-3"
+                placeholder={undefined}
+                onPointerEnterCapture={undefined}
+                onPointerLeaveCapture={undefined}
+              >
+                <ListItemPrefix
+                  placeholder={undefined}
+                  onPointerEnterCapture={undefined}
+                  onPointerLeaveCapture={undefined}
+                >
+                  <RectangleGroupIcon className="h-5 w-5" />
+                </ListItemPrefix>
+                <Typography
+                  color="blue-gray"
+                  className="mr-auto font-normal"
+                  placeholder={undefined}
+                  onPointerEnterCapture={undefined}
+                  onPointerLeaveCapture={undefined}
+                >
+                  Create
+                </Typography>
+              </AccordionHeader>
+            </ListItem>
+            <AccordionBody className="py-1">
+              <List
+                className="p-0"
+                placeholder={undefined}
+                onPointerEnterCapture={undefined}
+                onPointerLeaveCapture={undefined}
+              >
+                <ListItem
+                  placeholder={undefined}
+                  onPointerEnterCapture={undefined}
+                  onPointerLeaveCapture={undefined}
+                  onClick={() => router.push("/create")}
+                >
+                  <ListItemPrefix
+                    placeholder={undefined}
+                    onPointerEnterCapture={undefined}
+                    onPointerLeaveCapture={undefined}
+                  >
+                    <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
+                  </ListItemPrefix>
+                  Create Marketplace
                 </ListItem>
               </List>
             </AccordionBody>

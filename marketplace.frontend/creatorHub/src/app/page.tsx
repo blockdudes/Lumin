@@ -1,5 +1,5 @@
-"use client";
-
+'use client'
+import Image from "next/image";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import axios from "axios";

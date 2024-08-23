@@ -2,7 +2,7 @@ import JSZip from "jszip";
 import { UserResourceData } from "@/models/userDataModel";
 import { connection } from "@/database/connection";
 import pinataSDK from "@pinata/sdk";
-import { Readable } from 'stream';
+import { Readable } from "stream";
 
 const pinata = new pinataSDK(
   process.env.NEXT_PUBLIC_PINATA_KEY,
@@ -22,7 +22,10 @@ export const POST = async (req: Request) => {
     console.log("data", Array.from(data.entries()));
 
     if (!thumbnailFile) {
-      return Response.json({ error: "Thumbnail file is missing" }, { status: 400 });
+      return Response.json(
+        { error: "Thumbnail file is missing" },
+        { status: 400 }
+      );
     }
 
     const arrayBufferImg = await thumbnailFile.arrayBuffer();
@@ -34,8 +37,8 @@ export const POST = async (req: Request) => {
 
     const options = {
       pinataMetadata: {
-        name: thumbnailFile.name || "thumbnail"
-      }
+        name: thumbnailFile.name || "thumbnail",
+      },
     };
 
     const result = await pinata.pinFileToIPFS(readableStream, options);
@@ -49,7 +52,7 @@ export const POST = async (req: Request) => {
     // const chapterData: { [key: string]: any } = {};
     // const chapterFiles: { [key: string]: File } = {};
 
-    // pinata 
+    // pinata
 
     let chaptersPinata: { [key: string]: { file?: string, type?: string } } = {};
 
@@ -125,21 +128,27 @@ export const POST = async (req: Request) => {
 
     const resource = await UserResourceData.findOne({ hash: hash });
     if (resource) {
-      return Response.json({ error: "Resource already exists" }, { status: 400 });
+      return Response.json(
+        { error: "Resource already exists" },
+        { status: 400 }
+      );
     }
+    console.log("resource: ", resource);
 
-    const newResource = new UserResourceData({
+    const newResource = await UserResourceData.create({
       hash,
       title,
       description,
       thumbnail: thumbnailUrl,
       resource: chaptersPinata
     });
+    console.log("newResource: ", newResource);
 
-    await newResource.save();
+    // await newResource.save();
+    
     return Response.json({ message: "Resource created successfully" });
   } catch (error) {
     console.log("error", error);
     return Response.error();
   }
-}
+};

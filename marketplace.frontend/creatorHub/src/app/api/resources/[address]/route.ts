@@ -75,10 +75,9 @@ export const GET = async (
         status: 200,
       });
     } catch (error) {
-      return new Response(
-        JSON.stringify({ error: `unable to fetch from subgraph: ${error}` }),
-        { status: 500 }
-      );
+      return new Response(JSON.stringify({ data: [] }), {
+        status: 200,
+      });
     }
   } catch (error) {
     console.error("Error fetching user:", error);

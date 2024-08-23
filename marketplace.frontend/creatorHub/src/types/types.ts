@@ -16,6 +16,7 @@ export type Chapter = {
 };
 
 export type Course = {
+  id: string;
   title: string;
   description: string;
   category: string;

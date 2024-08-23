@@ -58,14 +58,14 @@ export function CreateCourseDialog({
     try {
       const hash = hashMessage(
         courseName +
-          courseDescription +
-          coursePrice.toString() +
-          isPublic.toString() +
-          chapters.toString()
+        courseDescription +
+        coursePrice.toString() +
+        isPublic.toString() +
+        chapters.toString()
       );
 
       const formData = new FormData();
-      formData.append("hash", "hash");
+      formData.append("hash", "hash12345678");
       formData.append("title", courseName);
       formData.append("description", courseDescription);
       if (thumbnail) {
@@ -76,7 +76,9 @@ export function CreateCourseDialog({
 
         formData.append(`chapter-${index}`, JSON.stringify(chapterData));
         if (file) {
+          console.log("FILE: ", file);
           formData.append(`files-${index}`, file);
+          formData.append(`type-${index}`, file.type);
         }
       });
 

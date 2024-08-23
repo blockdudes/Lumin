@@ -31,7 +31,7 @@ const CreatedCourses = () => {
   }, [account]);
 
   const handleOpen = (course: Course) => {
-    console.log("clicked");
+    router.push(`/created/${course.id}`);
   };
 
   const handleCategoryChange = (categories: string[]) => {

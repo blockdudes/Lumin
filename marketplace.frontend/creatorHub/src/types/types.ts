@@ -5,7 +5,7 @@ export interface IUserResourceData extends Document {
   description: string;
   hash: string;
   thumbnail: string;
-  resource: Buffer;
+  resource: any;
 }
 
 export type Chapter = {

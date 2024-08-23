@@ -63,7 +63,7 @@ export function CreateCourseDialog({
       );
 
       const formData = new FormData();
-      formData.append("hash", hash);
+      formData.append("hash", "hash123456789");
       formData.append("title", courseName);
       formData.append("description", courseDescription);
       if (thumbnail) {
@@ -80,7 +80,7 @@ export function CreateCourseDialog({
         }
       });
 
-      const response = await axios.post("/api/resource/create", formData, {
+      const response = await axios.post("/api/resources/create", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

@@ -10,19 +10,19 @@ export const GET = async (req: Request, { params }: { params: { hash: string } }
             return Response.json({ error: "Resource not found" }, { status: 404 });
         }
 
-        const formData = await bufferToFormData(resource.resource);
-        const responseData = await formDataToResponseData(formData);
+        // const formData = await bufferToFormData(resource.resource);
+        // const responseData = await formDataToResponseData(formData);
 
-        const data = {
-            title: resource.title,
-            description: resource.description,
-            thumbnail: resource.thumbnail,
-            chapters: responseData
-        }
+        // const data = {
+        //     title: resource.title,
+        //     description: resource.description,
+        //     thumbnail: resource.thumbnail,
+        //     chapters: responseData
+        // }
 
         return Response.json({
             message: "Resource Decoded successfully",
-            data: data
+            data: resource
         });
     } catch (error) {
         return Response.error();

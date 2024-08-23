@@ -4,7 +4,7 @@ import { IUserResourceData } from "../types/types";
 
 const resourceSchema: Schema<IUserResourceData> = new Schema({
     hash: { type: String, required: true },
-    resource: { type: Buffer, required: true },
+    resource: { type: Object, required: true },
     title: { type: String, required: true },
     description: { type: String, required: true },
     thumbnail: { type: String, required: true },

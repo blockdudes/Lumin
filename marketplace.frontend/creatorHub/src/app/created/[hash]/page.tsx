@@ -1,6 +1,6 @@
 "use client";
-import React from "react";
-import { usePathname } from "next/navigation";
+import React, { useEffect } from "react";
+import { useParams } from "next/navigation";
 import { PencilSquareIcon } from "@heroicons/react/24/solid";
 import { TitleDialog } from "@/components/createdComponents/titleDialog";
 import { DescriptionDialog } from "@/components/createdComponents/descriptioDialog";
@@ -8,11 +8,11 @@ import { ImageDialog } from "@/components/createdComponents/imageDialog";
 import { CategoryDialog } from "@/components/createdComponents/categoryDialog";
 import { PriceDialog } from "@/components/createdComponents/priceComponent";
 import { PublicDialog } from "@/components/createdComponents/publicDialog";
+import { Course } from "@/types/types";
 
 const CreatedCourseDetails = () => {
-  const pathname = usePathname();
-  const courseId = pathname.split("/").pop();
-  console.log(courseId);
+  const { hash } = useParams<{ hash: string }>();
+  console.log(hash);
 
   const [openTitleDialog, setOpenTitleDialog] = React.useState(false);
   const [openDescriptionDialog, setOpenDescriptionDialog] =
@@ -21,17 +21,19 @@ const CreatedCourseDetails = () => {
   const [openPriceDialog, setOpenPriceDialog] = React.useState(false);
   const [openPublicDialog, setOpenPublicDialog] = React.useState(false);
   const [openImageDialog, setOpenImageDialog] = React.useState(false);
+  const [courseDetails, setCourseDetails] = React.useState<Course | null>(null);
 
-  const courseDetails = {
-    id: "owned1",
-    img: "https://images.unsplash.com/photo-1540553016722-983e48a2cd10?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80",
-    title: "UI/UX Review Check",
-    description:
-      "The place is close to Barceloneta Beach and bus stop just 2 min by walk and near to &quot;Naviglio&quot; where you can enjoy the main night life in Barcelona.",
-    category: "web3",
-    price: 10,
-    isPublic: true,
-  };
+  useEffect(() => {
+    fetch(`/api/resources/fetch/${hash}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setCourseDetails(data.data);
+      });
+  }, [hash]);
+
+  if (!courseDetails) {
+    return null;
+  }
 
   return (
     <div>
@@ -49,7 +51,7 @@ const CreatedCourseDetails = () => {
         </div>
         <div className="group relative w-full h-80">
           <img
-            src={courseDetails.img}
+            src={courseDetails.image_url}
             alt={courseDetails.title}
             className="w-full h-full object-cover rounded-lg"
           />
@@ -91,7 +93,7 @@ const CreatedCourseDetails = () => {
         </div>
         <div className="group relative flex justify-between items-center">
           <p className="font-semibold text-lg">
-            Listed: {courseDetails.isPublic ? "Yes" : "No"}
+            Listed: {courseDetails.allowListingAccess ? "Yes" : "No"}
           </p>
           <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             <PencilSquareIcon
@@ -109,7 +111,7 @@ const CreatedCourseDetails = () => {
       <ImageDialog
         open={openImageDialog}
         handleOpen={() => setOpenImageDialog(!openImageDialog)}
-        image={courseDetails.img}
+        image={courseDetails.image_url}
       />
       <DescriptionDialog
         open={openDescriptionDialog}
@@ -129,7 +131,7 @@ const CreatedCourseDetails = () => {
       <PublicDialog
         open={openPublicDialog}
         handleOpen={() => setOpenPublicDialog(!openPublicDialog)}
-        isPublic={courseDetails.isPublic}
+        isPublic={courseDetails.allowListingAccess}
       />
     </div>
   );

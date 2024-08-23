@@ -52,18 +52,19 @@ export function CreateCourseDialog({
     var loader = toast.loading("Creating Course", {
       duration: Infinity,
     });
+    console.log("chapters", chapters);
     try {
       const hash = hashMessage(
         courseName +
-        courseDescription +
-        coursePrice.toString() +
-        isPublic.toString() +
-        chapters.toString() +
-        Date.now().toString()
+          courseDescription +
+          coursePrice.toString() +
+          isPublic.toString() +
+          chapters.toString() +
+          Date.now().toString()
       );
 
       const formData = new FormData();
-      formData.append("hash", "hash123456789");
+      formData.append("hash", hash);
       formData.append("title", courseName);
       formData.append("description", courseDescription);
       if (thumbnail) {

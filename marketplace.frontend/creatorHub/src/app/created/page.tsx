@@ -6,7 +6,9 @@ import { MultiSelect } from "@/components/courseComponents/multiselect";
 import { Course } from "@/types/types";
 import { setIsAppLoading } from "@/lib/features/appLoader/appLoaderSlice";
 import { useAppDispatch } from "@/lib/hooks";
-import { useActiveAccount } from "thirdweb/react";
+import { useActiveAccount, useReadContract } from "thirdweb/react";
+import { tenderlyEduChain } from "@/constants/chains";
+import { contract } from "@/constants/contracts";
 
 const CreatedCourses = () => {
   const router = useRouter();
@@ -14,6 +16,11 @@ const CreatedCourses = () => {
   const dispatch = useAppDispatch();
   const account = useActiveAccount();
   const [data, setData] = useState<Course[]>([]);
+  const { data: categoryOptions } = useReadContract({
+    contract: contract(tenderlyEduChain),
+    method: "function getCategories() external view returns (string[])",
+    params: [],
+  });
 
   useEffect(() => {
     dispatch(setIsAppLoading(true));
@@ -31,7 +38,7 @@ const CreatedCourses = () => {
   }, [account]);
 
   const handleOpen = (course: Course) => {
-    router.push(`/created/${course.id}`);
+    router.push(`/created/${course.resourceHash}`);
   };
 
   const handleCategoryChange = (categories: string[]) => {
@@ -47,7 +54,17 @@ const CreatedCourses = () => {
     <div className="flex flex-col justify-center w-full h-full">
       <div className="flex gap-2 items-center">
         <div className="text-2xl font-bold">Courses</div>
-        <MultiSelect onChange={handleCategoryChange} />
+        <MultiSelect
+          options={
+            categoryOptions !== undefined
+              ? categoryOptions.map((option) => ({
+                  value: option,
+                  label: option,
+                }))
+              : undefined
+          }
+          onChange={handleCategoryChange}
+        />
       </div>
       <div className="flex items-center justify-center w-full h-full">
         <div className="grid grid-cols-3 gap-5 pt-4">

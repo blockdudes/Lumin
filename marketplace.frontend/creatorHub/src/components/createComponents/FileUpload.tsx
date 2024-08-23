@@ -46,7 +46,6 @@ const FileUpload = ({
           <input
             id="hidden-input"
             type="file"
-            multiple
             className="hidden"
             onChange={handleFileSelect}
           />

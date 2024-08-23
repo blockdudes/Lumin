@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   Button,
   Dialog,
@@ -8,6 +8,9 @@ import {
   Switch,
   Input,
   Textarea,
+  Select,
+  Option,
+  Spinner,
 } from "@material-tailwind/react";
 import { Chapter } from "@/types/types";
 import { prepareContractCall, sendAndConfirmTransaction } from "thirdweb";
@@ -18,7 +21,6 @@ import { useActiveAccount, useReadContract } from "thirdweb/react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import axios from "axios";
-import FileUpload from "./FileUpload";
 
 interface CreateCourseDialogProps {
   open: boolean;
@@ -35,17 +37,12 @@ export function CreateCourseDialog({
   const [courseDescription, setCourseDescription] = useState<string>("");
   const [coursePrice, setCoursePrice] = useState<number>(0);
   const [isPublic, setIsPublic] = useState<boolean>(false);
-  // TODO: get Image from the user
+  const [isCustomCategory, setIsCustomCategory] = useState<boolean>(false);
   const [thumbnail, setThumbnail] = useState<File | null>(null);
-  // TODO: select category from the user
-  const [category, setCategory] = useState<string>("");
+  const [category, setCategory] = useState<string>("x");
   const account = useActiveAccount();
   const router = useRouter();
-  const {
-    data: categoryOptions,
-    error,
-    status,
-  } = useReadContract({
+  const { data: categoryOptions } = useReadContract({
     contract: contract(tenderlyEduChain),
     method: "function getCategories() external view returns (string[])",
     params: [],
@@ -61,11 +58,12 @@ export function CreateCourseDialog({
         courseDescription +
         coursePrice.toString() +
         isPublic.toString() +
-        chapters.toString()
+        chapters.toString() +
+        Date.now().toString()
       );
 
       const formData = new FormData();
-      formData.append("hash", "hash12345678");
+      formData.append("hash", hash);
       formData.append("title", courseName);
       formData.append("description", courseDescription);
       if (thumbnail) {
@@ -97,7 +95,7 @@ export function CreateCourseDialog({
         toast.error("Error Uploading Course Files");
         return;
       }
-
+      console.log("Creating Course on Blockchain");
       const tx = prepareContractCall({
         contract: contract(tenderlyEduChain),
         method:
@@ -122,8 +120,10 @@ export function CreateCourseDialog({
         account: account,
         transaction: tx,
       });
+      console.log(res);
       if (res.status === "success") {
         toast.success("Course created successfully");
+        toast.dismiss(loader);
         onClose();
         router.push("/");
       } else {
@@ -201,20 +201,86 @@ export function CreateCourseDialog({
               onPointerLeaveCapture={undefined}
               crossOrigin={undefined}
             />
-            <Input
-              label="Thumbnail"
-              type="file"
-              color="blue"
-              variant="outlined"
-              onChange={(e) => {
-                if (e.target.files) {
-                  setThumbnail(e.target.files[0]);
-                }
-              }}
-              onPointerEnterCapture={undefined}
-              onPointerLeaveCapture={undefined}
-              crossOrigin={undefined}
-            />
+            <div className="border-1 border-blue-gray-300 border w-full h-full px-2 py-1 justify-start items-center rounded-lg flex gap-4">
+              <span>Thumbnail: </span>
+              <input
+                id="thumbnail-input"
+                type="file"
+                color="blue"
+                onChange={(e) => {
+                  if (e.target.files) {
+                    setThumbnail(e.target.files[0]);
+                  }
+                }}
+              />
+            </div>
+            <div className="flex flex-col gap-4">
+              <div className="flex gap-4 items-center justify-end">
+                <span>Custom Category</span>
+                <Switch
+                  checked={isCustomCategory}
+                  onChange={(e) => {
+                    setIsCustomCategory(e.target.checked);
+                    setCategory("");
+                  }}
+                  onPointerEnterCapture={undefined}
+                  onPointerLeaveCapture={undefined}
+                  crossOrigin={undefined}
+                  color="blue"
+                />
+              </div>
+              {!isCustomCategory ? (
+                <Select
+                  label="Select Category"
+                  className="capitalize"
+                  value={category}
+                  onChange={(value) => {
+                    if (value) {
+                      console.log("value", value);
+                      setCategory(value);
+                    }
+                  }}
+                  disabled={isCustomCategory}
+                  placeholder={undefined}
+                  onPointerEnterCapture={undefined}
+                  onPointerLeaveCapture={undefined}
+                >
+                  {categoryOptions == null ? (
+                    <div className="w-full flex justify-center items-center">
+                      <Spinner
+                        onPointerEnterCapture={undefined}
+                        onPointerLeaveCapture={undefined}
+                      />
+                    </div>
+                  ) : (
+                    categoryOptions?.map((option) => (
+                      <Option
+                        key={option}
+                        className="capitalize"
+                        value={option}
+                      >
+                        {option}
+                      </Option>
+                    ))
+                  )}
+                </Select>
+              ) : (
+                <Input
+                  label="Category"
+                  type="text"
+                  color="blue"
+                  variant="outlined"
+                  value={category}
+                  onChange={(e) => {
+                    setCategory(e.target.value ?? "");
+                  }}
+                  disabled={!isCustomCategory}
+                  onPointerEnterCapture={undefined}
+                  onPointerLeaveCapture={undefined}
+                  crossOrigin={undefined}
+                />
+              )}
+            </div>
           </div>
         </DialogBody>
         <DialogFooter

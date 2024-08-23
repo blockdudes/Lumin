@@ -109,7 +109,7 @@ export function Sidebar() {
                     placeholder={undefined}
                     onPointerEnterCapture={undefined}
                     onPointerLeaveCapture={undefined}
-                    onClick={() => router.push("/dashboard")}
+                    onClick={() => router.push("/dashboard/revenue")}
                   >
                     Dashboard
                   </Typography>
@@ -122,21 +122,6 @@ export function Sidebar() {
                   onPointerEnterCapture={undefined}
                   onPointerLeaveCapture={undefined}
                 >
-                  <ListItem
-                    onClick={() => router.push("/dashboard/analytics")}
-                    placeholder={undefined}
-                    onPointerEnterCapture={undefined}
-                    onPointerLeaveCapture={undefined}
-                  >
-                    <ListItemPrefix
-                      placeholder={undefined}
-                      onPointerEnterCapture={undefined}
-                      onPointerLeaveCapture={undefined}
-                    >
-                      <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
-                    </ListItemPrefix>
-                    Analytics
-                  </ListItem>
                   <ListItem
                     placeholder={undefined}
                     onPointerEnterCapture={undefined}
@@ -197,7 +182,7 @@ export function Sidebar() {
                     onPointerEnterCapture={undefined}
                     onPointerLeaveCapture={undefined}
                   >
-                    Create
+                    Market Place
                   </Typography>
                 </AccordionHeader>
               </ListItem>
@@ -222,6 +207,21 @@ export function Sidebar() {
                       <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
                     </ListItemPrefix>
                     Create Marketplace
+                  </ListItem>
+                  <ListItem
+                    placeholder={undefined}
+                    onPointerEnterCapture={undefined}
+                    onPointerLeaveCapture={undefined}
+                    onClick={() => router.push("/created")}
+                  >
+                    <ListItemPrefix
+                      placeholder={undefined}
+                      onPointerEnterCapture={undefined}
+                      onPointerLeaveCapture={undefined}
+                    >
+                      <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
+                    </ListItemPrefix>
+                    Created 
                   </ListItem>
                 </List>
               </AccordionBody>

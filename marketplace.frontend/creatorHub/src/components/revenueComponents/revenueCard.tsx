@@ -2,7 +2,13 @@ import { Card, CardBody, Typography } from "@material-tailwind/react";
 
 import { BanknotesIcon } from "@heroicons/react/24/outline";
 
-export function RevenueCard() {
+export function RevenueCard({
+  publicAssets,
+  privateAssets,
+}: {
+  publicAssets: number;
+  privateAssets: number;
+}) {
   return (
     <Card
       className="mt-6 w-[78vw] mx-auto shadow-lg"
@@ -47,7 +53,7 @@ export function RevenueCard() {
               onPointerEnterCapture={undefined}
               onPointerLeaveCapture={undefined}
             >
-              $100,000
+              {publicAssets} ETH
             </Typography>
           </div>
           <div className="flex flex-col items-center">
@@ -67,7 +73,7 @@ export function RevenueCard() {
               onPointerEnterCapture={undefined}
               onPointerLeaveCapture={undefined}
             >
-              $100,000
+              {privateAssets} ETH
             </Typography>
           </div>
         </div>

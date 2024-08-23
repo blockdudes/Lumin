@@ -1,5 +1,5 @@
-import { ApolloClient, InMemoryCache } from "@apollo/client";
 import { createThirdwebClient } from "thirdweb";
+import { ApolloClient, InMemoryCache, ApolloProvider, gql } from '@apollo/client';
 
 const clientId = process.env.NEXT_PUBLIC_THIRDWEB_CLIENT_ID;
 

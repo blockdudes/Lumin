@@ -56,11 +56,11 @@ export function CreateCourseDialog({
     try {
       const hash = hashMessage(
         courseName +
-          courseDescription +
-          coursePrice.toString() +
-          isPublic.toString() +
-          chapters.toString() +
-          Date.now().toString()
+        courseDescription +
+        coursePrice.toString() +
+        isPublic.toString() +
+        chapters.toString() +
+        Date.now().toString()
       );
 
       const formData = new FormData();

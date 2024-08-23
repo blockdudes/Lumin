@@ -18,5 +18,10 @@ export type Chapter = {
 export type Course = {
   title: string;
   description: string;
-  chapters: Chapter[];
+  category: string;
+  image_url: string;
+  price: number;
+  resourceHash: string;
+  transactionDate: string;
+  allowListingAccess: boolean;
 };

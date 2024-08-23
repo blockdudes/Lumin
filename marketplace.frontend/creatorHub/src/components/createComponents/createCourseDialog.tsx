@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   Button,
   Dialog,
@@ -10,6 +10,7 @@ import {
   Textarea,
   Select,
   Option,
+  Spinner,
 } from "@material-tailwind/react";
 import { Chapter } from "@/types/types";
 import { prepareContractCall, sendAndConfirmTransaction } from "thirdweb";
@@ -20,6 +21,7 @@ import { useActiveAccount, useReadContract } from "thirdweb/react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import axios from "axios";
+
 interface CreateCourseDialogProps {
   open: boolean;
   onClose: () => void;
@@ -36,17 +38,11 @@ export function CreateCourseDialog({
   const [coursePrice, setCoursePrice] = useState<number>(0);
   const [isPublic, setIsPublic] = useState<boolean>(false);
   const [isCustomCategory, setIsCustomCategory] = useState<boolean>(false);
-  // TODO: get Image from the user
   const [thumbnail, setThumbnail] = useState<File | null>(null);
-  // TODO: select category from the user
-  const [category, setCategory] = useState<string>("");
+  const [category, setCategory] = useState<string>("x");
   const account = useActiveAccount();
   const router = useRouter();
-  const {
-    data: categoryOptions,
-    error,
-    status,
-  } = useReadContract({
+  const { data: categoryOptions } = useReadContract({
     contract: contract(tenderlyEduChain),
     method: "function getCategories() external view returns (string[])",
     params: [],
@@ -62,11 +58,12 @@ export function CreateCourseDialog({
           courseDescription +
           coursePrice.toString() +
           isPublic.toString() +
-          chapters.toString()
+          chapters.toString() +
+          Date.now().toString()
       );
 
       const formData = new FormData();
-      formData.append("hash", "hash");
+      formData.append("hash", hash);
       formData.append("title", courseName);
       formData.append("description", courseDescription);
       if (thumbnail) {
@@ -96,7 +93,7 @@ export function CreateCourseDialog({
         toast.error("Error Uploading Course Files");
         return;
       }
-
+      console.log("Creating Course on Blockchain");
       const tx = prepareContractCall({
         contract: contract(tenderlyEduChain),
         method:
@@ -121,8 +118,10 @@ export function CreateCourseDialog({
         account: account,
         transaction: tx,
       });
+      console.log(res);
       if (res.status === "success") {
         toast.success("Course created successfully");
+        toast.dismiss(loader);
         onClose();
         router.push("/");
       } else {
@@ -218,38 +217,67 @@ export function CreateCourseDialog({
                 <span>Custom Category</span>
                 <Switch
                   checked={isCustomCategory}
-                  onChange={(e) => setIsCustomCategory(e.target.checked)}
+                  onChange={(e) => {
+                    setIsCustomCategory(e.target.checked);
+                    setCategory("");
+                  }}
                   onPointerEnterCapture={undefined}
                   onPointerLeaveCapture={undefined}
                   crossOrigin={undefined}
                   color="blue"
                 />
               </div>
-              <Select
-                label="Select Version"
-                disabled={isCustomCategory} // Disable Select when isCustomCategory is true
-                placeholder={undefined}
-                onPointerEnterCapture={undefined}
-                onPointerLeaveCapture={undefined}
-              >
-                <Option>Material Tailwind HTML</Option>
-                <Option>Material Tailwind React</Option>
-                <Option>Material Tailwind Vue</Option>
-                <Option>Material Tailwind Angular</Option>
-                <Option>Material Tailwind Svelte</Option>
-              </Select>
-              <Input
-                label="Category"
-                type="text"
-                color="blue"
-                variant="outlined"
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
-                disabled={!isCustomCategory} // Disable Input when isCustomCategory is false
-                onPointerEnterCapture={undefined}
-                onPointerLeaveCapture={undefined}
-                crossOrigin={undefined}
-              />
+              {!isCustomCategory ? (
+                <Select
+                  label="Select Category"
+                  className="capitalize"
+                  value={category}
+                  onChange={(value) => {
+                    if (value) {
+                      console.log("value", value);
+                      setCategory(value);
+                    }
+                  }}
+                  disabled={isCustomCategory}
+                  placeholder={undefined}
+                  onPointerEnterCapture={undefined}
+                  onPointerLeaveCapture={undefined}
+                >
+                  {categoryOptions == null ? (
+                    <div className="w-full flex justify-center items-center">
+                      <Spinner
+                        onPointerEnterCapture={undefined}
+                        onPointerLeaveCapture={undefined}
+                      />
+                    </div>
+                  ) : (
+                    categoryOptions?.map((option) => (
+                      <Option
+                        key={option}
+                        className="capitalize"
+                        value={option}
+                      >
+                        {option}
+                      </Option>
+                    ))
+                  )}
+                </Select>
+              ) : (
+                <Input
+                  label="Category"
+                  type="text"
+                  color="blue"
+                  variant="outlined"
+                  value={category}
+                  onChange={(e) => {
+                    setCategory(e.target.value ?? "");
+                  }}
+                  disabled={!isCustomCategory}
+                  onPointerEnterCapture={undefined}
+                  onPointerLeaveCapture={undefined}
+                  crossOrigin={undefined}
+                />
+              )}
             </div>
           </div>
         </DialogBody>

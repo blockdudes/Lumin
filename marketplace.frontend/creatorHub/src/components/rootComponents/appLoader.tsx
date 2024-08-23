@@ -10,10 +10,12 @@ const AppLoader = () => {
 
   return (
     <div
-      className="fixed flex justify-center items-center h-screen w-screen backdrop-blur-md bg-gray-900/20"
+      className="fixed flex justify-center items-center h-screen w-screen backdrop-blur-sm bg-gray-500/10"
       style={{ zIndex: 99999 }}
     >
       <Spinner
+        height="60px"
+        width="60px"
         onPointerEnterCapture={undefined}
         onPointerLeaveCapture={undefined}
       />

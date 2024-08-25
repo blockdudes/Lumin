@@ -1,83 +1,82 @@
 "use client";
-import React, { useState } from "react";
-import { useRouter } from "next/navigation";
+import React, { useEffect, useState } from "react";
 import { CourseCard } from "@/components/courseComponents/courseCard";
 import { MultiSelect } from "@/components/courseComponents/multiselect";
-
-interface Course {
-  id: string;
-  img: string;
-  title: string;
-  description: string;
-  category: string;
-}
-
-const data: Course[] = [
-  {
-    id: "owned1",
-    img: "https://images.unsplash.com/photo-1540553016722-983e48a2cd10?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80",
-    title: "UI/UX Review Check",
-    description:
-      "The place is close to Barceloneta Beach and bus stop just 2 min by walk and near to &quot;Naviglio&quot; where you can enjoy the main night life in Barcelona.",
-      category: "web3",
-  },
-  {
-    id: "owned2",
-    img: "https://images.unsplash.com/photo-1540553016722-983e48a2cd10?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80",
-    title: "UI/UX Review Check",
-    description:
-      "The place is close to Barceloneta Beach and bus stop just 2 min by walk and near to &quot;Naviglio&quot; where you can enjoy the main night life in Barcelona.",
-      category: "web3",
-  },
-  {
-    id: "owned3",
-    img: "https://images.unsplash.com/photo-1540553016722-983e48a2cd10?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80",
-    title: "UI/UX Review Check",
-    description:
-      "The place is close to Barceloneta Beach and bus stop just 2 min by walk and near to &quot;Naviglio&quot; where you can enjoy the main night life in Barcelona.",
-      category: "arts",
-  },
-  {
-    id: "owned4",
-    img: "https://images.unsplash.com/photo-1540553016722-983e48a2cd10?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80",
-    title: "UI/UX Review Check",
-    description:
-      "The place is close to Barceloneta Beach and bus stop just 2 min by walk and near to &quot;Naviglio&quot; where you can enjoy the main night life in Barcelona.",
-      category: "business",
-  },
-];
+import { tenderlyEduChain } from "@/constants/chains";
+import { contract } from "@/constants/contracts";
+import { useActiveAccount, useReadContract } from "thirdweb/react";
+import { setIsAppLoading } from "@/lib/features/appLoader/appLoaderSlice";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
+import { Marketplace } from "@/types/types";
 
 const MarketplacePage = () => {
-  const router = useRouter();
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  const dispatch = useAppDispatch();
+  const account = useActiveAccount();
+  const [data, setData] = useState<Marketplace[]>([]);
+  const { data: categoryOptions } = useReadContract({
+    contract: contract(tenderlyEduChain),
+    method: "function getCategories() external view returns (string[])",
+    params: [],
+  });
 
-  const handleOpen = (course: Course) => {
-      console.log("clicked")
+  useEffect(() => {
+    dispatch(setIsAppLoading(true));
+    if (account) {
+      fetch(`/api/createdMarketplace/${account.address}`)
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data.data);
+          setData(data.data);
+        })
+        .finally(() => {
+          dispatch(setIsAppLoading(false));
+        });
+    }
+  }, [account]);
+
+  const handleOpen = (marketplace: Marketplace) => {
+    console.log("clicked");
   };
 
   const handleCategoryChange = (categories: string[]) => {
     setSelectedCategories(categories);
   };
 
-  const filteredData = selectedCategories.length > 0
-    ? data.filter(course => selectedCategories.includes(course.category))
-    : data;
+  const filteredData =
+    selectedCategories.length > 0
+      ? data.filter((marketplace) =>
+          marketplace.categories.some((category) =>
+            selectedCategories.includes(category)
+          )
+        )
+      : data;
 
   return (
     <div className="flex flex-col justify-center w-full h-full">
       <div className="flex gap-2 items-center">
         <div className="text-2xl font-bold">Courses</div>
-        <MultiSelect onChange={handleCategoryChange} />
+        <MultiSelect
+          options={
+            categoryOptions !== undefined
+              ? categoryOptions.map((option) => ({
+                  value: option,
+                  label: option,
+                }))
+              : undefined
+          }
+          onChange={handleCategoryChange}
+        />
       </div>
       <div className="flex items-center justify-center w-full h-full">
         <div className="grid grid-cols-3 gap-5 pt-4">
-          {filteredData.map((course) => (
+          {filteredData.map((marketplace) => (
             <CourseCard
-              key={course.id}
-              img={course.img}
-              title={course.title}
-              description={course.description}
-              onClick={() => handleOpen(course)}
+              key={marketplace.id}
+              img={marketplace.image_url}
+              title={marketplace.marketplaceName}
+              description={marketplace.description}
+              onClick={() => handleOpen(marketplace)}
             />
           ))}
         </div>

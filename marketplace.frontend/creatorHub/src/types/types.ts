@@ -3,9 +3,12 @@ import { Document } from "mongoose";
 export interface IUserResourceData extends Document {
   title: string;
   description: string;
+  price: string;
+  category: string;
   hash: string;
   thumbnail: string;
   resource: any;
+  allowListingAccess: boolean;
 }
 
 export type Chapter = {

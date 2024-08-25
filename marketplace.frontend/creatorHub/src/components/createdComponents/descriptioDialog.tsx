@@ -20,6 +20,11 @@ export function DescriptionDialog({
 }) {
   const [updatedDescription, setUpdatedDescription] =
     React.useState(description);
+
+  const handleUpdateDescription = () => {
+    console.log("updatedDescription", updatedDescription);
+  };
+
   return (
     <>
       <Dialog
@@ -70,7 +75,7 @@ export function DescriptionDialog({
           <Button
             variant="gradient"
             color="green"
-            onClick={handleOpen}
+            onClick={handleUpdateDescription}
             placeholder={undefined}
             onPointerEnterCapture={undefined}
             onPointerLeaveCapture={undefined}

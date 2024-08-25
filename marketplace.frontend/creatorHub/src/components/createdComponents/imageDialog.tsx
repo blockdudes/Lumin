@@ -20,6 +20,10 @@ export function ImageDialog({
   const [updatedImage, setUpdatedImage] = useState(image);
   const [thumbnail, setThumbnail] = useState<File | null>(null);
 
+  const handleUpdateImage = () => {
+    console.log("updatedImage", updatedImage);
+  };
+
   return (
     <>
       <Dialog
@@ -74,7 +78,7 @@ export function ImageDialog({
           <Button
             variant="gradient"
             color="green"
-            onClick={handleOpen}
+            onClick={handleUpdateImage}
             placeholder={undefined}
             onPointerEnterCapture={undefined}
             onPointerLeaveCapture={undefined}

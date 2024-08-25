@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import appLoaderSlice from "./features/appLoader/appLoaderSlice";
+import createdResourcesSlice from "./features/createdResources/createdResourcesSlice";
 
 export const makeStore = () => {
   return configureStore({
     reducer: {
       appLoader: appLoaderSlice,
+      createdResources: createdResourcesSlice,
     },
   });
 };

@@ -22,6 +22,11 @@ export function CategoryDialog({
 }) {
   const [isCustomCategory, setIsCustomCategory] = React.useState(false);
   const [updatedCategory, setUpdatedCategory] = React.useState(category);
+
+  const handleUpdateCategory = () => {
+    console.log("updatedCategory", updatedCategory);
+  };
+
   return (
     <>
       <Dialog
@@ -101,7 +106,7 @@ export function CategoryDialog({
           <Button
             variant="gradient"
             color="green"
-            onClick={handleOpen}
+            onClick={handleUpdateCategory}
             placeholder={undefined}
             onPointerEnterCapture={undefined}
             onPointerLeaveCapture={undefined}

@@ -1,77 +1,10 @@
 "use client";
+import { Course } from "@/types/types";
 import { Card, Typography } from "@material-tailwind/react";
 
 const TABLE_HEAD = ["Course", "Purchase Date", "Amount"];
 
-const TABLE_ROWS = [
-  {
-    course: "Course A",
-    purchaseDate: "01/01/22",
-    amount: "$10,000",
-  },
-  {
-    course: "Course B",
-    purchaseDate: "15/02/22",
-    amount: "$7,500",
-  },
-  {
-    course: "Course A",
-    purchaseDate: "01/01/22",
-    amount: "$10,000",
-  },
-  {
-    course: "Course B",
-    purchaseDate: "15/02/22",
-    amount: "$7,500",
-  },
-  {
-    course: "Course A",
-    purchaseDate: "01/01/22",
-    amount: "$10,000",
-  },
-  {
-    course: "Course B",
-    purchaseDate: "15/02/22",
-    amount: "$7,500",
-  },
-  {
-    course: "Course A",
-    purchaseDate: "01/01/22",
-    amount: "$10,000",
-  },
-  {
-    course: "Course B",
-    purchaseDate: "15/02/22",
-    amount: "$7,500",
-  },
-  {
-    course: "Course A",
-    purchaseDate: "01/01/22",
-    amount: "$10,000",
-  },
-  {
-    course: "Course B",
-    purchaseDate: "15/02/22",
-    amount: "$7,500",
-  },
-  {
-    course: "Course C",
-    purchaseDate: "10/03/22",
-    amount: "$5,200",
-  },
-  {
-    course: "Course D",
-    purchaseDate: "20/04/22",
-    amount: "$3,400",
-  },
-  {
-    course: "Course E",
-    purchaseDate: "05/05/22",
-    amount: "$8,100",
-  },
-];
-
-export function PurchasedTable() {
+export function PurchasedTable({ data }: { data: Course[] }) {
   return (
     <div className="relative shadow-md sm:rounded-lg max-h-[450px] overflow-x-auto overflow-y-scroll">
       <table className="w-full text-sm text-left text-gray-500">
@@ -97,7 +30,7 @@ export function PurchasedTable() {
           </tr>
         </thead>
         <tbody>
-          {TABLE_ROWS.map((transaction, index) => (
+          {data.map((course, index) => (
             <tr key={index} className="bg-white even:bg-blue-gray-50">
               <td className="py-4 px-6">
                 <Typography
@@ -108,7 +41,7 @@ export function PurchasedTable() {
                   onPointerEnterCapture={undefined}
                   onPointerLeaveCapture={undefined}
                 >
-                  {transaction.course}
+                  {course.title}
                 </Typography>
               </td>
               <td className="py-4 px-6">
@@ -120,7 +53,7 @@ export function PurchasedTable() {
                   onPointerEnterCapture={undefined}
                   onPointerLeaveCapture={undefined}
                 >
-                  {transaction.purchaseDate}
+                  {new Date(course.transactionDate).toDateString()}
                 </Typography>
               </td>
               <td className="py-4 px-6">
@@ -132,7 +65,7 @@ export function PurchasedTable() {
                   onPointerEnterCapture={undefined}
                   onPointerLeaveCapture={undefined}
                 >
-                  {transaction.amount}
+                  {course.price}
                 </Typography>
               </td>
             </tr>

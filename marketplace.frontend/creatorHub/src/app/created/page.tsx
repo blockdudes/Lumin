@@ -5,17 +5,21 @@ import { CourseCard } from "@/components/courseComponents/courseCard";
 import { MultiSelect } from "@/components/courseComponents/multiselect";
 import { Course } from "@/types/types";
 import { setIsAppLoading } from "@/lib/features/appLoader/appLoaderSlice";
-import { useAppDispatch } from "@/lib/hooks";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { useActiveAccount, useReadContract } from "thirdweb/react";
 import { tenderlyEduChain } from "@/constants/chains";
 import { contract } from "@/constants/contracts";
+import { setCreatedResources } from "@/lib/features/createdResources/createdResourcesSlice";
 
 const CreatedCourses = () => {
   const router = useRouter();
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const dispatch = useAppDispatch();
   const account = useActiveAccount();
-  const [data, setData] = useState<Course[]>([]);
+  const data = useAppSelector(
+    (state) => state.createdResources.createdResources
+  );
+  const setData = (newData: Course[]) => dispatch(setCreatedResources(newData));
   const { data: categoryOptions } = useReadContract({
     contract: contract(tenderlyEduChain),
     method: "function getCategories() external view returns (string[])",

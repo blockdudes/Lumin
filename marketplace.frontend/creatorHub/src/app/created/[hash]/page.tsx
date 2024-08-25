@@ -9,10 +9,15 @@ import { CategoryDialog } from "@/components/createdComponents/categoryDialog";
 import { PriceDialog } from "@/components/createdComponents/priceComponent";
 import { PublicDialog } from "@/components/createdComponents/publicDialog";
 import { Course } from "@/types/types";
+import { setIsAppLoading } from "@/lib/features/appLoader/appLoaderSlice";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 
 const CreatedCourseDetails = () => {
   const { hash } = useParams<{ hash: string }>();
-  console.log(hash);
+  const dispatch = useAppDispatch();
+  const resource = useAppSelector(
+    (state) => state.createdResources.createdResources
+  ).find((resource) => resource.resourceHash === hash);
 
   const [openTitleDialog, setOpenTitleDialog] = React.useState(false);
   const [openDescriptionDialog, setOpenDescriptionDialog] =
@@ -24,14 +29,22 @@ const CreatedCourseDetails = () => {
   const [courseDetails, setCourseDetails] = React.useState<Course | null>(null);
 
   useEffect(() => {
+    dispatch(setIsAppLoading(true));
     fetch(`/api/resources/fetch/${hash}`)
       .then((res) => res.json())
       .then((data) => {
-        setCourseDetails(data.data);
+        const courseDetails = {
+          ...data.data,
+          ...resource,
+        };
+        setCourseDetails(courseDetails);
+      })
+      .finally(() => {
+        dispatch(setIsAppLoading(false));
       });
   }, [hash]);
 
-  if (!courseDetails) {
+  if (courseDetails === null) {
     return null;
   }
 

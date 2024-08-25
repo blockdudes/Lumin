@@ -2,11 +2,13 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import StoreProvider from "@/lib/StoreProvider";
-import { ConnectButton, ThirdwebProvider } from "thirdweb/react";
-import { client } from "@/lib/client";
+import { ThirdwebProvider } from "thirdweb/react";
 import { Toaster } from "react-hot-toast";
 import { Sidebar } from "@/components/rootComponents/sidebar";
 import DynamicBreadcrumb from "@/components/rootComponents/breadcrumbs";
+import ConnectWalletButton from "@/components/rootComponents/connectWalletButton";
+import { ReactNode } from "react";
+import AppLoader from "@/components/rootComponents/appLoader";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,7 +20,7 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
   return (
     <html lang="en">
@@ -26,22 +28,15 @@ export default function RootLayout({
         <ThirdwebProvider>
           <StoreProvider>
             <div className="w-full flex ">
-              <div className="fixed top-0 left-0 h-screen w-64">
+              <div className="mr-72">
                 <Sidebar />
               </div>
               <div className="absolute top-3 right-3">
                 <div className="flex justify-center mb-20">
-                  <ConnectButton
-                    client={client}
-                    theme={"light"}
-                    appMetadata={{
-                      name: "Example App",
-                      url: "https://example.com",
-                    }}
-                  />
+                  <ConnectWalletButton />
                 </div>
               </div>
-              <div className=" ml-72 h-full p-2">
+              <div className="h-full p-2">
                 <div className="flex flex-col gap-4">
                   <div>
                     <DynamicBreadcrumb />
@@ -49,7 +44,14 @@ export default function RootLayout({
                   <div>{children}</div>
                 </div>
               </div>
-              <Toaster position="top-center" reverseOrder={false} />
+              <Toaster
+                position="top-center"
+                reverseOrder={false}
+                containerStyle={{
+                  zIndex: 99999,
+                }}
+              />
+              <AppLoader />
             </div>
           </StoreProvider>
         </ThirdwebProvider>

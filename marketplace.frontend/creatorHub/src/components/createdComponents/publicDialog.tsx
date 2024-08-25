@@ -19,6 +19,11 @@ export function PublicDialog({
   handleOpen: () => void;
 }) {
   const [updatedIsPublic, setUpdatedIsPublic] = React.useState(isPublic);
+
+  const handleUpdatePublic = () => {
+    console.log("updatedIsPublic", updatedIsPublic);
+  };
+
   return (
     <>
       <Dialog
@@ -72,7 +77,7 @@ export function PublicDialog({
           <Button
             variant="gradient"
             color="green"
-            onClick={handleOpen}
+            onClick={handleUpdatePublic}
             placeholder={undefined}
             onPointerEnterCapture={undefined}
             onPointerLeaveCapture={undefined}

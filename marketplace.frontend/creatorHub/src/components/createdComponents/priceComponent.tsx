@@ -18,6 +18,11 @@ export function PriceDialog({
   handleOpen: () => void;
 }) {
   const [updatedPrice, setUpdatedPrice] = React.useState(price);
+
+  const handleUpdatePrice = () => {
+    console.log("updatedPrice", updatedPrice);
+  };
+
   return (
     <>
       <Dialog
@@ -70,7 +75,7 @@ export function PriceDialog({
           <Button
             variant="gradient"
             color="green"
-            onClick={handleOpen}
+            onClick={handleUpdatePrice}
             placeholder={undefined}
             onPointerEnterCapture={undefined}
             onPointerLeaveCapture={undefined}

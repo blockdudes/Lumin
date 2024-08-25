@@ -17,7 +17,7 @@ export function MarketplaceDetailsDialog({
 }: {
   open: boolean;
   handleOpen: () => void;
-  marketData: { Market: string; creation: string; revenue: string };
+  marketData: { market: string; creation: string; revenue: string };
 }) {
   return (
     <>
@@ -34,7 +34,7 @@ export function MarketplaceDetailsDialog({
           onPointerLeaveCapture={undefined}
         >
           <div className="flex justify-between items-center w-full">
-            <p>{marketData.Market}</p>
+            <p>{marketData.market}</p>
             <XMarkIcon
               className="w-5 h-5 cursor-pointer"
               onClick={handleOpen}

@@ -1,24 +1,19 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import {
   Card,
   Typography,
   List,
   ListItem,
   ListItemPrefix,
-  ListItemSuffix,
-  Chip,
   Accordion,
   AccordionHeader,
   AccordionBody,
-  Alert,
 } from "@material-tailwind/react";
 import {
   PresentationChartBarIcon,
-  ShoppingBagIcon,
   UserCircleIcon,
   Cog6ToothIcon,
-  InboxIcon,
   PowerIcon,
   RectangleGroupIcon,
 } from "@heroicons/react/24/solid";
@@ -28,16 +23,39 @@ import {
   CubeTransparentIcon,
 } from "@heroicons/react/24/outline";
 import { useRouter } from "next/navigation";
+import {
+  useActiveWallet,
+  useDisconnect,
+  useIsAutoConnecting,
+} from "thirdweb/react";
+import toast from "react-hot-toast";
 
 export function Sidebar() {
-  const [open, setOpen] = React.useState(0);
-  const [openAlert, setOpenAlert] = React.useState(true);
+  const [open, setOpen] = useState(0);
+  const { disconnect } = useDisconnect();
+  const wallet = useActiveWallet();
+  const isAutoConnecting = useIsAutoConnecting();
+
+  const handleLogout = () => {
+    if (!wallet) {
+      toast.error("No wallet connected");
+    } else {
+      disconnect(wallet);
+      router.push("/");
+    }
+  };
 
   const handleOpen = (value: number) => {
     setOpen(open === value ? 0 : value);
   };
 
   const router = useRouter();
+
+  if (!wallet) {
+    if (isAutoConnecting) {
+      return <div />;
+    }
+  }
 
   return (
     <div className="fixed top-0 left-0 h-screen w-64">
@@ -109,7 +127,6 @@ export function Sidebar() {
                     placeholder={undefined}
                     onPointerEnterCapture={undefined}
                     onPointerLeaveCapture={undefined}
-                    onClick={() => router.push("/dashboard/revenue")}
                   >
                     Dashboard
                   </Typography>
@@ -208,6 +225,13 @@ export function Sidebar() {
                     </ListItemPrefix>
                     Create Marketplace
                   </ListItem>
+                </List>
+                <List
+                  className="p-0"
+                  placeholder={undefined}
+                  onPointerEnterCapture={undefined}
+                  onPointerLeaveCapture={undefined}
+                >
                   <ListItem
                     placeholder={undefined}
                     onPointerEnterCapture={undefined}
@@ -221,7 +245,7 @@ export function Sidebar() {
                     >
                       <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
                     </ListItemPrefix>
-                    Created 
+                    Created
                   </ListItem>
                 </List>
               </AccordionBody>
@@ -259,6 +283,7 @@ export function Sidebar() {
               placeholder={undefined}
               onPointerEnterCapture={undefined}
               onPointerLeaveCapture={undefined}
+              onClick={handleLogout}
             >
               <ListItemPrefix
                 placeholder={undefined}

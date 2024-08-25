@@ -24,7 +24,7 @@ const chapter: Chapter[] = [
 
 const course: Course = {
   id: "dsadas",
-  img: "https://via.placeholder.com/700x250",
+  image_url: "https://via.placeholder.com/700x250",
   title: "Introduction to React",
   description:
     "This is the introduction to React " +
@@ -36,7 +36,7 @@ const CourseDetails = () => {
   const pathname = usePathname();
   const courseId = pathname.split("/")[2];
   const [selectedChapterIndex, setSelectedChapterIndex] = useState(0);
-  const [hasStarted, setHasStarted] = useState(false); 
+  const [hasStarted, setHasStarted] = useState(false);
 
   return (
     <div className="pr-[350px]">
@@ -53,7 +53,7 @@ const CourseDetails = () => {
           <h1 className="text-3xl font-bold text-center">{course.title}</h1>
           <div className="w-full h-72 flex justify-center items-center">
             <img
-              src={course.img}
+              src={course.image_url}
               alt={course.title}
               className="max-w-full h-auto rounded-lg shadow-lg"
             />
@@ -69,10 +69,19 @@ const CourseDetails = () => {
       ) : (
         <div className="w-full flex flex-col items-center gap-4 p-4">
           {course.chapters.map((chapter, index) => (
-            <div key={chapter.title} className={`transition-opacity duration-500 ${index === selectedChapterIndex ? 'opacity-100' : 'opacity-0 hidden'}`}>
+            <div
+              key={chapter.title}
+              className={`transition-opacity duration-500 ${
+                index === selectedChapterIndex
+                  ? "opacity-100"
+                  : "opacity-0 hidden"
+              }`}
+            >
               <h2 className="text-2xl font-bold">{chapter.title}</h2>
               <p className="text-lg">{chapter.description}</p>
-              <div className="text-base whitespace-pre-line">{chapter.content}</div>
+              <div className="text-base whitespace-pre-line">
+                {chapter.content}
+              </div>
             </div>
           ))}
         </div>

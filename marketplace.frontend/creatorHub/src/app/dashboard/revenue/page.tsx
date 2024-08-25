@@ -50,7 +50,7 @@ const RevenuePage = () => {
           .filter((resource: any) => resource.ownership === "Private")
           .reduce((total, resource) => total + Number(resource.revenue), 0)}
       />
-      <RevenueTable data={data as any[]} />
+      <RevenueTable data={data} />
     </div>
   );
 };

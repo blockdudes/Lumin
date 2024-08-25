@@ -1,14 +1,8 @@
-'use client'
-import Image from "next/image";
-import toast from "react-hot-toast";
+"use client";
 import { useRouter } from "next/navigation";
-import axios from "axios";
 
 export default function Home() {
-
   const router = useRouter();
-
-
 
   return (
     <main className="w-full h-full">

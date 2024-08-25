@@ -7,6 +7,9 @@ import {
   DialogFooter,
   Input,
 } from "@material-tailwind/react";
+import toast from "react-hot-toast";
+import { prepareContractCall } from "thirdweb";
+import { useActiveAccount } from "thirdweb/react";
 
 export function TitleDialog({
   title,
@@ -18,6 +21,24 @@ export function TitleDialog({
   handleOpen: () => void;
 }) {
   const [updatedTitle, setUpdatedTitle] = React.useState(title);
+  const account = useActiveAccount();
+
+  const handleUpdateTitle = () => {
+    try {
+      if (!account) {
+        toast.error("Please connect your wallet");
+        return;
+      }
+      // const tx = prepareContractCall({
+      //   contract: contract(account.address),
+      //   method
+      // })
+    } catch (e) {
+      console.log(e);
+      toast.error("Failed to update title");
+    }
+  };
+
   return (
     <>
       <Dialog
@@ -69,7 +90,7 @@ export function TitleDialog({
           <Button
             variant="gradient"
             color="green"
-            onClick={handleOpen}
+            onClick={handleUpdateTitle}
             placeholder={undefined}
             onPointerEnterCapture={undefined}
             onPointerLeaveCapture={undefined}

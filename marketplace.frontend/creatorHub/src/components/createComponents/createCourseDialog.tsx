@@ -56,17 +56,20 @@ export function CreateCourseDialog({
     try {
       const hash = hashMessage(
         courseName +
-        courseDescription +
-        coursePrice.toString() +
-        isPublic.toString() +
-        chapters.toString() +
-        Date.now().toString()
+          courseDescription +
+          coursePrice.toString() +
+          isPublic.toString() +
+          chapters.toString() +
+          Date.now().toString()
       );
 
       const formData = new FormData();
       formData.append("hash", hash);
       formData.append("title", courseName);
       formData.append("description", courseDescription);
+      formData.append("price", coursePrice.toString());
+      formData.append("category", category);
+      formData.append("allowListingAccess", isPublic.toString());
       if (thumbnail) {
         formData.append("thumbnail", thumbnail);
       }
@@ -105,11 +108,12 @@ export function CreateCourseDialog({
           courseName,
           courseDescription,
           category,
-          thumbnail ? URL.createObjectURL(thumbnail) : "",
+          response.data.data.thumbnail_url,
           hash,
           isPublic,
           ethers.parseEther(coursePrice.toString()),
         ],
+        gas: BigInt(10000000),
       });
 
       if (!account) {
@@ -126,7 +130,7 @@ export function CreateCourseDialog({
         toast.success("Course created successfully");
         toast.dismiss(loader);
         onClose();
-        router.push("/");
+        router.push("/created");
       } else {
         toast.error("Error creating course");
       }

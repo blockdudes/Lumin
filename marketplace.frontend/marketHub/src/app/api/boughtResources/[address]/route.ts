@@ -33,20 +33,13 @@ export const GET = async (
       },
     });
 
-    const totalSpent = purchased_resources.data.purchases.reduce(
-      (acc: number, purchase: { price: number }) =>
-        acc + Number(purchase.price),
-      0
-    );
-
-    if (purchased_resources.data.purchases.length === 0 || totalSpent === 0) {
+    if (purchased_resources.data.purchases.length === 0) {
       return new Response(JSON.stringify({ data: [] }), { status: 200 });
     }
 
     return new Response(
       JSON.stringify({
-        purchased_resources: purchased_resources.data.purchases,
-        totalSpent: totalSpent,
+        data: purchased_resources.data.purchases,
       }),
       { status: 200 }
     );

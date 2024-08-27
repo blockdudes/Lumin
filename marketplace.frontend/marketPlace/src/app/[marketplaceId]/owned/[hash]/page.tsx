@@ -7,34 +7,62 @@ import { ChapterBar } from "@/components/courseComponents/chapterBar";
 import { setIsAppLoading } from "@/lib/features/appLoader/appLoaderSlice";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { primary } from "@/constants/colors";
+import { useActiveAccount } from "thirdweb/react";
+import { setOwnedResources } from "@/lib/features/ownedResources/ownedResourcesSlice";
 
 const CourseDetails = () => {
   const { hash } = useParams<{ hash: string }>();
   const dispatch = useAppDispatch();
-  const resource = useAppSelector(
-    (state) => state.ownedResources.ownedResources
-  ).find((resource) => resource.resourceHash === hash);
   const [selectedChapterIndex, setSelectedChapterIndex] = useState(0);
   const [hasStarted, setHasStarted] = useState(false);
   const [courseDetails, setCourseDetails] = useState<
-    (Course & { chapters: Chapter[] }) | null
+    (Course & { resource: Chapter[] }) | null
   >(null);
+  const account = useActiveAccount();
+  const allResources = useAppSelector(
+    (state) => state.ownedResources.ownedResources
+  );
+  const setAllResources = (data: Course[]) => {
+    dispatch(setOwnedResources(data));
+  };
+  console.log(allResources);
+
+  const init = async () => {
+    var allResource = allResources;
+    if (!allResource || allResource.length === 0) {
+      dispatch(setIsAppLoading(true));
+      if (account) {
+        await fetch(`/api/getAllowListedResource`)
+          .then((res) => res.json())
+          .then((data) => {
+            setAllResources(data.data);
+            allResource = data.data;
+          })
+          .finally(() => {
+            dispatch(setIsAppLoading(false));
+          });
+      }
+      dispatch(setIsAppLoading(true));
+      await fetch(`/api/resources/fetch/${hash}`)
+        .then((res) => res.json())
+        .then((data) => {
+          const courseDetails = {
+            ...data.data,
+            ...allResource.find((resource) => resource.resourceHash === hash),
+          };
+          courseDetails.resource = Object.values(data.data.resource);
+          setCourseDetails(courseDetails);
+          console.log("courseDetails", courseDetails);
+        })
+        .finally(() => {
+          dispatch(setIsAppLoading(false));
+        });
+    }
+  };
 
   useEffect(() => {
-    dispatch(setIsAppLoading(true));
-    fetch(`/api/resources/fetch/${hash}`)
-      .then((res) => res.json())
-      .then((data) => {
-        const courseDetails = {
-          ...data.data,
-          ...resource,
-        };
-        setCourseDetails(courseDetails);
-      })
-      .finally(() => {
-        dispatch(setIsAppLoading(false));
-      });
-  }, [hash]);
+    init();
+  }, [account, hash]);
 
   if (courseDetails === null) {
     return null;
@@ -44,7 +72,7 @@ const CourseDetails = () => {
     <div className="pr-[350px]">
       <div className="fixed top-0 right-0">
         <ChapterBar
-          chapters={courseDetails.chapters}
+          chapters={courseDetails.resource}
           selectedChapterIndex={selectedChapterIndex}
           setSelectedChapterIndex={setSelectedChapterIndex}
           hasStarted={hasStarted}
@@ -52,7 +80,9 @@ const CourseDetails = () => {
       </div>
       {!hasStarted ? (
         <div className="w-full flex flex-col items-center gap-4 p-4">
-          <h1 className="text-3xl font-bold text-center">{courseDetails.title}</h1>
+          <h1 className="text-3xl font-bold text-center">
+            {courseDetails.title}
+          </h1>
           <div className="w-full h-72 flex justify-center items-center">
             <img
               src={courseDetails.image_url}
@@ -70,7 +100,7 @@ const CourseDetails = () => {
         </div>
       ) : (
         <div className="w-full flex flex-col items-center gap-5 p-4">
-          {courseDetails.chapters.map((chapter, index) => (
+          {courseDetails.resource.map((chapter, index) => (
             <div
               key={chapter.title}
               className={`transition-opacity duration-500 ${

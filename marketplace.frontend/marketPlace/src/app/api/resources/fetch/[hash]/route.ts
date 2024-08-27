@@ -32,8 +32,6 @@ export const GET = async (
   }
 };
 
-
-
 async function formDataToResponseData(formData: FormData): Promise<any[]> {
   const tempData: { [key: string]: any } = {};
 

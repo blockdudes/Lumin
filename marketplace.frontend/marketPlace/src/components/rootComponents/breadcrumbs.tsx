@@ -7,7 +7,6 @@ export default function DynamicBreadcrumb() {
   const pathname = usePathname();
   const { marketplaceId } = useParams<{ marketplaceId: string }>();
   const pathnames = (pathname.split(`/${marketplaceId}/`)[1] ?? "").split("/");
-  console.log(pathnames);
 
   return (
     <Breadcrumbs

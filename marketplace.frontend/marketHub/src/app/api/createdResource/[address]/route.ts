@@ -31,6 +31,16 @@ export const GET = async (
               id
             }
           }
+          resources(where: { creator: $identifier }) {
+            id
+            description
+            title
+            category
+            image_url
+            price
+            resourceHash
+            transactionDate
+          }
         }
       `,
       variables: {
@@ -44,6 +54,8 @@ export const GET = async (
       0
     );
 
+    const resources = user_data.data.resources;
+
     const soldResources = user_data.data.purchases.map((purchase: any) => ({
       resourceId: purchase.resource.id,
       title: purchase.resource.title,
@@ -56,13 +68,10 @@ export const GET = async (
       buyer: purchase.buyer.id,
     }));
 
-    if (soldResources.length === 0 || totalRevenue === 0) {
-      return new Response(JSON.stringify({ data: [] }), { status: 200 });
-    }
-
-    return new Response(JSON.stringify({ totalRevenue, soldResources }), {
-      status: 200,
-    });
+    return new Response(
+      JSON.stringify({ totalRevenue, soldResources, resources }),
+      { status: 200 }
+    );
   } catch (error) {
     console.error("Error fetching user:", error);
     return new Response(

@@ -54,7 +54,7 @@ export function PurchasedTable({ data }: { data: Course[] }) {
                   onPointerEnterCapture={undefined}
                   onPointerLeaveCapture={undefined}
                 >
-                  {new Date(course.transactionDate).toDateString()}
+                  {new Date(Date.parse(course.transactionDate)).toDateString()}
                 </Typography>
               </td>
               <td className="py-4 px-6">
@@ -66,7 +66,7 @@ export function PurchasedTable({ data }: { data: Course[] }) {
                   onPointerEnterCapture={undefined}
                   onPointerLeaveCapture={undefined}
                 >
-                  {course.price}
+                  {course.price} ETH
                 </Typography>
               </td>
             </tr>

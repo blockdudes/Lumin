@@ -30,6 +30,7 @@ import {
   useActiveWallet,
   useIsAutoConnecting,
 } from "thirdweb/react";
+import { primary } from "@/constants/colors";
 
 export function Sidebar() {
   const [open, setOpen] = useState(0);
@@ -71,7 +72,7 @@ export function Sidebar() {
             className="mb-2 py-4 flex items-center gap-2 cursor-pointer"
             onClick={() => router.push("/")}
           >
-            <CubeTransparentIcon className="mb-4 h-12 w-12" />
+            <CubeTransparentIcon className={`mb-4 h-12 w-12 text-${primary}-500`} />
             <Typography
               variant="h5"
               color="blue-gray"
@@ -120,7 +121,7 @@ export function Sidebar() {
                     onPointerEnterCapture={undefined}
                     onPointerLeaveCapture={undefined}
                   >
-                    <PresentationChartBarIcon className="h-5 w-5" />
+                    <PresentationChartBarIcon className={`h-5 w-5 text-${primary}-500`} />
                   </ListItemPrefix>
                   <Typography
                     color="blue-gray"
@@ -191,7 +192,7 @@ export function Sidebar() {
                     onPointerEnterCapture={undefined}
                     onPointerLeaveCapture={undefined}
                   >
-                    <ShoppingBagIcon className="h-5 w-5" />
+                    <ShoppingBagIcon className={`h-5 w-5 text-${primary}-500`} />
                   </ListItemPrefix>
                   <Typography
                     color="blue-gray"
@@ -262,7 +263,7 @@ export function Sidebar() {
                     onPointerEnterCapture={undefined}
                     onPointerLeaveCapture={undefined}
                   >
-                    <FolderOpenIcon className="h-5 w-5" />
+                    <FolderOpenIcon className={`h-5 w-5 text-${primary}-500`} />
                   </ListItemPrefix>
                   <Typography
                     color="blue-gray"
@@ -311,7 +312,7 @@ export function Sidebar() {
                 onPointerEnterCapture={undefined}
                 onPointerLeaveCapture={undefined}
               >
-                <UserCircleIcon className="h-5 w-5" />
+                <UserCircleIcon className={`h-5 w-5 text-${primary}-500`} />
               </ListItemPrefix>
               Profile
             </ListItem>
@@ -325,7 +326,7 @@ export function Sidebar() {
                 onPointerEnterCapture={undefined}
                 onPointerLeaveCapture={undefined}
               >
-                <Cog6ToothIcon className="h-5 w-5" />
+                <Cog6ToothIcon className={`h-5 w-5 text-${primary}-500`} />
               </ListItemPrefix>
               Settings
             </ListItem>
@@ -340,7 +341,7 @@ export function Sidebar() {
                 onPointerEnterCapture={undefined}
                 onPointerLeaveCapture={undefined}
               >
-                <PowerIcon className="h-5 w-5" />
+                <PowerIcon className={`h-5 w-5 text-${primary}-500`} />
               </ListItemPrefix>
               Log Out
             </ListItem>

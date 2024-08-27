@@ -6,6 +6,7 @@ import { Chapter } from "@/types/types";
 import { ChapterBar } from "@/components/courseComponents/chapterBar";
 import { setIsAppLoading } from "@/lib/features/appLoader/appLoaderSlice";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
+import { primary } from "@/constants/colors";
 
 const CourseDetails = () => {
   const { hash } = useParams<{ hash: string }>();
@@ -61,7 +62,7 @@ const CourseDetails = () => {
           </div>
           <p className="text-lg ">{courseDetails.description}</p>
           <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded transition duration-300 ease-in-out transform hover:-translate-y-1"
+            className={`bg-${primary}-500 hover:bg-${primary}-700 text-white font-bold py-2 px-6 rounded transition duration-300 ease-in-out transform hover:-translate-y-1`}
             onClick={() => setHasStarted(true)}
           >
             Get Started

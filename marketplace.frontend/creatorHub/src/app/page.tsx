@@ -1,66 +1,36 @@
 "use client";
+
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 export default function Home() {
   const router = useRouter();
 
   return (
-    <main className="w-full h-full">
-      <div className="text-3xl font-bold flex pb-4">
-        Welcome to the Creator Hub
+    <main className="items-center justify-center p-10">
+      <div className="flex ">
+        <span className="text-6xl font-bold text-gray-800">CREATOR</span>
+        <span className="text-6xl font-bold text-blue-500">HUB</span>
       </div>
-      <div className="flex gap-4 text-gray-500">
-        <div>
-          <div className="text-xl  font-bold">
-            Empower your audience with knowledge. Start building your course
-            today.
-          </div>
-        </div>
-        <div
-          className="cursor-pointer text-blue-500"
+      <p className="mt-4 text-xl text-gray-600 text-left max-w-xl ">
+        Design, create, and launch engaging courses with ease. Creator Hub gives
+        you the tools to share your knowledge and grow your audience.
+      </p>
+      <p className="mt-4 text-xl text-gray-800 text-left max-w-xl ">
+        Connect your wallet to.{" "}
+      </p>
+      <img
+        src="/hero_CreatorHub.png"
+        alt="logo"
+        className="mt-8 fixed right-10 top-48 -z-50 h-[70%] "
+      />
+      <div className="py-3">
+        <button
+          className="bg-blue-500 text-white px-4 py-2 rounded-md"
           onClick={() => router.push("/create")}
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="size-6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M15.59 14.37a6 6 0 0 1-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 0 0 6.16-12.12A14.98 14.98 0 0 0 9.631 8.41m5.96 5.96a14.926 14.926 0 0 1-5.841 2.58m-.119-8.54a6 6 0 0 0-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 0 0-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 0 1-2.448-2.448 14.9 14.9 0 0 1 .06-.312m-2.24 2.39a4.493 4.493 0 0 0-1.757 4.306 4.493 4.493 0 0 0 4.306-1.758M16.5 9a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z"
-            />
-          </svg>
-        </div>
-      </div>
-      <div className="flex gap-4 text-gray-500">
-        <div>
-          <div className="text-xl  font-bold">
-            Visit the dashboard to see your analytics
-          </div>
-        </div>
-        <div
-          className="cursor-pointer text-blue-500"
-          onClick={() => router.push("/dashboard")}
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="size-6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M15.59 14.37a6 6 0 0 1-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 0 0 6.16-12.12A14.98 14.98 0 0 0 9.631 8.41m5.96 5.96a14.926 14.926 0 0 1-5.841 2.58m-.119-8.54a6 6 0 0 0-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 0 0-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 0 1-2.448-2.448 14.9 14.9 0 0 1 .06-.312m-2.24 2.39a4.493 4.493 0 0 0-1.757 4.306 4.493 4.493 0 0 0 4.306-1.758M16.5 9a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z"
-            />
-          </svg>
-        </div>
+          Start Creating
+        </button>
       </div>
     </main>
   );

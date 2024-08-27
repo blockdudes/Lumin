@@ -4,6 +4,7 @@ import { Card, Typography, Button, IconButton } from "@material-tailwind/react";
 import { PaperAirplaneIcon, TrashIcon } from "@heroicons/react/24/solid";
 import { Chapter } from "@/types/types";
 import toast from "react-hot-toast";
+import { primary } from "@/constants/colors";
 
 export function ChapterBar({
   selectedChapterIndex,
@@ -49,7 +50,7 @@ export function ChapterBar({
                     variant="lead"
                     className="!font-bold"
                     // Apply conditional styling based on hasStarted and selectedChapterIndex
-                    color={hasStarted && selectedChapterIndex === index ? "blue" : "black"}
+                    color={hasStarted && selectedChapterIndex === index ? `${primary}` : "black"}
                     placeholder={undefined}
                     onPointerEnterCapture={undefined}
                     onPointerLeaveCapture={undefined}

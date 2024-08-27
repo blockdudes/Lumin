@@ -8,6 +8,7 @@ import {
   DialogFooter,
 } from "@material-tailwind/react";
 import { useRouter } from "next/navigation";
+import { primary } from "@/constants/colors";
 
 export function CoursePurchaseDialog({
   open,
@@ -68,7 +69,7 @@ export function CoursePurchaseDialog({
         >
           <Button
             variant="text"
-            color="red"
+            color="gray"
             onClick={handleOpen}
             className="mr-1"
             placeholder={undefined}
@@ -79,7 +80,7 @@ export function CoursePurchaseDialog({
           </Button>
           <Button
             variant="gradient"
-            color="green"
+            color={primary}
             onClick={handleConfirm}
             placeholder={undefined}
             onPointerEnterCapture={undefined}

@@ -30,10 +30,9 @@ const Owned = () => {
   useEffect(() => {
     dispatch(setIsAppLoading(true));
     if (account) {
-      fetch(`/api/resources/${account.address}`)
+      fetch(`/api/getAllowListedResource`)
         .then((res) => res.json())
         .then((data) => {
-          console.log(data.data);
           setData(data.data);
         })
         .finally(() => {

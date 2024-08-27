@@ -17,9 +17,10 @@ const CreatorDashboard = () => {
     dispatch(setIsAppLoading(true));
     if (account) {
       // TODO: change api endpoint
-      fetch(`/api/purchasedResources/${account.address}`)
+      fetch(`/api/boughtResources/${account.address}`)
         .then((res) => res.json())
         .then((data) => {
+          console.log(data);
           const resources: Course[] = data.data.map(
             (resource: Course) => resource
           );

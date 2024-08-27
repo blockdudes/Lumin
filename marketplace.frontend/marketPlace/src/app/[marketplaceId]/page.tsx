@@ -1,10 +1,11 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import toast from "react-hot-toast";
-import { primary } from "../constants/colors";
+import { primary } from "../../constants/colors";
 
 export default function Home() {
+  const { marketplaceId } = useParams<{ marketplaceId: string }>();
   const router = useRouter();
 
   return (
@@ -29,7 +30,7 @@ export default function Home() {
       <div className="py-3">
         <button
           className={`bg-${primary}-500 text-white px-4 py-2 rounded-md`}
-          onClick={() => router.push("/course")}
+          onClick={() => router.push(`/${marketplaceId}/course`)}
         >
           Get Started
         </button>

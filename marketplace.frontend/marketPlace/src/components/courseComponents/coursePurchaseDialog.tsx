@@ -7,7 +7,7 @@ import {
   DialogBody,
   DialogFooter,
 } from "@material-tailwind/react";
-import { useRouter } from "next/navigation";
+import { useRouter, useParams } from "next/navigation";
 import { primary } from "@/constants/colors";
 
 export function CoursePurchaseDialog({
@@ -25,7 +25,7 @@ export function CoursePurchaseDialog({
   title: string;
   description: string;
 }) {
-
+  const { marketplaceId } = useParams<{ marketplaceId: string }>();
   console.log({
     "id": id,
     "img": img,
@@ -36,7 +36,7 @@ export function CoursePurchaseDialog({
     const router = useRouter();
 
     const handleConfirm = () => {
-        router.push(`/owned/${id}`);
+        router.push(`/${marketplaceId}/owned/${id}`);
         handleOpen();
     }
   return (

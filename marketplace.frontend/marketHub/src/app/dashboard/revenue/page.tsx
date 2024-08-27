@@ -4,11 +4,9 @@ import { RevenueTable } from "@/components/revenueComponents/revenueTable";
 import { setIsAppLoading } from "@/lib/features/appLoader/appLoaderSlice";
 import { useAppDispatch } from "@/lib/hooks";
 import React, { useEffect, useState } from "react";
-import toast from "react-hot-toast";
 import { useActiveAccount } from "thirdweb/react";
 
 const RevenuePage = () => {
-  // TODO: Add a query to fetch the user's marketplaces and their addresses to fetch the revenue
   const account = useActiveAccount();
   const dispatch = useAppDispatch();
   const [data, setData] = useState<
@@ -22,14 +20,19 @@ const RevenuePage = () => {
   useEffect(() => {
     dispatch(setIsAppLoading(true));
     if (account) {
-      fetch(`/api/createdMarketPlace/${account.address}`)
+      fetch(`/api/createdMarketplace/${account.address}`)
         .then((res) => res.json())
         .then((data) => {
           const resources = data.data.map((resource: any) => {
+            console.log(resource);
             return {
-              market: resource.title,
-              creation: resource.transactionDate,
-              revenue: resource.resource_earning,
+              market: resource.marketplaceName,
+              creation: resource.createdAt,
+              revenue: resource.purchases.reduce(
+                (total: number, purchase: any) =>
+                  total + Number(purchase.feePaid),
+                0
+              ),
             };
           });
           setData(resources);

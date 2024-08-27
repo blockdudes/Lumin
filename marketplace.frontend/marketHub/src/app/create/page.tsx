@@ -15,6 +15,7 @@ import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { prepareContractCall, sendAndConfirmTransaction } from "thirdweb";
 import { useActiveAccount, useReadContract } from "thirdweb/react";
+import axios from "axios";
 
 const CreateCourse = () => {
   const router = useRouter();
@@ -25,8 +26,8 @@ const CreateCourse = () => {
   const [thumbnail, setThumbnail] = useState<File | null>(null);
   const [feePercentage, setFeePercentage] = useState<string>();
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
-  const [primaryColor, setPrimaryColor] = useState("");
-  const [secondaryColor, setSecondaryColor] = useState("");
+  const [selectedColorSet, setSelectedColorSet] =
+    useState<string>("blue-white");
   const account = useActiveAccount();
   const { data: categoryOptions } = useReadContract({
     contract: contract(tenderlyEduChain),
@@ -39,6 +40,22 @@ const CreateCourse = () => {
   };
 
   const handleCreateMarketplace = async () => {
+    console.log(
+      "isOwnedMarketplace",
+      isOwnedMarketplace,
+      "marketplaceName",
+      marketplaceName,
+      "marketplaceDescription",
+      marketplaceDescription,
+      "thumbnail",
+      thumbnail,
+      "feePercentage",
+      feePercentage,
+      "selectedCategories",
+      selectedCategories,
+      "selectedColorSet",
+      selectedColorSet
+    );
     if (isOwnedMarketplace === undefined) {
       toast.error("Marketplace type cannot be empty");
       return;
@@ -63,37 +80,45 @@ const CreateCourse = () => {
       toast.error("Marketplace categories cannot be empty");
       return;
     }
-    if (primaryColor === undefined || primaryColor === "") {
+    if (selectedColorSet === undefined || selectedColorSet === "") {
       toast.error("Marketplace color set cannot be empty");
       return;
     }
-    if (secondaryColor === undefined || secondaryColor === "") {
-      toast.error("Marketplace color set cannot be empty");
-      return;
-    }
-
+    var loader = toast.loading("Creating Marketplace");
     try {
-      // TODO: convert thumbnail to thumbnail url
-      const thumbnailUrl = "https://via.placeholder.com/1920x1080";
+      var thumbnailUrl = "";
+      const formData = new FormData();
+      formData.append("image", thumbnail);
+      toast.dismiss(loader);
+      loader = toast.loading("Storing Image");
+      const response = await axios.post("/api/storeImage", formData);
+      if (response.status === 200) {
+        thumbnailUrl = response.data.data;
+        toast.dismiss(loader);
+        loader = toast.loading("Creating Marketplace on Blockchain");
+      } else {
+        toast.dismiss(loader);
+        toast.error("Error storing image");
+        return;
+      }
 
       const tx = prepareContractCall({
         contract: contract(tenderlyEduChain),
         method:
-          // TODO: change function name to add color set
-          "function registerMarketplace( uint256 feePercent, string memory marketplaceName, string memory description, string memory image_url, string[] memory _categories, bool isOwnedResourcesMarketplace ) external",
+          "function registerMarketplace(uint256 feePercent, string memory marketplaceName, string memory description, string memory image_url, string[] memory _categories, string memory theme, bool isOwnedResourcesMarketplace ) external",
         params: [
           BigInt(feePercentage),
           marketplaceName,
           marketplaceDescription,
           thumbnailUrl,
           selectedCategories,
+          selectedColorSet,
           isOwnedMarketplace,
-          // primaryColor,
-          // secondaryColor,
         ],
       });
 
       if (!account) {
+        toast.dismiss(loader);
         toast.error("Account not found");
         return;
       }
@@ -103,14 +128,17 @@ const CreateCourse = () => {
         transaction: tx,
       });
       if (res.status === "success") {
+        toast.dismiss(loader);
         toast.success("Marketplace created successfully");
         router.push("/created");
       } else {
+        toast.dismiss(loader);
         toast.error("Error creating marketplace");
       }
     } catch (error) {
-      toast.error("Error creating marketplace");
       console.error(error);
+      toast.dismiss(loader);
+      toast.error("Error creating marketplace");
     }
   };
 
@@ -302,10 +330,9 @@ const CreateCourse = () => {
                   type="radio"
                   name="colorSet"
                   value="blue-white"
-                  checked={primaryColor === "blue"}
+                  checked={selectedColorSet === "blue-white"}
                   onChange={() => {
-                    setPrimaryColor("blue");
-                    setSecondaryColor("white");
+                    setSelectedColorSet("blue-white");
                   }}
                 />
                 <div className="flex w-[100px] h-[35px] rounded-lg border-gray-400 border-2">
@@ -318,10 +345,9 @@ const CreateCourse = () => {
                   type="radio"
                   name="colorSet"
                   value="blue-gray"
-                  checked={primaryColor === "red"}
+                  checked={selectedColorSet === "blue-gray"}
                   onChange={() => {
-                    setPrimaryColor("red");
-                    setSecondaryColor("white");
+                    setSelectedColorSet("blue-gray");
                   }}
                 />
                 <div className="flex w-[100px] h-[35px] rounded-lg border-gray-400 border-2">
@@ -334,10 +360,9 @@ const CreateCourse = () => {
                   type="radio"
                   name="colorSet"
                   value="yellow-white"
-                  checked={primaryColor === "yellow"}
+                  checked={selectedColorSet === "yellow-white"}
                   onChange={() => {
-                    setPrimaryColor("yellow");
-                    setSecondaryColor("white");
+                    setSelectedColorSet("yellow-white");
                   }}
                 />
                 <div className="flex w-[100px] h-[35px] rounded-lg border-gray-400 border-2">

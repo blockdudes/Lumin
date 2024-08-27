@@ -1,11 +1,13 @@
 "use client";
 import { Breadcrumbs } from "@material-tailwind/react";
-import { usePathname } from "next/navigation";
+import { useParams, usePathname } from "next/navigation";
 import Link from "next/link";
 
 export default function DynamicBreadcrumb() {
   const pathname = usePathname();
-  const pathnames = pathname.split("/").filter((x) => x);
+  const { marketplaceId } = useParams<{ marketplaceId: string }>();
+  const pathnames = (pathname.split(`/${marketplaceId}/`)[1] ?? "").split("/");
+  console.log(pathnames);
 
   return (
     <Breadcrumbs

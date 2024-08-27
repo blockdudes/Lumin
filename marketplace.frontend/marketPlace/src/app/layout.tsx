@@ -3,12 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import StoreProvider from "@/lib/StoreProvider";
 import { ThirdwebProvider } from "thirdweb/react";
-import { Toaster } from "react-hot-toast";
-import { Sidebar } from "@/components/rootComponents/sidebar";
-import DynamicBreadcrumb from "@/components/rootComponents/breadcrumbs";
-import ConnectWalletButton from "@/components/rootComponents/connectWalletButton";
 import { ReactNode } from "react";
-import AppLoader from "@/components/rootComponents/appLoader";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,34 +21,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <ThirdwebProvider>
-          <StoreProvider>
-            <div className="w-full flex ">
-              <div className="mr-72">
-                <Sidebar />
-              </div>
-              <div className="absolute top-3 right-3">
-                <div className="flex justify-center mb-20">
-                  <ConnectWalletButton />
-                </div>
-              </div>
-              <div className="h-full p-2">
-                <div className="flex flex-col gap-4">
-                  <div>
-                    <DynamicBreadcrumb />
-                  </div>
-                  <div>{children}</div>
-                </div>
-              </div>
-              <Toaster
-                position="top-center"
-                reverseOrder={false}
-                containerStyle={{
-                  zIndex: 99999,
-                }}
-              />
-              <AppLoader />
-            </div>
-          </StoreProvider>
+          <StoreProvider>{children}</StoreProvider>
         </ThirdwebProvider>
       </body>
     </html>

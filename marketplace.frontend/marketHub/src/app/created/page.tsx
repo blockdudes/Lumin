@@ -6,7 +6,7 @@ import { tenderlyEduChain } from "@/constants/chains";
 import { contract } from "@/constants/contracts";
 import { useActiveAccount, useReadContract } from "thirdweb/react";
 import { setIsAppLoading } from "@/lib/features/appLoader/appLoaderSlice";
-import { useAppDispatch, useAppSelector } from "@/lib/hooks";
+import { useAppDispatch } from "@/lib/hooks";
 import { Marketplace } from "@/types/types";
 
 const MarketplacePage = () => {
@@ -26,7 +26,6 @@ const MarketplacePage = () => {
       fetch(`/api/createdMarketplace/${account.address}`)
         .then((res) => res.json())
         .then((data) => {
-          console.log(data.data);
           setData(data.data);
         })
         .finally(() => {

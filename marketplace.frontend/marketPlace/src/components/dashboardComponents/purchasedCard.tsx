@@ -3,11 +3,12 @@ import { Card, CardBody, Typography } from "@material-tailwind/react";
 import { BanknotesIcon } from "@heroicons/react/24/outline";
 import { Course } from "@/types/types";
 import { primary } from "@/constants/colors";
+import { toEther } from "thirdweb";
 
 export function PurchasedCard({
   purchasedCourses,
 }: {
-  purchasedCourses: Course[];
+  purchasedCourses: { title: string; transactionDate: string; price: string }[];
 }) {
   return (
     <Card
@@ -73,7 +74,11 @@ export function PurchasedCard({
               onPointerEnterCapture={undefined}
               onPointerLeaveCapture={undefined}
             >
-              {purchasedCourses.reduce((acc, course) => acc + course.price, 0)} ETH
+              {purchasedCourses.reduce(
+                (acc, course) => acc + Number(toEther(BigInt(course.price))),
+                0
+              )}{" "}
+              ETH
             </Typography>
           </div>
         </div>

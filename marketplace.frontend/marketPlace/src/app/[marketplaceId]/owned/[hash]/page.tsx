@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { Course, FetchedResource } from "@/types/types";
 import { ChapterBar } from "@/components/courseComponents/chapterBar";
 import { setIsAppLoading } from "@/lib/features/appLoader/appLoaderSlice";
@@ -11,6 +11,7 @@ import { useActiveAccount } from "thirdweb/react";
 import { setOwnedResources } from "@/lib/features/ownedResources/ownedResourcesSlice";
 
 const CourseDetails = () => {
+  const navigate = useRouter();
   const { hash } = useParams<{ hash: string }>();
   const dispatch = useAppDispatch();
   const [selectedChapterIndex, setSelectedChapterIndex] = useState(0);
@@ -31,7 +32,9 @@ const CourseDetails = () => {
   console.log(allResources);
 
   const init = async () => {
+    console.log("getting data");
     var allResource = allResources;
+    console.log(allResource);
     if (!allResource || allResource.length === 0) {
       dispatch(setIsAppLoading(true));
       if (!account) {
@@ -66,7 +69,7 @@ const CourseDetails = () => {
 
   useEffect(() => {
     init();
-  }, [account, hash]);
+  }, [account, hash, navigate]);
 
   if (courseDetails === null) {
     return null;

@@ -2,6 +2,7 @@ import { Card, CardBody, Typography } from "@material-tailwind/react";
 
 import { BanknotesIcon } from "@heroicons/react/24/outline";
 import { Course } from "@/types/types";
+import { primary } from "@/constants/colors";
 
 export function PurchasedCard({
   purchasedCourses,
@@ -22,7 +23,7 @@ export function PurchasedCard({
         onPointerLeaveCapture={undefined}
       >
         <div className="flex items-center gap-4">
-          <BanknotesIcon className="h-20 w-20 text-blue-500" />
+          <BanknotesIcon className={`h-20 w-20 text-${primary}-500`} />
           <Typography
             variant="h1"
             color="blue-gray"
@@ -47,7 +48,7 @@ export function PurchasedCard({
             </Typography>
             <Typography
               variant="h6"
-              color="blue"
+              color={primary}
               placeholder={undefined}
               onPointerEnterCapture={undefined}
               onPointerLeaveCapture={undefined}
@@ -67,7 +68,7 @@ export function PurchasedCard({
             </Typography>
             <Typography
               variant="h6"
-              color="blue"
+              color={primary}
               placeholder={undefined}
               onPointerEnterCapture={undefined}
               onPointerLeaveCapture={undefined}

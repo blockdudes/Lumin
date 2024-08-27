@@ -1,6 +1,7 @@
 "use client";
 import { Course } from "@/types/types";
 import { Card, Typography } from "@material-tailwind/react";
+import { primary } from "@/constants/colors";
 
 const TABLE_HEAD = ["Course", "Purchase Date", "Amount"];
 
@@ -17,8 +18,8 @@ export function PurchasedTable({ data }: { data: Course[] }) {
               >
                 <Typography
                   variant="small"
-                  color="blue-gray"
-                  className="font-normal leading-none opacity-70"
+                  color={primary}
+                  className="font-bold leading-none opacity-70"
                   placeholder={undefined}
                   onPointerEnterCapture={undefined}
                   onPointerLeaveCapture={undefined}

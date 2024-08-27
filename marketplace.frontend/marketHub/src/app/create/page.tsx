@@ -25,7 +25,8 @@ const CreateCourse = () => {
   const [thumbnail, setThumbnail] = useState<File | null>(null);
   const [feePercentage, setFeePercentage] = useState<string>();
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
-  const [selectedColorSet, setSelectedColorSet] = useState<string>("");
+  const [primaryColor, setPrimaryColor] = useState("");
+  const [secondaryColor, setSecondaryColor] = useState("");
   const account = useActiveAccount();
   const { data: categoryOptions } = useReadContract({
     contract: contract(tenderlyEduChain),
@@ -62,7 +63,11 @@ const CreateCourse = () => {
       toast.error("Marketplace categories cannot be empty");
       return;
     }
-    if (selectedColorSet === undefined || selectedColorSet === "") {
+    if (primaryColor === undefined || primaryColor === "") {
+      toast.error("Marketplace color set cannot be empty");
+      return;
+    }
+    if (secondaryColor === undefined || secondaryColor === "") {
       toast.error("Marketplace color set cannot be empty");
       return;
     }
@@ -83,7 +88,8 @@ const CreateCourse = () => {
           thumbnailUrl,
           selectedCategories,
           isOwnedMarketplace,
-          // selectedColorSet,
+          // primaryColor,
+          // secondaryColor,
         ],
       });
 
@@ -296,8 +302,11 @@ const CreateCourse = () => {
                   type="radio"
                   name="colorSet"
                   value="blue-white"
-                  checked={selectedColorSet === "blue-white"}
-                  onChange={() => setSelectedColorSet("blue-white")}
+                  checked={primaryColor === "blue"}
+                  onChange={() => {
+                    setPrimaryColor("blue");
+                    setSecondaryColor("white");
+                  }}
                 />
                 <div className="flex w-[100px] h-[35px] rounded-lg border-gray-400 border-2">
                   <div className="w-1/2 bg-blue-500 rounded-l-md"></div>
@@ -309,8 +318,11 @@ const CreateCourse = () => {
                   type="radio"
                   name="colorSet"
                   value="blue-gray"
-                  checked={selectedColorSet === "red-white"}
-                  onChange={() => setSelectedColorSet("red-white")}
+                  checked={primaryColor === "red"}
+                  onChange={() => {
+                    setPrimaryColor("red");
+                    setSecondaryColor("white");
+                  }}
                 />
                 <div className="flex w-[100px] h-[35px] rounded-lg border-gray-400 border-2">
                   <div className="w-1/2 bg-red-500 rounded-l-md"></div>
@@ -322,8 +334,11 @@ const CreateCourse = () => {
                   type="radio"
                   name="colorSet"
                   value="yellow-white"
-                  checked={selectedColorSet === "yellow-white"}
-                  onChange={() => setSelectedColorSet("yellow-white")}
+                  checked={primaryColor === "yellow"}
+                  onChange={() => {
+                    setPrimaryColor("yellow");
+                    setSecondaryColor("white");
+                  }}
                 />
                 <div className="flex w-[100px] h-[35px] rounded-lg border-gray-400 border-2">
                   <div className="w-1/2 bg-yellow-500 rounded-l-md"></div>

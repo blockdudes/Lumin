@@ -12,7 +12,9 @@ const CreatorDashboard = () => {
   const account = useActiveAccount();
   const dispatch = useAppDispatch();
   const { marketplaceId } = useParams<{ marketplaceId: string }>();
-  const [data, setData] = useState<Course[]>([]);
+  const [data, setData] = useState<
+    { title: string; transactionDate: string; price: string }[]
+  >([]);
 
   useEffect(() => {
     dispatch(setIsAppLoading(true));
@@ -21,9 +23,11 @@ const CreatorDashboard = () => {
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
-          const resources: Course[] = data.data.map(
-            (resource: Course) => resource
-          );
+          const resources = data.data.map((resource: any) => ({
+            title: resource.resource.title,
+            transactionDate: resource.transactionDate,
+            price: resource.price,
+          }));
           setData(resources);
         })
         .finally(() => {

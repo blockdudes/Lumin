@@ -34,17 +34,18 @@ const CourseDetails = () => {
     var allResource = allResources;
     if (!allResource || allResource.length === 0) {
       dispatch(setIsAppLoading(true));
-      if (account) {
-        await fetch(`/api/getAllowListedResource`)
-          .then((res) => res.json())
-          .then((data) => {
-            setAllResources(data.data);
-            allResource = data.data;
-          })
-          .finally(() => {
-            dispatch(setIsAppLoading(false));
-          });
+      if (!account) {
+        return;
       }
+      await fetch(`/api/getAllowListedResource`)
+        .then((res) => res.json())
+        .then((data) => {
+          setAllResources(data.data);
+          allResource = data.data;
+        })
+        .finally(() => {
+          dispatch(setIsAppLoading(false));
+        });
       dispatch(setIsAppLoading(true));
       await fetch(`/api/resources/fetch/${hash}`)
         .then((res) => res.json())

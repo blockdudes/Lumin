@@ -9,6 +9,7 @@ import {
   Input,
   Option,
   Select,
+  Spinner,
 } from "@material-tailwind/react";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
@@ -28,6 +29,7 @@ const CreateCourse = () => {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedColorSet, setSelectedColorSet] =
     useState<string>("blue-white");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const account = useActiveAccount();
   const { data: categoryOptions } = useReadContract({
     contract: contract(tenderlyEduChain),
@@ -40,6 +42,7 @@ const CreateCourse = () => {
   };
 
   const handleCreateMarketplace = async () => {
+    setIsLoading(true);
     console.log(
       "isOwnedMarketplace",
       isOwnedMarketplace,
@@ -58,30 +61,37 @@ const CreateCourse = () => {
     );
     if (isOwnedMarketplace === undefined) {
       toast.error("Marketplace type cannot be empty");
+      setIsLoading(false);
       return;
     }
     if (marketplaceName === undefined || marketplaceName === "") {
       toast.error("Marketplace name cannot be empty");
+      setIsLoading(false);
       return;
     }
     if (marketplaceDescription === undefined || marketplaceDescription === "") {
       toast.error("Marketplace description cannot be empty");
+      setIsLoading(false);
       return;
     }
     if (thumbnail?.name === undefined || thumbnail?.name === "") {
       toast.error("Marketplace thumbnail cannot be empty");
+      setIsLoading(false);
       return;
     }
     if (feePercentage === undefined || feePercentage === "") {
       toast.error("Marketplace fee cannot be empty");
+      setIsLoading(false);
       return;
     }
     if (selectedCategories.length === 0) {
       toast.error("Marketplace categories cannot be empty");
+      setIsLoading(false);
       return;
     }
     if (selectedColorSet === undefined || selectedColorSet === "") {
       toast.error("Marketplace color set cannot be empty");
+      setIsLoading(false);
       return;
     }
     var loader = toast.loading("Creating Marketplace");
@@ -99,6 +109,7 @@ const CreateCourse = () => {
       } else {
         toast.dismiss(loader);
         toast.error("Error storing image");
+        setIsLoading(false);
         return;
       }
 
@@ -120,6 +131,7 @@ const CreateCourse = () => {
       if (!account) {
         toast.dismiss(loader);
         toast.error("Account not found");
+        setIsLoading(false);
         return;
       }
 
@@ -130,15 +142,18 @@ const CreateCourse = () => {
       if (res.status === "success") {
         toast.dismiss(loader);
         toast.success("Marketplace created successfully");
+        setIsLoading(false);
         router.push("/created");
       } else {
         toast.dismiss(loader);
         toast.error("Error creating marketplace");
+        setIsLoading(false);
       }
     } catch (error) {
       console.error(error);
       toast.dismiss(loader);
       toast.error("Error creating marketplace");
+      setIsLoading(false);
     }
   };
 
@@ -377,13 +392,24 @@ const CreateCourse = () => {
       <div className="flex justify-end">
         <Button
           color="red"
+          disabled={isLoading}
           className="mt-4"
           onClick={handleCreateMarketplace}
           placeholder={undefined}
           onPointerEnterCapture={undefined}
           onPointerLeaveCapture={undefined}
         >
-          Create
+          {isLoading ? (
+            <div className="flex gap-2 px-8">
+              <Spinner
+                className="h-4 w-4"
+                onPointerEnterCapture={undefined}
+                onPointerLeaveCapture={undefined}
+              />
+            </div>
+          ) : (
+            "Create"
+          )}
         </Button>
       </div>
     </div>

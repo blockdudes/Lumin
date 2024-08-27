@@ -1,0 +1,45 @@
+type Marketplace @entity {
+  id: ID!
+  marketplaceName: String
+  description: String
+  image_url: String
+  owner: User! 
+  feePercent: BigInt!
+  categories: [String!]!
+  theme: String
+  isOwnedResourcesMarketplace: Boolean
+  isUpdating: Boolean
+  createdAt: BigInt! 
+}
+
+type Resource @entity {
+  id: ID!
+  creator: User! 
+  title: String,
+  description: String
+  category: String
+  image_url: String
+  price: BigInt
+  resourceHash: String
+  allowListingAccess: Boolean
+  transactionDate: BigInt!
+  isUpdating: Boolean
+}
+
+type User @entity {
+  id: Bytes!
+  ownedResources: [Resource!]! @derivedFrom(field: "creator")
+  marketplaces: [Marketplace!]! @derivedFrom(field: "owner")
+}
+
+type Purchase @entity {
+  id: ID!
+  resource: Resource!
+  buyer: User!
+  owner: User!
+  price: BigInt
+  marketplace: Marketplace
+  feePaid: BigInt
+  transactionDate: BigInt! 
+  userEarned: BigInt
+}

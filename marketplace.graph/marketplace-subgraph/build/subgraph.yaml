@@ -1,0 +1,42 @@
+specVersion: 0.0.5
+description: marketplace subgraph
+repository: https://github.com/chirag9899/marketplace-subgraph.git
+schema:
+  file: schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: Marketplace
+    network: mainnet
+    source:
+      address: "0xa6ED33Df93BDDBDf811fC1a41C615324c808bE0b"
+      abi: MarketplaceABI
+      startBlock: 20575700
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      file: Marketplace/Marketplace.wasm
+      entities:
+        - Marketplace
+        - Resource
+        - User
+      abis:
+        - name: MarketplaceABI
+          file: Marketplace/MarketplaceABI.json
+      eventHandlers:
+        - event: ResourceAdded(indexed
+            uint256,address,string,string,string,string,uint256,string,bool,bool)
+          handler: handleResourceCreated
+        - event: ResourcePurchased(indexed uint256,address,uint256,uint256,uint256,address)
+          handler: handleResourcePurchased
+        - event: ResourcePriceChanged(indexed uint256,uint256)
+          handler: handleResourcePriceChanged
+        - event: ResourceListingVisibilityChanged(indexed uint256,bool)
+          handler: handleResourceListingVisibilityChanged
+        - event: MarketplaceRegistered(indexed
+            uint256,string,string,string,address,uint256,string[],string,bool,bool)
+          handler: handleMarketplaceRegistered
+        - event: MarketplaceFeeUpdated(indexed uint256,uint256)
+          handler: handleMarketplaceFeeUpdated
+        - event: CategoryAddedToMarketplace(indexed uint256,string)
+          handler: handleCategoryAddedToMarketplace

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { use, useState } from "react";
 import {
   Button,
   Dialog,
@@ -47,10 +47,14 @@ export function CreateCourseDialog({
 
   const account = useActiveAccount();
   const router = useRouter();
+
   const { data: categoryOptions } = useReadContract({
     contract: contract(tenderlyEduChain),
     method: "function getCategories() external view returns (string[])",
     params: [],
+    queryOptions: {
+      refetchInterval: 1000,
+    },
   });
 
   const handleCreateCourse = async () => {

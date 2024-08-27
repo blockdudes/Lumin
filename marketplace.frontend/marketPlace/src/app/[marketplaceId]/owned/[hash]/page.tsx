@@ -1,12 +1,12 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
-import { Course } from "@/types/types";
-import { Chapter } from "@/types/types";
+import { Course, FetchedResource } from "@/types/types";
 import { ChapterBar } from "@/components/courseComponents/chapterBar";
 import { setIsAppLoading } from "@/lib/features/appLoader/appLoaderSlice";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { primary } from "@/constants/colors";
+import MDEditor from "@uiw/react-md-editor";
 import { useActiveAccount } from "thirdweb/react";
 import { setOwnedResources } from "@/lib/features/ownedResources/ownedResourcesSlice";
 
@@ -16,7 +16,10 @@ const CourseDetails = () => {
   const [selectedChapterIndex, setSelectedChapterIndex] = useState(0);
   const [hasStarted, setHasStarted] = useState(false);
   const [courseDetails, setCourseDetails] = useState<
-    (Course & { resource: Chapter[] }) | null
+    | (Course & {
+        resource: FetchedResource[];
+      })
+    | null
   >(null);
   const account = useActiveAccount();
   const allResources = useAppSelector(
@@ -68,6 +71,26 @@ const CourseDetails = () => {
     return null;
   }
 
+  const FileRenderer = ({ type, url }: { type: string; url: string }) => {
+    switch (type) {
+      case "video/mp4":
+        return <video controls src={url} className="w-full" />;
+      case "application/pdf":
+        return (
+          <object data={url} type="application/pdf" width="100%" height="450">
+            <p>
+              Your browser does not support PDFs.
+              <a href={url}>Download the PDF</a>.
+            </p>
+          </object>
+        );
+      case "image/jpeg":
+        return <img src={url} alt="Chapter content" className="w-full" />;
+      default:
+        return <p>Unsupported file type</p>;
+    }
+  };
+
   return (
     <div className="pr-[350px]">
       <div className="fixed top-0 right-0">
@@ -113,8 +136,13 @@ const CourseDetails = () => {
               <p className="text-lg text-gray-800 font-medium">
                 {chapter.description}
               </p>
-              <div className="text-base whitespace-pre-line text-gray-600">
-                {chapter.content}
+              <FileRenderer type={chapter.type} url={chapter.file} />
+              <div className="text-base whitespace-pre-wrap text-gray-600 pt-10">
+                <div className="container">
+                  <div data-color-mode="light">
+                    <MDEditor.Markdown source={chapter.content} />
+                  </div>
+                </div>
               </div>
             </div>
           ))}

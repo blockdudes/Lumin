@@ -23,7 +23,7 @@ import {
   ChevronDownIcon,
   CubeTransparentIcon,
 } from "@heroicons/react/24/outline";
-import { useRouter } from "next/navigation";
+import { useRouter, useParams } from "next/navigation";
 import toast from "react-hot-toast";
 import {
   useDisconnect,
@@ -33,6 +33,7 @@ import {
 import { primary } from "@/constants/colors";
 
 export function Sidebar() {
+  const { marketplaceId } = useParams<{ marketplaceId: string }>();
   const [open, setOpen] = useState(0);
   const { disconnect } = useDisconnect();
   const wallet = useActiveWallet();
@@ -70,9 +71,11 @@ export function Sidebar() {
         >
           <div
             className="mb-2 py-4 flex items-center gap-2 cursor-pointer"
-            onClick={() => router.push("/")}
+            onClick={() => router.push(`/${marketplaceId}`)}
           >
-            <CubeTransparentIcon className={`mb-4 h-12 w-12 text-${primary}-500`} />
+            <CubeTransparentIcon
+              className={`mb-4 h-12 w-12 text-${primary}-500`}
+            />
             <Typography
               variant="h5"
               color="blue-gray"
@@ -121,7 +124,9 @@ export function Sidebar() {
                     onPointerEnterCapture={undefined}
                     onPointerLeaveCapture={undefined}
                   >
-                    <PresentationChartBarIcon className={`h-5 w-5 text-${primary}-500`} />
+                    <PresentationChartBarIcon
+                      className={`h-5 w-5 text-${primary}-500`}
+                    />
                   </ListItemPrefix>
                   <Typography
                     color="blue-gray"
@@ -142,7 +147,7 @@ export function Sidebar() {
                   onPointerLeaveCapture={undefined}
                 >
                   <ListItem
-                    onClick={() => router.push("/dashboard")}
+                    onClick={() => router.push(`/${marketplaceId}/dashboard`)}
                     placeholder={undefined}
                     onPointerEnterCapture={undefined}
                     onPointerLeaveCapture={undefined}
@@ -192,7 +197,9 @@ export function Sidebar() {
                     onPointerEnterCapture={undefined}
                     onPointerLeaveCapture={undefined}
                   >
-                    <ShoppingBagIcon className={`h-5 w-5 text-${primary}-500`} />
+                    <ShoppingBagIcon
+                      className={`h-5 w-5 text-${primary}-500`}
+                    />
                   </ListItemPrefix>
                   <Typography
                     color="blue-gray"
@@ -216,7 +223,7 @@ export function Sidebar() {
                     placeholder={undefined}
                     onPointerEnterCapture={undefined}
                     onPointerLeaveCapture={undefined}
-                    onClick={() => router.push("/course")}
+                    onClick={() => router.push(`/${marketplaceId}/course`)}
                   >
                     <ListItemPrefix
                       placeholder={undefined}
@@ -284,7 +291,7 @@ export function Sidebar() {
                   onPointerLeaveCapture={undefined}
                 >
                   <ListItem
-                    onClick={() => router.push("/owned")}
+                    onClick={() => router.push(`/${marketplaceId}/owned`)}
                     placeholder={undefined}
                     onPointerEnterCapture={undefined}
                     onPointerLeaveCapture={undefined}

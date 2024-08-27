@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useParams } from "next/navigation";
 import { CourseCard } from "@/components/courseComponents/courseCard";
 import { MultiSelect } from "@/components/courseComponents/multiselect";
 import { setIsAppLoading } from "@/lib/features/appLoader/appLoaderSlice";
@@ -12,6 +12,7 @@ import { contract } from "@/constants/contracts";
 
 const Owned = () => {
   const router = useRouter();
+  const { marketplaceId } = useParams<{ marketplaceId: string }>();
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   // TODO: fetch purchased courses
   const account = useActiveAccount();
@@ -42,7 +43,7 @@ const Owned = () => {
   }, [account]);
 
   const handleOpen = (course: Course) => {
-    router.push(`/owned/${course.resourceHash}`);
+    router.push(`/${marketplaceId}/owned/${course.resourceHash}`);
   };
 
   const handleCategoryChange = (categories: string[]) => {

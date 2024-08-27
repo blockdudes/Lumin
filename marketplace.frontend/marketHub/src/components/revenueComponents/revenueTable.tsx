@@ -10,7 +10,12 @@ interface MarketData {
   revenue: string;
 }
 
-const TABLE_HEAD = ["Market Place", "Creation Date", "Revenue", "Details"];
+const TABLE_HEAD = [
+  "Market Place",
+  "Creation Date",
+  "Revenue",
+  //  "Details"
+];
 
 export function RevenueTable({ data }: { data: MarketData[] }) {
   const [open, setOpen] = useState(false);
@@ -85,7 +90,9 @@ export function RevenueTable({ data }: { data: MarketData[] }) {
                     onPointerEnterCapture={undefined}
                     onPointerLeaveCapture={undefined}
                   >
-                    {new Date(transaction.creation).toDateString()}
+                    {new Date(
+                      Number(transaction.creation) * 1000
+                    ).toDateString()}
                   </Typography>
                 </td>
                 <td className="py-4 px-6">
@@ -97,10 +104,10 @@ export function RevenueTable({ data }: { data: MarketData[] }) {
                     onPointerEnterCapture={undefined}
                     onPointerLeaveCapture={undefined}
                   >
-                    {transaction.revenue}
+                    {transaction.revenue} ETH
                   </Typography>
                 </td>
-                <td className="py-4 px-6">
+                {/* <td className="py-4 px-6">
                   <Button
                     size="sm"
                     variant="outlined"
@@ -112,7 +119,7 @@ export function RevenueTable({ data }: { data: MarketData[] }) {
                   >
                     Details
                   </Button>
-                </td>
+                </td> */}
               </tr>
             ))}
           </tbody>

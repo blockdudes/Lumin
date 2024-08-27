@@ -4,20 +4,21 @@ import { useRouter, useParams } from "next/navigation";
 import { CourseCard } from "@/components/courseComponents/courseCard";
 import { MultiSelect } from "@/components/courseComponents/multiselect";
 import { setIsAppLoading } from "@/lib/features/appLoader/appLoaderSlice";
-import { useAppDispatch } from "@/lib/hooks";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { Course } from "@/types/types";
 import { useActiveAccount, useReadContract } from "thirdweb/react";
 import { tenderlyEduChain } from "@/constants/chains";
 import { contract } from "@/constants/contracts";
+import { setOwnedResources } from "@/lib/features/ownedResources/ownedResourcesSlice";
 
 const Owned = () => {
   const router = useRouter();
   const { marketplaceId } = useParams<{ marketplaceId: string }>();
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
-  // TODO: fetch purchased courses
+  const data = useAppSelector((state) => state.ownedResources.ownedResources);
+  const setData = (data: Course[]) => dispatch(setOwnedResources(data));
   const account = useActiveAccount();
   const dispatch = useAppDispatch();
-  const [data, setData] = useState<Course[]>([]);
   const { data: categoryOptions } = useReadContract({
     contract: contract(tenderlyEduChain),
     method: "function getCategories() external view returns (string[])",
@@ -28,11 +29,12 @@ const Owned = () => {
     dispatch(setIsAppLoading(true));
     if (account) {
       // TODO: change api endpoint
-      fetch(`/api/purchasedResources/${account.address}`)
+      fetch(`/api/boughtResources/${account.address}`)
         .then((res) => res.json())
         .then((data) => {
+          console.log(data);
           const resources: Course[] = data.data.map(
-            (resource: Course) => resource
+            (resource: any) => resource.resource
           );
           setData(resources);
         })

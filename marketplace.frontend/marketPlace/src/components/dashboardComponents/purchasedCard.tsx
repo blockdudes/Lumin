@@ -73,7 +73,7 @@ export function PurchasedCard({
               onPointerEnterCapture={undefined}
               onPointerLeaveCapture={undefined}
             >
-              ${purchasedCourses.reduce((acc, course) => acc + course.price, 0)}
+              {purchasedCourses.reduce((acc, course) => acc + course.price, 0)} ETH
             </Typography>
           </div>
         </div>

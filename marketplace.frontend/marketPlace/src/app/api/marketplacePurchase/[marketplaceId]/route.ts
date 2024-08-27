@@ -54,12 +54,12 @@ export const GET = async (
       );
 
       if (purchases.length === 0) {
-        return new Response(JSON.stringify({ purchases: [] }), {
+        return new Response(JSON.stringify({ data: [] }), {
           status: 200,
         });
       }
 
-      return new Response(JSON.stringify({ purchases: purchases }), {
+      return new Response(JSON.stringify({ data: purchases }), {
         status: 200,
       });
     } catch (error) {

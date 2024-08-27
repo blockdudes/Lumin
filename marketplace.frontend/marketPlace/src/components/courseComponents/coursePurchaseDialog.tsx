@@ -9,36 +9,77 @@ import {
 } from "@material-tailwind/react";
 import { useRouter, useParams } from "next/navigation";
 import { primary } from "@/constants/colors";
+import toast from "react-hot-toast";
+import {
+  prepareContractCall,
+  sendAndConfirmTransaction,
+  toWei,
+} from "thirdweb";
+import { contract } from "@/constants/contracts";
+import { tenderlyEduChain } from "@/constants/chains";
+import { Course } from "@/types/types";
+import { TypedData } from "abitype";
+import { SignableMessage, Hex, TypedDataDefinition } from "viem";
+import { useActiveAccount } from "thirdweb/react";
 
 export function CoursePurchaseDialog({
   open,
   handleOpen,
-  id,
-  img,
-  title,
-  description,
+  resource,
 }: {
   open: boolean;
   handleOpen: () => void;
-  id: string;
-  img: string;
-  title: string;
-  description: string;
+  resource: Course;
 }) {
   const { marketplaceId } = useParams<{ marketplaceId: string }>();
+  const account = useActiveAccount();
   console.log({
-    "id": id,
-    "img": img,
-    "title": title,
-    "description": description,
-  })
+    id: resource.id,
+    img: resource.image_url,
+    title: resource.title,
+    description: resource.description,
+  });
 
-    const router = useRouter();
+  const router = useRouter();
 
-    const handleConfirm = () => {
-        router.push(`/${marketplaceId}/owned/${id}`);
-        handleOpen();
+  const handleConfirm = async () => {
+    var loader = toast.loading("Purchasing course...");
+    try {
+      const tx = prepareContractCall({
+        contract: contract(tenderlyEduChain),
+        method:
+          "function purchaseResource(uint256 resourceId, uint256 marketplaceId) public payable",
+        params: [BigInt(resource.id), BigInt(marketplaceId)],
+        value: BigInt(resource.price),
+      });
+
+      if (!account) {
+        toast.dismiss(loader);
+        toast.error("Please connect your wallet");
+        return;
+      }
+
+      const res = await sendAndConfirmTransaction({
+        account: account,
+        transaction: tx,
+      });
+
+      if (res.status === "success") {
+        toast.dismiss(loader);
+        toast.success("Course purchased successfully");
+        router.push(`/${marketplaceId}/owned/${resource.resourceHash}`);
+      } else {
+        toast.dismiss(loader);
+        toast.error("Error purchasing course");
+      }
+    } catch (error) {
+      console.error(error);
+      toast.dismiss(loader);
+      toast.error("Error purchasing course");
     }
+
+    handleOpen();
+  };
   return (
     <>
       <Dialog
@@ -53,14 +94,14 @@ export function CoursePurchaseDialog({
           onPointerEnterCapture={undefined}
           onPointerLeaveCapture={undefined}
         >
-          {title}
+          {resource.title}
         </DialogHeader>
         <DialogBody
           placeholder={undefined}
           onPointerEnterCapture={undefined}
           onPointerLeaveCapture={undefined}
         >
-          {description}
+          {resource.description}
         </DialogBody>
         <DialogFooter
           placeholder={undefined}

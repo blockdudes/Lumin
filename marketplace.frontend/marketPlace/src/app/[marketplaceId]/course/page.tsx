@@ -88,12 +88,9 @@ const Owned = () => {
       </div>
       {selectedCourse && (
         <CoursePurchaseDialog
-          id={selectedCourse.id}
           open={open}
           handleOpen={handleClose}
-          img={selectedCourse.image_url}
-          title={selectedCourse.title}
-          description={selectedCourse.description}
+          resource={selectedCourse}
         />
       )}
     </div>

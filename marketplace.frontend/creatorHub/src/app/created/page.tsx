@@ -32,7 +32,7 @@ const CreatedCourses = () => {
       fetch(`/api/resources/${account.address}`)
         .then((res) => res.json())
         .then((data) => {
-          console.log(data.data);
+          console.log(data);
           setData(data.data);
         })
         .finally(() => {

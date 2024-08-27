@@ -2,10 +2,15 @@
 import { Course } from "@/types/types";
 import { Card, Typography } from "@material-tailwind/react";
 import { primary } from "@/constants/colors";
+import { toEther } from "thirdweb";
 
 const TABLE_HEAD = ["Course", "Purchase Date", "Amount"];
 
-export function PurchasedTable({ data }: { data: Course[] }) {
+export function PurchasedTable({
+  data,
+}: {
+  data: { title: string; transactionDate: string; price: string }[];
+}) {
   return (
     <div className="relative shadow-md sm:rounded-lg max-h-[450px] overflow-x-auto overflow-y-scroll">
       <table className="w-full text-sm text-left text-gray-500">
@@ -54,7 +59,9 @@ export function PurchasedTable({ data }: { data: Course[] }) {
                   onPointerEnterCapture={undefined}
                   onPointerLeaveCapture={undefined}
                 >
-                  {new Date(Date.parse(course.transactionDate)).toDateString()}
+                  {new Date(
+                    Number(course.transactionDate) * 1000
+                  ).toDateString()}
                 </Typography>
               </td>
               <td className="py-4 px-6">
@@ -66,7 +73,7 @@ export function PurchasedTable({ data }: { data: Course[] }) {
                   onPointerEnterCapture={undefined}
                   onPointerLeaveCapture={undefined}
                 >
-                  {course.price} ETH
+                  {toEther(BigInt(course.price))} ETH
                 </Typography>
               </td>
             </tr>

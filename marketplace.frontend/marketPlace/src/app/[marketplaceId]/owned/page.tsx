@@ -28,7 +28,6 @@ const Owned = () => {
   useEffect(() => {
     dispatch(setIsAppLoading(true));
     if (account) {
-      // TODO: change api endpoint
       fetch(`/api/boughtResources/${account.address}`)
         .then((res) => res.json())
         .then((data) => {

@@ -21,6 +21,7 @@ import { useActiveAccount, useReadContract } from "thirdweb/react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import axios from "axios";
+import { AddCategoryDialog } from "./addCategoryDialog";
 
 interface CreateCourseDialogProps {
   open: boolean;
@@ -40,6 +41,10 @@ export function CreateCourseDialog({
   const [isCustomCategory, setIsCustomCategory] = useState<boolean>(false);
   const [thumbnail, setThumbnail] = useState<File | null>(null);
   const [category, setCategory] = useState<string>("x");
+
+  const [openAddCategoryDialog, setOpenAddCategoryDialog] =
+    useState<boolean>(false);
+
   const account = useActiveAccount();
   const router = useRouter();
   const { data: categoryOptions } = useReadContract({
@@ -141,11 +146,15 @@ export function CreateCourseDialog({
     toast.dismiss(loader);
   };
 
+  const handleCloseAddCategoryDialog = () => {
+    setOpenAddCategoryDialog(!openAddCategoryDialog);
+  };
+
   return (
     <>
       <Dialog
         open={open}
-        handler={onClose}
+        handler={() => {}}
         placeholder={undefined}
         onPointerEnterCapture={undefined}
         onPointerLeaveCapture={undefined}
@@ -164,7 +173,7 @@ export function CreateCourseDialog({
           className="flex flex-col gap-2"
         >
           <div className="flex gap-4 items-center justify-end">
-            <span>Public</span>
+            <span>Allow Listing</span>
             <Switch
               checked={isPublic}
               onChange={(e) => setIsPublic(e.target.checked)}
@@ -219,72 +228,47 @@ export function CreateCourseDialog({
                 }}
               />
             </div>
-            <div className="flex flex-col gap-4">
-              <div className="flex gap-4 items-center justify-end">
-                <span>Custom Category</span>
-                <Switch
-                  checked={isCustomCategory}
-                  onChange={(e) => {
-                    setIsCustomCategory(e.target.checked);
-                    setCategory("");
-                  }}
-                  onPointerEnterCapture={undefined}
-                  onPointerLeaveCapture={undefined}
-                  crossOrigin={undefined}
-                  color="blue"
-                />
-              </div>
-              {!isCustomCategory ? (
-                <Select
-                  label="Select Category"
-                  className="capitalize"
-                  value={category}
-                  onChange={(value) => {
-                    if (value) {
-                      console.log("value", value);
-                      setCategory(value);
-                    }
-                  }}
-                  disabled={isCustomCategory}
-                  placeholder={undefined}
-                  onPointerEnterCapture={undefined}
-                  onPointerLeaveCapture={undefined}
-                >
-                  {categoryOptions == null ? (
-                    <div className="w-full flex justify-center items-center">
-                      <Spinner
-                        onPointerEnterCapture={undefined}
-                        onPointerLeaveCapture={undefined}
-                      />
-                    </div>
-                  ) : (
-                    categoryOptions?.map((option) => (
-                      <Option
-                        key={option}
-                        className="capitalize"
-                        value={option}
-                      >
-                        {option}
-                      </Option>
-                    ))
-                  )}
-                </Select>
-              ) : (
-                <Input
-                  label="Category"
-                  type="text"
-                  color="blue"
-                  variant="outlined"
-                  value={category}
-                  onChange={(e) => {
-                    setCategory(e.target.value ?? "");
-                  }}
-                  disabled={!isCustomCategory}
-                  onPointerEnterCapture={undefined}
-                  onPointerLeaveCapture={undefined}
-                  crossOrigin={undefined}
-                />
-              )}
+            <div className="flex gap-4">
+              <Select
+                label="Select Category"
+                className="capitalize"
+                value={category}
+                onChange={(value) => {
+                  if (value) {
+                    console.log("value", value);
+                    setCategory(value);
+                  }
+                }}
+                placeholder={undefined}
+                onPointerEnterCapture={undefined}
+                onPointerLeaveCapture={undefined}
+              >
+                {categoryOptions == null ? (
+                  <div className="w-full flex justify-center items-center">
+                    <Spinner
+                      onPointerEnterCapture={undefined}
+                      onPointerLeaveCapture={undefined}
+                    />
+                  </div>
+                ) : (
+                  categoryOptions?.map((option) => (
+                    <Option key={option} className="capitalize" value={option}>
+                      {option}
+                    </Option>
+                  ))
+                )}
+              </Select>
+              <Button
+                variant="gradient"
+                color="blue"
+                onClick={() => setOpenAddCategoryDialog(true)}
+                size="sm"
+                placeholder={undefined}
+                onPointerEnterCapture={undefined}
+                onPointerLeaveCapture={undefined}
+              >
+                <span>Add </span>
+              </Button>
             </div>
           </div>
         </DialogBody>
@@ -316,6 +300,10 @@ export function CreateCourseDialog({
           </Button>
         </DialogFooter>
       </Dialog>
+      <AddCategoryDialog
+        open={openAddCategoryDialog}
+        onClose={handleCloseAddCategoryDialog}
+      />
     </>
   );
 }

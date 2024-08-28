@@ -16,3 +16,11 @@ export type Course = {
   transactionDate: string;
   allowListingAccess: boolean;
 };
+
+export type FetchedResource = {
+  title: string;
+  description: string;
+  file: string;
+  content: string;
+  type: string;
+};

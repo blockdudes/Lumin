@@ -5,7 +5,6 @@ import { Course, FetchedResource } from "@/types/types";
 import { ChapterBar } from "@/components/courseComponents/chapterBar";
 import { setIsAppLoading } from "@/lib/features/appLoader/appLoaderSlice";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
-import { primary } from "@/constants/colors";
 import MDEditor from "@uiw/react-md-editor";
 import { useActiveAccount } from "thirdweb/react";
 import { setOwnedResources } from "@/lib/features/ownedResources/ownedResourcesSlice";
@@ -119,7 +118,7 @@ const CourseDetails = () => {
           </div>
           <p className="text-lg ">{courseDetails.description}</p>
           <button
-            className={`bg-${primary}-500 hover:bg-${primary}-700 text-white font-bold py-2 px-6 rounded transition duration-300 ease-in-out transform hover:-translate-y-1`}
+            className={`bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-6 rounded transition duration-300 ease-in-out transform hover:-translate-y-1`}
             onClick={() => setHasStarted(true)}
           >
             Get Started

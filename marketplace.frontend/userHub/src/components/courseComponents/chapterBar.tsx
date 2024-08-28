@@ -1,9 +1,6 @@
 "use client";
-import { Dispatch, SetStateAction, useState } from "react";
-import { Card, Typography, Button, IconButton } from "@material-tailwind/react";
-import { PaperAirplaneIcon, TrashIcon } from "@heroicons/react/24/solid";
-import { Chapter } from "@/types/types";
-import toast from "react-hot-toast";
+import { Card, Typography } from "@material-tailwind/react";
+import { FetchedResource } from "@/types/types";
 
 export function ChapterBar({
   selectedChapterIndex,
@@ -12,7 +9,7 @@ export function ChapterBar({
   hasStarted, // Add this prop to receive the hasStarted state
 }: {
   selectedChapterIndex: number;
-  chapters: Chapter[];
+  chapters: FetchedResource[];
   setSelectedChapterIndex: (index: number) => void;
   hasStarted: boolean; // Declare the new prop type
 }) {
@@ -35,7 +32,7 @@ export function ChapterBar({
             >
               Chapters
             </Typography>
-            {chapters.map((chapter: Chapter, index: number) => (
+            {chapters.map((chapter, index) => (
               <Card
                 className="p-4 m-2"
                 key={index}
@@ -48,8 +45,11 @@ export function ChapterBar({
                   <Typography
                     variant="lead"
                     className="!font-bold"
-                    // Apply conditional styling based on hasStarted and selectedChapterIndex
-                    color={hasStarted && selectedChapterIndex === index ? "blue" : "black"}
+                    color={
+                      hasStarted && selectedChapterIndex === index
+                        ? "blue"
+                        : "black"
+                    }
                     placeholder={undefined}
                     onPointerEnterCapture={undefined}
                     onPointerLeaveCapture={undefined}

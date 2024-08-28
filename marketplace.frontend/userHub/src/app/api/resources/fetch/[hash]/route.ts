@@ -1,6 +1,5 @@
 import { connection } from "@/database/connection";
 import { UserResourceData } from "@/models/userDataModel";
-import JSZip from "jszip";
 
 export const GET = async (
   req: Request,
@@ -32,33 +31,6 @@ export const GET = async (
     return Response.error();
   }
 };
-
-async function bufferToFormData(buffer: Buffer): Promise<FormData> {
-  const zip = new JSZip();
-  await zip.loadAsync(buffer);
-  const formData = new FormData();
-  for (const [relativePath, zipEntry] of Object.entries(zip.files)) {
-    if (!zipEntry.dir) {
-      const content = await zipEntry.async("blob");
-      const pathParts = relativePath.split("/");
-      console.log("PATH PARTS: ", pathParts);
-      if (pathParts[2] === "chapter-data.json") {
-        const jsonContent = await content.text();
-        formData.append(`chapter-${pathParts[1].split("-")[1]}`, jsonContent);
-      } else if (pathParts[2] === "type") {
-        const chapterIndex = pathParts[1].split("-")[1];
-        const typeContent = await content.text();
-        formData.append(`type-${chapterIndex}`, typeContent);
-      } else if (pathParts.length === 3) {
-        const chapterIndex = pathParts[1].split("-")[1];
-        const fileName = pathParts[2];
-        const contentt = new File([content], fileName);
-        formData.append(`files-${chapterIndex}`, new File([content], fileName));
-      }
-    }
-  }
-  return formData;
-}
 
 async function formDataToResponseData(formData: FormData): Promise<any[]> {
   const tempData: { [key: string]: any } = {};

@@ -76,22 +76,21 @@ const CourseDetails = () => {
   }
 
   const FileRenderer = ({ type, url }: { type: string; url: string }) => {
-    switch (type) {
-      case "video/mp4":
-        return <video controls src={url} className="w-full" />;
-      case "application/pdf":
-        return (
-          <object data={url} type="application/pdf" width="100%" height="450">
-            <p>
-              Your browser does not support PDFs.
-              <a href={url}>Download the PDF</a>.
-            </p>
-          </object>
-        );
-      case "image/jpeg":
-        return <img src={url} alt="Chapter content" className="w-full" />;
-      default:
-        return <p>Unsupported file type</p>;
+    if (type.startsWith("video/")) {
+      return <video controls src={url} className="w-full" />;
+    } else if (type.startsWith("image/")) {
+      return <img src={url} alt="Chapter content" className="w-full" />;
+    } else if (type === "application/pdf") {
+      return (
+        <object data={url} type="application/pdf" width="100%" height="450">
+          <p>
+            Your browser does not support PDFs.
+            <a href={url}>Download the PDF</a>.
+          </p>
+        </object>
+      );
+    } else {
+      return <p>Unsupported file type</p>;
     }
   };
 
@@ -110,14 +109,15 @@ const CourseDetails = () => {
           <h1 className="text-3xl font-bold text-center">
             {courseDetails.title}
           </h1>
-          <div className="w-full h-72 flex justify-center items-center">
+          <div className="w-full flex justify-center items-center">
             <img
               src={courseDetails.image_url}
               alt={courseDetails.title}
               className="max-w-full h-auto rounded-lg shadow-lg"
+              style={{ maxWidth: "90%", maxHeight: "70vh" }}
             />
           </div>
-          <p className="text-lg ">{courseDetails.description}</p>
+          <p className="text-lg">{courseDetails.description}</p>
           <button
             className={`bg-${primary}-500 hover:bg-${primary}-700 text-white font-bold py-2 px-6 rounded transition duration-300 ease-in-out transform hover:-translate-y-1`}
             onClick={() => setHasStarted(true)}
@@ -136,8 +136,8 @@ const CourseDetails = () => {
                   : "opacity-0 hidden"
               }`}
             >
-              <h2 className="text-2xl font-bold">{chapter.title}</h2>
-              <p className="text-lg text-gray-800 font-medium">
+              <h2 className="text-2xl font-bold pb-2">{chapter.title}</h2>
+              <p className="text-lg text-gray-800 font-medium pb-3">
                 {chapter.description}
               </p>
               <FileRenderer type={chapter.type} url={chapter.file} />

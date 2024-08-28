@@ -109,16 +109,17 @@ const CourseDetails = () => {
           <h1 className="text-3xl font-bold text-center">
             {courseDetails.title}
           </h1>
-          <div className="w-full h-72 flex justify-center items-center">
+          <div className="w-full flex justify-center items-center">
             <img
               src={courseDetails.image_url}
               alt={courseDetails.title}
               className="max-w-full h-auto rounded-lg shadow-lg"
+              style={{ maxWidth: '90%', maxHeight: '70vh' }} 
             />
           </div>
-          <p className="text-lg ">{courseDetails.description}</p>
+          <p className="text-lg">{courseDetails.description}</p>
           <button
-            className={`bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-6 rounded transition duration-300 ease-in-out transform hover:-translate-y-1`}
+            className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-6 rounded transition duration-300 ease-in-out transform hover:-translate-y-1"
             onClick={() => setHasStarted(true)}
           >
             Get Started

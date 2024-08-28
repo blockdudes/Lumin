@@ -13,6 +13,7 @@ import toast from "react-hot-toast";
 import {
   prepareContractCall,
   sendAndConfirmTransaction,
+  toEther,
   toWei,
 } from "thirdweb";
 import { contract } from "@/constants/contracts";
@@ -101,7 +102,11 @@ export function CoursePurchaseDialog({
           onPointerEnterCapture={undefined}
           onPointerLeaveCapture={undefined}
         >
-          {resource.description}
+          {" "}
+          <div className="space-y-4">
+            <p className="text-lg font-semibold">{resource.description}</p>
+            <p className="text-sm text-gray-600">Price: {toEther(BigInt(resource.price))} ETH</p>
+          </div>
         </DialogBody>
         <DialogFooter
           placeholder={undefined}

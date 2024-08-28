@@ -18,6 +18,14 @@ export function CourseCard({
   description: string;
   onClick: () => void;
 }) {
+
+  const truncateDescription = (desc: string) => {
+    return (
+      desc.split(" ").slice(0, 15).join(" ") +
+      (desc.split(" ").length > 15 ? "..." : "")
+    );
+  };
+
   return (
     <Card
       className="mt-6 w-80"
@@ -51,12 +59,12 @@ export function CourseCard({
           {title}
         </Typography>
         <Typography
+          className="text-sm"
           placeholder={undefined}
           onPointerEnterCapture={undefined}
           onPointerLeaveCapture={undefined}
-          className="text-sm"
         >
-          {description}
+          {truncateDescription(description)}
         </Typography>
       </CardBody>
     </Card>

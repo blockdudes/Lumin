@@ -35,7 +35,6 @@ import {
 } from "thirdweb/react";
 
 export function Sidebar() {
-  const { marketplaceId } = useParams<{ marketplaceId: string }>();
   const [open, setOpen] = useState(0);
   const { disconnect } = useDisconnect();
   const wallet = useActiveWallet();

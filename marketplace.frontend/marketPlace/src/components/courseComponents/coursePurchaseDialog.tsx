@@ -22,6 +22,7 @@ import { Course } from "@/types/types";
 import { TypedData } from "abitype";
 import { SignableMessage, Hex, TypedDataDefinition } from "viem";
 import { useActiveAccount } from "thirdweb/react";
+import { useAppSelector } from "@/lib/hooks";
 
 export function CoursePurchaseDialog({
   open,
@@ -32,7 +33,9 @@ export function CoursePurchaseDialog({
   handleOpen: () => void;
   resource: Course;
 }) {
-  const { marketplaceId } = useParams<{ marketplaceId: string }>();
+  const marketplaceId = useAppSelector(
+    (state) => state.marketplace.marketplace
+  )?.id;
   const account = useActiveAccount();
   console.log({
     id: resource.id,
@@ -44,6 +47,10 @@ export function CoursePurchaseDialog({
   const router = useRouter();
 
   const handleConfirm = async () => {
+    if (!marketplaceId) {
+      toast.error("Marketplace ID not found");
+      return;
+    }
     var loader = toast.loading("Purchasing course...");
     try {
       const tx = prepareContractCall({
@@ -105,7 +112,9 @@ export function CoursePurchaseDialog({
           {" "}
           <div className="space-y-4">
             <p className="text-lg font-semibold">{resource.description}</p>
-            <p className="text-sm text-gray-600">Price: {toEther(BigInt(resource.price))} ETH</p>
+            <p className="text-sm text-gray-600">
+              Price: {toEther(BigInt(resource.price))} ETH
+            </p>
           </div>
         </DialogBody>
         <DialogFooter

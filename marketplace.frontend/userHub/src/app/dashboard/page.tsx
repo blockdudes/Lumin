@@ -3,15 +3,12 @@ import { PurchasedCard } from "@/components/dashboardComponents/purchasedCard";
 import { PurchasedTable } from "@/components/dashboardComponents/purchasedTable";
 import { setIsAppLoading } from "@/lib/features/appLoader/appLoaderSlice";
 import { useAppDispatch } from "@/lib/hooks";
-import { Course } from "@/types/types";
-import { useParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { useActiveAccount } from "thirdweb/react";
 
 const CreatorDashboard = () => {
   const account = useActiveAccount();
   const dispatch = useAppDispatch();
-  const { marketplaceId } = useParams<{ marketplaceId: string }>();
   const [data, setData] = useState<
     { title: string; transactionDate: string; price: string }[]
   >([]);
@@ -19,7 +16,7 @@ const CreatorDashboard = () => {
   useEffect(() => {
     dispatch(setIsAppLoading(true));
     if (account) {
-      fetch(`/api/marketplacePurchase/${marketplaceId}`)
+      fetch(`/api/boughtResources/${account.address}`)
         .then((res) => res.json())
         .then((data) => {
           console.log(data);

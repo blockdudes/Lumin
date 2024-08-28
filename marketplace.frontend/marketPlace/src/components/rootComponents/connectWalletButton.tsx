@@ -1,6 +1,7 @@
 "use client";
 import { tenderlyEduChain, eduChain } from "@/constants/chains";
 import { client } from "@/lib/client";
+import { useAppSelector } from "@/lib/hooks";
 import { useRouter, useParams } from "next/navigation";
 import React from "react";
 import { ConnectButton, useSwitchActiveWalletChain } from "thirdweb/react";
@@ -8,7 +9,9 @@ import { ConnectButton, useSwitchActiveWalletChain } from "thirdweb/react";
 const ConnectWalletButton = () => {
   const allowedChains = [tenderlyEduChain, eduChain];
   const router = useRouter();
-  const { marketplaceId } = useParams<{ marketplaceId: string }>();
+  const marketplaceId = useAppSelector(
+    (state) => state.marketplace.marketplace
+  )?.id;
   const switchChain = useSwitchActiveWalletChain();
 
   return (

@@ -11,6 +11,8 @@ import { PublicDialog } from "@/components/createdComponents/publicDialog";
 import { Course } from "@/types/types";
 import { setIsAppLoading } from "@/lib/features/appLoader/appLoaderSlice";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
+import { useActiveAccount } from "thirdweb/react";
+import { setCreatedResources } from "@/lib/features/createdResources/createdResourcesSlice";
 
 const CreatedCourseDetails = () => {
   const { hash } = useParams<{ hash: string }>();
@@ -18,7 +20,7 @@ const CreatedCourseDetails = () => {
   const resource = useAppSelector(
     (state) => state.createdResources.createdResources
   ).find((resource) => resource.resourceHash === hash);
-
+  const account = useActiveAccount();
   const [openTitleDialog, setOpenTitleDialog] = React.useState(false);
   const [openDescriptionDialog, setOpenDescriptionDialog] =
     React.useState(false);
@@ -30,6 +32,16 @@ const CreatedCourseDetails = () => {
 
   useEffect(() => {
     dispatch(setIsAppLoading(true));
+    if (!resource) {
+      if (account) {
+        fetch(`/api/resources/${account.address}`)
+          .then((res) => res.json())
+          .then((data) => {
+            console.log("data", data);
+            dispatch(setCreatedResources(data.data));
+          });
+      }
+    }
     fetch(`/api/resources/fetch/${hash}`)
       .then((res) => res.json())
       .then((data) => {
@@ -42,7 +54,7 @@ const CreatedCourseDetails = () => {
       .finally(() => {
         dispatch(setIsAppLoading(false));
       });
-  }, [hash]);
+  }, [account, hash, resource]);
 
   if (courseDetails === null) {
     return null;

@@ -2,7 +2,7 @@
 import { PurchasedCard } from "@/components/dashboardComponents/purchasedCard";
 import { PurchasedTable } from "@/components/dashboardComponents/purchasedTable";
 import { setIsAppLoading } from "@/lib/features/appLoader/appLoaderSlice";
-import { useAppDispatch } from "@/lib/hooks";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { Course } from "@/types/types";
 import { useParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -11,7 +11,9 @@ import { useActiveAccount } from "thirdweb/react";
 const CreatorDashboard = () => {
   const account = useActiveAccount();
   const dispatch = useAppDispatch();
-  const { marketplaceId } = useParams<{ marketplaceId: string }>();
+  const marketplaceId = useAppSelector(
+    (state) => state.marketplace.marketplace
+  )?.id;
   const [data, setData] = useState<
     { title: string; transactionDate: string; price: string }[]
   >([]);

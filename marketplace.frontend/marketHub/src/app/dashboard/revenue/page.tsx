@@ -24,7 +24,7 @@ const RevenuePage = () => {
         .then((res) => res.json())
         .then((data) => {
           const resources = data.data.map((resource: any) => {
-            console.log(resource);
+            console.log("resource",resource);
             return {
               market: resource.marketplaceName,
               creation: resource.createdAt,
@@ -45,14 +45,7 @@ const RevenuePage = () => {
 
   return (
     <div className="flex flex-col gap-4">
-      <RevenueCard
-        publicAssets={data
-          .filter((resource: any) => resource.ownership === "Public")
-          .reduce((total, resource) => total + Number(resource.revenue), 0)}
-        privateAssets={data
-          .filter((resource: any) => resource.ownership === "Private")
-          .reduce((total, resource) => total + Number(resource.revenue), 0)}
-      />
+      <RevenueCard data={data} />
       <RevenueTable data={data} />
     </div>
   );

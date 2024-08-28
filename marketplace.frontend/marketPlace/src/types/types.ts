@@ -24,3 +24,15 @@ export type FetchedResource = {
   content: string;
   type: string;
 };
+
+export type Marketplace = {
+  id: string;
+  description: string;
+  marketplaceName: string;
+  image_url: string;
+  feePercent: number;
+  categories: string[];
+  createdAt: string;
+  isOwnedResourcesMarketplace: boolean;
+  theme: string;
+};

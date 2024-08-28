@@ -1,12 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
 import appLoaderSlice from "./features/appLoader/appLoaderSlice";
 import ownedResourcesSlice from "./features/ownedResources/ownedResourcesSlice";
+import marketplaceSlice from "./features/marketplace/marketplaceSlice";
 
 export const makeStore = () => {
   return configureStore({
     reducer: {
       appLoader: appLoaderSlice,
       ownedResources: ownedResourcesSlice,
+      marketplace: marketplaceSlice,
     },
   });
 };

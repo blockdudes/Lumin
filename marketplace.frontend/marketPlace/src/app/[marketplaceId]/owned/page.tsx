@@ -19,11 +19,9 @@ const Owned = () => {
   const setData = (data: Course[]) => dispatch(setOwnedResources(data));
   const account = useActiveAccount();
   const dispatch = useAppDispatch();
-  const { data: categoryOptions } = useReadContract({
-    contract: contract(tenderlyEduChain),
-    method: "function getCategories() external view returns (string[])",
-    params: [],
-  });
+  const categoryOptions = useAppSelector(
+    (state) => state.marketplace.marketplace
+  )?.categories;
 
   useEffect(() => {
     dispatch(setIsAppLoading(true));
@@ -31,7 +29,7 @@ const Owned = () => {
       fetch(`/api/marketplacePurchase/${marketplaceId}`)
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
+          console.log("data", data);
           const resources: Course[] = data.data.map(
             (resource: any) => resource.resource
           );

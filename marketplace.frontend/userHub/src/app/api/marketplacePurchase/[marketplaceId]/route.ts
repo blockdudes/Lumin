@@ -53,7 +53,15 @@ export const GET = async (
         }
       );
 
-      return new Response(JSON.stringify({ data: purchases }), { status: 200 });
+      if (purchases.length === 0) {
+        return new Response(JSON.stringify({ data: [] }), {
+          status: 200,
+        });
+      }
+
+      return new Response(JSON.stringify({ data: purchases }), {
+        status: 200,
+      });
     } catch (error) {
       return new Response(
         JSON.stringify({ error: `unable to fetch from subgraph: ${error}` }),

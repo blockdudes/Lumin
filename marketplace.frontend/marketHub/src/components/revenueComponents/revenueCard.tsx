@@ -1,13 +1,16 @@
 import { Card, CardBody, Typography } from "@material-tailwind/react";
 
 import { BanknotesIcon } from "@heroicons/react/24/outline";
+import { toEther } from "thirdweb";
 
 export function RevenueCard({
-  publicAssets,
-  privateAssets,
+  data,
 }: {
-  publicAssets: number;
-  privateAssets: number;
+  data: {
+    market: string;
+    creation: string;
+    revenue: string;
+  }[];
 }) {
   return (
     <Card
@@ -44,7 +47,7 @@ export function RevenueCard({
               variant="lead"
               color="blue-gray"
             >
-              Public Assets
+              No. of assets
             </Typography>
             <Typography
               variant="h6"
@@ -53,7 +56,7 @@ export function RevenueCard({
               onPointerEnterCapture={undefined}
               onPointerLeaveCapture={undefined}
             >
-              {publicAssets} ETH
+              {data.length}
             </Typography>
           </div>
           <div className="flex flex-col items-center">
@@ -64,7 +67,7 @@ export function RevenueCard({
               variant="lead"
               color="blue-gray"
             >
-              Private Assets
+              Total Revenue
             </Typography>
             <Typography
               variant="h6"
@@ -73,7 +76,15 @@ export function RevenueCard({
               onPointerEnterCapture={undefined}
               onPointerLeaveCapture={undefined}
             >
-              {privateAssets} ETH
+              {toEther(
+                BigInt(
+                  data.reduce(
+                    (total, resource) => total + Number(resource.revenue),
+                    0
+                  )
+                )
+              )}{" "}
+              ETH
             </Typography>
           </div>
         </div>

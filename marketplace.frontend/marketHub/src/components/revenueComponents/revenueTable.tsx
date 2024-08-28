@@ -3,6 +3,7 @@ import { Button, Card, Typography } from "@material-tailwind/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { MarketplaceDetailsDialog } from "@/components/revenueComponents/marketplaceDetailsDialog"; // Import the MarketplaceDetails component
+import { toEther } from "thirdweb";
 
 interface MarketData {
   market: string;
@@ -104,7 +105,10 @@ export function RevenueTable({ data }: { data: MarketData[] }) {
                     onPointerEnterCapture={undefined}
                     onPointerLeaveCapture={undefined}
                   >
-                    {transaction.revenue} ETH
+                    {toEther(
+                      BigInt(transaction.revenue)
+                    )}{" "}
+                    ETH
                   </Typography>
                 </td>
                 {/* <td className="py-4 px-6">

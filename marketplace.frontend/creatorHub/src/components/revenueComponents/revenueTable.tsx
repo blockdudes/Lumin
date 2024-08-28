@@ -1,5 +1,6 @@
 "use client";
 import { Card, Typography } from "@material-tailwind/react";
+import { toEther } from "thirdweb";
 
 const TABLE_HEAD = ["Course", "Creation Date", "Ownership", "Revenue"];
 
@@ -85,7 +86,10 @@ export function RevenueTable({
                   onPointerEnterCapture={undefined}
                   onPointerLeaveCapture={undefined}
                 >
-                  {transaction.revenue} ETH
+                  {toEther(
+                    BigInt(transaction.revenue)
+                  )}{" "}
+                  ETH
                 </Typography>
               </td>
             </tr>

@@ -8,7 +8,6 @@ import { ConnectButton, useSwitchActiveWalletChain } from "thirdweb/react";
 const ConnectWalletButton = () => {
   const allowedChains = [tenderlyEduChain, eduChain];
   const router = useRouter();
-  const { marketplaceId } = useParams<{ marketplaceId: string }>();
   const switchChain = useSwitchActiveWalletChain();
 
   return (
@@ -23,7 +22,7 @@ const ConnectWalletButton = () => {
         }
       }}
       onDisconnect={() => {
-        router.push(`/${marketplaceId}`);
+        router.push("/");
       }}
     />
   );

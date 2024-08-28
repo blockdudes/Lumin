@@ -13,7 +13,9 @@ import { setOwnedResources } from "@/lib/features/ownedResources/ownedResourcesS
 
 const Owned = () => {
   const router = useRouter();
-  const { marketplaceId } = useParams<{ marketplaceId: string }>();
+  const marketplaceId = useAppSelector(
+    (state) => state.marketplace.marketplace
+  )?.id;
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const data = useAppSelector((state) => state.ownedResources.ownedResources);
   const setData = (data: Course[]) => dispatch(setOwnedResources(data));

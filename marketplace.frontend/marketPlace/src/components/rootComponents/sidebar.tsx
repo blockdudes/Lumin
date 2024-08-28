@@ -31,9 +31,12 @@ import {
   useIsAutoConnecting,
 } from "thirdweb/react";
 import { primary } from "@/constants/colors";
+import { useAppSelector } from "@/lib/hooks";
 
 export function Sidebar() {
-  const { marketplaceId } = useParams<{ marketplaceId: string }>();
+  const marketplaceId = useAppSelector(
+    (state) => state.marketplace.marketplace
+  )?.id;
   const [open, setOpen] = useState(0);
   const { disconnect } = useDisconnect();
   const wallet = useActiveWallet();

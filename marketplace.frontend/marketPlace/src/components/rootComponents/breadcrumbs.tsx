@@ -2,10 +2,13 @@
 import { Breadcrumbs } from "@material-tailwind/react";
 import { useParams, usePathname } from "next/navigation";
 import Link from "next/link";
+import { useAppSelector } from "@/lib/hooks";
 
 export default function DynamicBreadcrumb() {
   const pathname = usePathname();
-  const { marketplaceId } = useParams<{ marketplaceId: string }>();
+  const marketplaceId = useAppSelector(
+    (state) => state.marketplace.marketplace
+  )?.id;
   const pathnames = (pathname.split(`/${marketplaceId}/`)[1] ?? "").split("/");
 
   return (

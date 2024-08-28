@@ -71,13 +71,9 @@ export function PurchasedCard({
               onPointerEnterCapture={undefined}
               onPointerLeaveCapture={undefined}
             >
-              {toEther(
-                BigInt(
-                  purchasedCourses.reduce(
-                    (acc, course) => acc + Number(toEther(BigInt(course.price))),
-                    0
-                  )
-                )
+              {purchasedCourses.reduce(
+                (acc, course) => acc + Number(toEther(BigInt(course.price))),
+                0
               )}{" "}
               ETH
             </Typography>

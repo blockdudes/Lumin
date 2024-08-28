@@ -90,8 +90,10 @@ export const POST = async (req: Request) => {
     let chaptersPinata: { [key: string]: { file?: string; type?: string } } =
       {};
 
-    for (const [key, value] of Array.from(data.entries())) {
+    for (let [key, value] of Array.from(data.entries())) {
       const chapterPinataData = {}; // PINATA
+      let newFile: File | null = null;
+
       if (key.startsWith("chapter-")) {
         const chapterIndex = key.split("-")[1];
         // chapterData[chapterIndex] = JSON.parse(value as string);
@@ -114,9 +116,23 @@ export const POST = async (req: Request) => {
           chaptersPinata[`chapter-${fileIndex}`] = {};
         }
 
+        if ((value as File).type === "text/html") {
+          console.log("HTML FILE: ");
+          const htmlContent = await (value as File).text();
+          newFile = new File([htmlContent], "content.txt", {
+            type: "text/plain",
+          });
+
+          console.log("NEW FILE: ", newFile);
+        }
+
         // PINATA
         // const filePinataDataResult = await pinata.pinFileToIPFS(value as File);
         // chaptersPinata[`chapter${fileIndex}`] = { file: `https://gateway.pinata.cloud/ipfs/${filePinataDataResult.IpfsHash}` };
+
+        if (newFile) {
+          value = newFile;
+        }
 
         const arrayBufferImg = await (value as File).arrayBuffer();
         const bufferImg = Buffer.from(arrayBufferImg);

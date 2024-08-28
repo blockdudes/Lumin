@@ -48,22 +48,22 @@ const CourseDetails = () => {
         .finally(() => {
           dispatch(setIsAppLoading(false));
         });
-      dispatch(setIsAppLoading(true));
-      await fetch(`/api/resources/fetch/${hash}`)
-        .then((res) => res.json())
-        .then((data) => {
-          const courseDetails = {
-            ...data.data,
-            ...allResource.find((resource) => resource.resourceHash === hash),
-          };
-          courseDetails.resource = Object.values(data.data.resource);
-          setCourseDetails(courseDetails);
-          console.log("courseDetails", courseDetails);
-        })
-        .finally(() => {
-          dispatch(setIsAppLoading(false));
-        });
     }
+    dispatch(setIsAppLoading(true));
+    await fetch(`/api/resources/fetch/${hash}`)
+      .then((res) => res.json())
+      .then((data) => {
+        const courseDetails = {
+          ...data.data,
+          ...allResource.find((resource) => resource.resourceHash === hash),
+        };
+        courseDetails.resource = Object.values(data.data.resource);
+        setCourseDetails(courseDetails);
+        console.log("courseDetails", courseDetails);
+      })
+      .finally(() => {
+        dispatch(setIsAppLoading(false));
+      });
   };
 
   useEffect(() => {
@@ -75,22 +75,21 @@ const CourseDetails = () => {
   }
 
   const FileRenderer = ({ type, url }: { type: string; url: string }) => {
-    switch (type) {
-      case "video/mp4":
-        return <video controls src={url} className="w-full" />;
-      case "application/pdf":
-        return (
-          <object data={url} type="application/pdf" width="100%" height="450">
-            <p>
-              Your browser does not support PDFs.
-              <a href={url}>Download the PDF</a>.
-            </p>
-          </object>
-        );
-      case "image/jpeg":
-        return <img src={url} alt="Chapter content" className="w-full" />;
-      default:
-        return <p>Unsupported file type</p>;
+    if (type.startsWith("video/")) {
+      return <video controls src={url} className="w-full" />;
+    } else if (type.startsWith("image/")) {
+      return <img src={url} alt="Chapter content" className="w-full" />;
+    } else if (type === "application/pdf") {
+      return (
+        <object data={url} type="application/pdf" width="100%" height="450">
+          <p>
+            Your browser does not support PDFs.
+            <a href={url}>Download the PDF</a>.
+          </p>
+        </object>
+      );
+    } else {
+      return <p>Unsupported file type</p>;
     }
   };
 
@@ -114,7 +113,7 @@ const CourseDetails = () => {
               src={courseDetails.image_url}
               alt={courseDetails.title}
               className="max-w-full h-auto rounded-lg shadow-lg"
-              style={{ maxWidth: '90%', maxHeight: '70vh' }} 
+              style={{ maxWidth: "90%", maxHeight: "70vh" }}
             />
           </div>
           <p className="text-lg">{courseDetails.description}</p>

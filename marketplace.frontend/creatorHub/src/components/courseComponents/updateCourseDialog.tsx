@@ -1,4 +1,4 @@
-import React, { use, useState } from "react";
+import React, { useState } from "react";
 import {
   Button,
   Dialog,
@@ -26,13 +26,13 @@ import { AddCategoryDialog } from "@/components/createComponents/addCategoryDial
 interface UpdateCourseDialogProps {
   open: boolean;
   onClose: () => void;
-  chapters: Chapter[];
   courseData: {
+    id: string;
     name: string;
     description: string;
     price: number;
     isPublic: boolean;
-    thumbnail: File | null;
+    image_url: string;
     category: string;
   };
 }
@@ -40,19 +40,18 @@ interface UpdateCourseDialogProps {
 export function UpdateCourseDialog({
   open,
   onClose,
-  chapters,
   courseData,
 }: UpdateCourseDialogProps) {
   const [courseName, setCourseName] = useState<string>(courseData.name);
-  const [courseDescription, setCourseDescription] = useState<string>(courseData.description);
+  const [courseDescription, setCourseDescription] = useState<string>(
+    courseData.description
+  );
   const [coursePrice, setCoursePrice] = useState<number>(courseData.price);
   const [isPublic, setIsPublic] = useState<boolean>(courseData.isPublic);
-  const [thumbnail, setThumbnail] = useState<File | null>(courseData.thumbnail);
+  const [thumbnail, setThumbnail] = useState<File | null>(null);
   const [category, setCategory] = useState<string>(courseData.category);
-
   const [openAddCategoryDialog, setOpenAddCategoryDialog] =
     useState<boolean>(false);
-
   const account = useActiveAccount();
   const router = useRouter();
 
@@ -66,69 +65,48 @@ export function UpdateCourseDialog({
   });
 
   const handleCreateCourse = async () => {
-    var loader = toast.loading("Creating Course", {
-      duration: Infinity,
-    });
-    console.log("chapters", chapters);
+    var loader = toast.loading("Updating Course");
     try {
-      const hash = hashMessage(
-        courseName +
-          courseDescription +
-          coursePrice.toString() +
-          isPublic.toString() +
-          chapters.toString() +
-          Date.now().toString()
-      );
-
-      const formData = new FormData();
-      formData.append("hash", hash);
-      formData.append("title", courseName);
-      formData.append("description", courseDescription);
-      formData.append("price", coursePrice.toString());
-      formData.append("category", category);
-      formData.append("allowListingAccess", isPublic.toString());
+      var thumbnailUrl = courseData.image_url;
       if (thumbnail) {
-        formData.append("thumbnail", thumbnail);
-      }
-      chapters.forEach((chapter, index) => {
-        const { file, ...chapterData } = chapter;
-
-        formData.append(`chapter-${index}`, JSON.stringify(chapterData));
-        if (file) {
-          console.log("FILE: ", file);
-          formData.append(`files-${index}`, file);
-          formData.append(`type-${index}`, file.type);
-        }
-      });
-
-      const response = await axios.post("/api/resources/create", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
-
-      console.log(response);
-      if (response.status == 200) {
-        toast.success("Course Files Uploaded Successfully");
+        const formData = new FormData();
+        formData.append("image", thumbnail);
         toast.dismiss(loader);
-        loader = toast.loading("Deploying Course on Blockchain");
-      } else {
-        toast.error("Error Uploading Course Files");
-        return;
+        loader = toast.loading("Storing Image");
+        const response = await axios.post("/api/storeImage", formData);
+        if (response.status === 200) {
+          thumbnailUrl = response.data.data;
+          toast.dismiss(loader);
+          loader = toast.loading("Updating Resource on Blockchain");
+        } else {
+          toast.dismiss(loader);
+          toast.error("Error storing image");
+          return;
+        }
       }
-      console.log("Creating Course on Blockchain");
+
       const tx = prepareContractCall({
         contract: contract(tenderlyEduChain),
         method:
-          "function addResource(string memory title, string memory description, string memory category, string memory image_url, string memory resourceIpfsHash, bool allowListingAccess, uint256 price) external",
+          "function updateResource(uint256 resourceId, (bool updateTitle, string title, bool updateDescription, string description, bool updateCategory, string category, bool updateImageUrl, string image_url, bool updatePrice, uint price, bool updateResourceIpfsHash, string resourceIpfsHash, bool updateAllowListingAccess, bool allowListingAccess) memory params ) public",
         params: [
-          courseName,
-          courseDescription,
-          category,
-          response.data.data.thumbnail_url,
-          hash,
-          isPublic,
-          ethers.parseEther(coursePrice.toString()),
+          BigInt(courseData.id),
+          {
+            updateTitle: true,
+            title: courseName,
+            updateDescription: true,
+            description: courseDescription,
+            updateCategory: true,
+            category: category,
+            updateImageUrl: true,
+            image_url: thumbnailUrl,
+            updatePrice: true,
+            price: BigInt(coursePrice),
+            updateResourceIpfsHash: true,
+            resourceIpfsHash: thumbnailUrl,
+            updateAllowListingAccess: true,
+            allowListingAccess: isPublic,
+          },
         ],
         gas: BigInt(10000000),
       });
@@ -144,15 +122,15 @@ export function UpdateCourseDialog({
       });
       console.log(res);
       if (res.status === "success") {
-        toast.success("Course created successfully");
+        toast.success("Resource updated successfully");
         toast.dismiss(loader);
         onClose();
         router.push("/created");
       } else {
-        toast.error("Error creating course");
+        toast.error("Error updating resource");
       }
     } catch (e) {
-      toast.error("Error creating course");
+      toast.error("Error updating resource");
       console.error(e);
     }
     toast.dismiss(loader);

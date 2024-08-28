@@ -102,14 +102,14 @@ const CreatedCourses = () => {
           open={updateDialogOpen}
           onClose={handleCloseUpdateDialog}
           courseData={{
+            id: selectedCourse.id,
             name: selectedCourse.title,
             description: selectedCourse.description,
             price: selectedCourse.price,
             isPublic: selectedCourse.allowListingAccess,
-            thumbnail: null, // Assuming thumbnail handling is needed
+            image_url: selectedCourse.image_url,
             category: selectedCourse.category,
           }}
-          chapters={[]} // Assuming chapters are part of the course data
         />
       )}
     </div>

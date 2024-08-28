@@ -40,7 +40,7 @@ const CourseDetails = () => {
       if (!account) {
         return;
       }
-      await fetch(`/api/getAllowListedResource`)
+      const data = await fetch(`/api/getAllowListedResource`)
         .then((res) => res.json())
         .then((data) => {
           setAllResources(data.data);
@@ -49,22 +49,22 @@ const CourseDetails = () => {
         .finally(() => {
           dispatch(setIsAppLoading(false));
         });
-      dispatch(setIsAppLoading(true));
-      await fetch(`/api/resources/fetch/${hash}`)
-        .then((res) => res.json())
-        .then((data) => {
-          const courseDetails = {
-            ...data.data,
-            ...allResource.find((resource) => resource.resourceHash === hash),
-          };
-          courseDetails.resource = Object.values(data.data.resource);
-          setCourseDetails(courseDetails);
-          console.log("courseDetails", courseDetails);
-        })
-        .finally(() => {
-          dispatch(setIsAppLoading(false));
-        });
     }
+    dispatch(setIsAppLoading(true));
+    await fetch(`/api/resources/fetch/${hash}`)
+      .then((res) => res.json())
+      .then((data) => {
+        const courseDetails = {
+          ...data.data,
+          ...allResource.find((resource) => resource.resourceHash === hash),
+        };
+        courseDetails.resource = Object.values(data.data.resource);
+        setCourseDetails(courseDetails);
+        console.log("courseDetails", courseDetails);
+      })
+      .finally(() => {
+        dispatch(setIsAppLoading(false));
+      });
   };
 
   useEffect(() => {

@@ -10,6 +10,7 @@ import { useActiveAccount, useReadContract } from "thirdweb/react";
 import { tenderlyEduChain } from "@/constants/chains";
 import { contract } from "@/constants/contracts";
 import { setCreatedResources } from "@/lib/features/createdResources/createdResourcesSlice";
+import { UpdateCourseDialog } from "@/components/courseComponents/updateCourseDialog";
 
 const CreatedCourses = () => {
   const router = useRouter();
@@ -25,6 +26,19 @@ const CreatedCourses = () => {
     method: "function getCategories() external view returns (string[])",
     params: [],
   });
+
+  const [updateDialogOpen, setUpdateDialogOpen] = useState<boolean>(false);
+  const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
+
+  const handleOpenUpdateDialog = (course: Course) => {
+    setSelectedCourse(course);
+    setUpdateDialogOpen(true);
+  };
+
+  const handleCloseUpdateDialog = () => {
+    setUpdateDialogOpen(false);
+    setSelectedCourse(null);
+  };
 
   useEffect(() => {
     dispatch(setIsAppLoading(true));
@@ -78,11 +92,26 @@ const CreatedCourses = () => {
               img={course.image_url}
               title={course.title}
               description={course.description}
-              onClick={() => handleOpen(course)}
+              onClick={() => handleOpenUpdateDialog(course)}
             />
           ))}
         </div>
       </div>
+      {selectedCourse && (
+        <UpdateCourseDialog
+          open={updateDialogOpen}
+          onClose={handleCloseUpdateDialog}
+          courseData={{
+            name: selectedCourse.title,
+            description: selectedCourse.description,
+            price: selectedCourse.price,
+            isPublic: selectedCourse.allowListingAccess,
+            thumbnail: null, // Assuming thumbnail handling is needed
+            category: selectedCourse.category,
+          }}
+          chapters={[]} // Assuming chapters are part of the course data
+        />
+      )}
     </div>
   );
 };

@@ -1,180 +1,14 @@
 "use client";
-import { Card, Typography } from "@material-tailwind/react";
+import { Typography } from "@material-tailwind/react";
+import { toEther } from "thirdweb";
 
-const TABLE_HEAD = ["Course", "Purchase Date", "Market Place" , "Amount"];
+const TABLE_HEAD = ["Course", "Purchase Date", "Amount"];
 
-const TABLE_ROWS = [
-  {
-    course: "Course A",
-    purchaseDate: "01/01/22",
-    marketPlace: "Platform X",
-    amount: "$10,000",
-  },
-  {
-    course: "Course B",
-    purchaseDate: "15/02/22",
-    marketPlace: "Platform Y",
-    amount: "$7,500",
-  },
-  {
-    course: "Course A",
-    purchaseDate: "01/01/22",
-    marketPlace: "Platform X",
-    amount: "$10,000",
-  },
-  {
-    course: "Course B",
-    purchaseDate: "15/02/22",
-    marketPlace: "Platform Y",
-    amount: "$7,500",
-  },
-  {
-    course: "Course A",
-    purchaseDate: "01/01/22",
-    marketPlace: "Platform X",
-    amount: "$10,000",
-  },
-  {
-    course: "Course B",
-    purchaseDate: "15/02/22",
-    marketPlace: "Platform Y",
-    amount: "$7,500",
-  },
-  {
-    course: "Course A",
-    purchaseDate: "01/01/22",
-    marketPlace: "Platform X",
-    amount: "$10,000",
-  },
-  {
-    course: "Course B",
-    purchaseDate: "15/02/22",
-    marketPlace: "Platform Y",
-    amount: "$7,500",
-  },
-  {
-    course: "Course A",
-    purchaseDate: "01/01/22",
-    marketPlace: "Platform X",
-    amount: "$10,000",
-  },
-  {
-    course: "Course B",
-    purchaseDate: "15/02/22",
-    marketPlace: "Platform Y",
-    amount: "$7,500",
-  },
-  {
-    course: "Course C",
-    purchaseDate: "10/03/22",
-    marketPlace: "Platform Z",
-    amount: "$5,200",
-  },
-  {
-    course: "Course D",
-    purchaseDate: "20/04/22",
-    marketPlace: "Platform X",
-    amount: "$3,400",
-  },
-  {
-    course: "Course E",
-    purchaseDate: "05/05/22",
-    marketPlace: "Platform Y",
-    amount: "$8,100",
-  },
-  {
-    course: "Course F",
-    purchaseDate: "12/06/22",
-    marketPlace: "Platform Z",
-    amount: "$4,300",
-  },
-  {
-    course: "Course G",
-    purchaseDate: "25/07/22",
-    marketPlace: "Platform X",
-    amount: "$6,750",
-  },
-  {
-    course: "Course H",
-    purchaseDate: "30/08/22",
-    marketPlace: "Platform Y",
-    amount: "$9,200",
-  },
-  {
-    course: "Course I",
-    purchaseDate: "15/09/22",
-    marketPlace: "Platform Z",
-    amount: "$3,100",
-  },
-  {
-    course: "Course J",
-    purchaseDate: "20/10/22",
-    marketPlace: "Platform X",
-    amount: "$8,500",
-  },
-  {
-    course: "Course K",
-    purchaseDate: "05/11/22",
-    marketPlace: "Platform Y",
-    amount: "$2,800",
-  },
-  {
-    course: "Course L",
-    purchaseDate: "10/12/22",
-    marketPlace: "Platform Z",
-    amount: "$5,600",
-  },
-  {
-    course: "Course M",
-    purchaseDate: "21/01/23",
-    marketPlace: "Platform X",
-    amount: "$7,300",
-  },
-  {
-    course: "Course N",
-    purchaseDate: "02/02/23",
-    marketPlace: "Platform Y",
-    amount: "$4,400",
-  },
-  {
-    course: "Course O",
-    purchaseDate: "14/03/23",
-    marketPlace: "Platform Z",
-    amount: "$8,900",
-  },
-  {
-    course: "Course P",
-    purchaseDate: "25/04/23",
-    marketPlace: "Platform X",
-    amount: "$3,500",
-  },
-  {
-    course: "Course Q",
-    purchaseDate: "05/05/23",
-    marketPlace: "Platform Y",
-    amount: "$6,100",
-  },
-  {
-    course: "Course R",
-    purchaseDate: "16/06/23",
-    marketPlace: "Platform Z",
-    amount: "$9,000",
-  },
-  {
-    course: "Course S",
-    purchaseDate: "27/07/23",
-    marketPlace: "Platform X",
-    amount: "$2,700",
-  },
-  {
-    course: "Course T",
-    purchaseDate: "07/08/23",
-    marketPlace: "Platform Y",
-    amount: "$4,800",
-  },
-];
-
-export function PurchasedTable() {
+export function PurchasedTable({
+  data,
+}: {
+  data: { title: string; transactionDate: string; price: string }[];
+}) {
   return (
     <div className="relative shadow-md sm:rounded-lg max-h-[450px] overflow-x-auto overflow-y-scroll">
       <table className="w-full text-sm text-left text-gray-500">
@@ -200,7 +34,7 @@ export function PurchasedTable() {
           </tr>
         </thead>
         <tbody>
-          {TABLE_ROWS.map((transaction, index) => (
+          {data.map((course, index) => (
             <tr key={index} className="bg-white even:bg-blue-gray-50">
               <td className="py-4 px-6">
                 <Typography
@@ -211,7 +45,7 @@ export function PurchasedTable() {
                   onPointerEnterCapture={undefined}
                   onPointerLeaveCapture={undefined}
                 >
-                  {transaction.course}
+                  {course.title}
                 </Typography>
               </td>
               <td className="py-4 px-6">
@@ -223,7 +57,9 @@ export function PurchasedTable() {
                   onPointerEnterCapture={undefined}
                   onPointerLeaveCapture={undefined}
                 >
-                  {transaction.purchaseDate}
+                  {new Date(
+                    Number(course.transactionDate) * 1000
+                  ).toDateString()}
                 </Typography>
               </td>
               <td className="py-4 px-6">
@@ -235,19 +71,7 @@ export function PurchasedTable() {
                   onPointerEnterCapture={undefined}
                   onPointerLeaveCapture={undefined}
                 >
-                  {transaction.marketPlace}
-                </Typography>
-              </td>
-              <td className="py-4 px-6">
-                <Typography
-                  variant="small"
-                  color="blue-gray"
-                  className="font-normal"
-                  placeholder={undefined}
-                  onPointerEnterCapture={undefined}
-                  onPointerLeaveCapture={undefined}
-                >
-                  {transaction.amount}
+                  {toEther(BigInt(course.price))} ETH
                 </Typography>
               </td>
             </tr>

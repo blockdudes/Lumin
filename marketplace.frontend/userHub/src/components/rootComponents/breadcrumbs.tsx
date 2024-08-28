@@ -5,8 +5,6 @@ import Link from "next/link";
 
 export default function DynamicBreadcrumb() {
   const pathname = usePathname();
-
-
   const pathnames = pathname.split("/").filter((x) => x);
 
   return (
@@ -30,11 +28,12 @@ export default function DynamicBreadcrumb() {
         const routeTo = `/${pathnames.slice(0, index + 1).join("/")}`;
         const isLast = index === pathnames.length - 1;
 
-
         return isLast ? (
-          <span key={name}>{name}</span>
+          <span key={name} className="capitalize">
+            {name}
+          </span>
         ) : (
-          <Link key={name} href={routeTo} className="opacity-60">
+          <Link key={name} href={routeTo} className="opacity-60 capitalize">
             {name}
           </Link>
         );

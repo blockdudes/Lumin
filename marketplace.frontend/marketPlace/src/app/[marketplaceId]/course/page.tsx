@@ -9,7 +9,7 @@ import { contract } from "@/constants/contracts";
 import { useActiveAccount, useReadContract } from "thirdweb/react";
 import { Course } from "@/types/types";
 import { setIsAppLoading } from "@/lib/features/appLoader/appLoaderSlice";
-import { useAppDispatch } from "@/lib/hooks";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 
 const Owned = () => {
   const router = useRouter();
@@ -21,25 +21,27 @@ const Owned = () => {
   const [open, setOpen] = React.useState(false);
   const dispatch = useAppDispatch();
   const account = useActiveAccount();
-  const { data: categoryOptions } = useReadContract({
-    contract: contract(tenderlyEduChain),
-    method: "function getCategories() external view returns (string[])",
-    params: [],
-  });
+  const categoryOptions = useAppSelector(
+    (state) => state.marketplace.marketplace
+  )?.categories;
 
   useEffect(() => {
     dispatch(setIsAppLoading(true));
-    if (account) {
+    if (account && categoryOptions) {
       fetch(`/api/getAllowListedResource`)
         .then((res) => res.json())
         .then((data) => {
-          setData(data.data);
+          setData(
+            data.data.filter((course: any) =>
+              categoryOptions.includes(course.category)
+            )
+          );
         })
         .finally(() => {
           dispatch(setIsAppLoading(false));
         });
     }
-  }, [account]);
+  }, [account, categoryOptions]);
 
   const handleOpen = (course: Course) => {
     setSelectedCourse(course);

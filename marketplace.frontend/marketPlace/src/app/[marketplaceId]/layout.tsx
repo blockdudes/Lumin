@@ -1,11 +1,23 @@
+"use client";
 import AppLoader from "@/components/rootComponents/appLoader";
 import DynamicBreadcrumb from "@/components/rootComponents/breadcrumbs";
 import ConnectWalletButton from "@/components/rootComponents/connectWalletButton";
 import { Sidebar } from "@/components/rootComponents/sidebar";
+import { setMarketplace } from "@/lib/features/marketplace/marketplaceSlice";
+import { useAppDispatch } from "@/lib/hooks";
+import { useParams } from "next/navigation";
 import React from "react";
 import { Toaster } from "react-hot-toast";
 
 function Layout({ children }: { children: React.ReactNode }) {
+  const dispatch = useAppDispatch();
+  const { marketplaceId } = useParams<{ marketplaceId: string }>();
+  fetch(`/api/marketplace/${marketplaceId}`)
+    .then((res) => res.json())
+    .then((data) => {
+      dispatch(setMarketplace(data.data));
+    });
+
   return (
     <div className="w-full flex ">
       <div className="mr-72">

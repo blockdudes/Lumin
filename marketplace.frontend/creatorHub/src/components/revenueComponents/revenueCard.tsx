@@ -1,6 +1,7 @@
 import { Card, CardBody, Typography } from "@material-tailwind/react";
 
 import { BanknotesIcon } from "@heroicons/react/24/outline";
+import { toEther } from "thirdweb";
 
 export function RevenueCard({
   publicAssets,
@@ -53,7 +54,7 @@ export function RevenueCard({
               onPointerEnterCapture={undefined}
               onPointerLeaveCapture={undefined}
             >
-              {publicAssets} ETH
+              {toEther(BigInt(publicAssets))} ETH
             </Typography>
           </div>
           <div className="flex flex-col items-center">

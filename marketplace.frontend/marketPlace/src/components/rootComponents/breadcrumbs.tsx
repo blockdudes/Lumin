@@ -10,10 +10,10 @@ export default function DynamicBreadcrumb() {
 
   return (
     <Breadcrumbs
+      className="bg-transparent"
       placeholder={undefined}
       onPointerEnterCapture={undefined}
       onPointerLeaveCapture={undefined}
-      className="bg-transparent"
     >
       <Link href="/" className="opacity-60">
         <svg
@@ -26,7 +26,10 @@ export default function DynamicBreadcrumb() {
         </svg>
       </Link>
       {pathnames.map((name, index) => {
-        const routeTo = `/${pathnames.slice(0, index + 1).join("/")}`;
+        // Include marketplaceId in the route
+        const routeTo = `/${marketplaceId}/${pathnames
+          .slice(0, index + 1)
+          .join("/")}`;
         const isLast = index === pathnames.length - 1;
 
         return isLast ? (

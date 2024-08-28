@@ -1,8 +1,12 @@
 import { Card, CardBody, Typography } from "@material-tailwind/react";
-
 import { BanknotesIcon } from "@heroicons/react/24/outline";
+import { toEther } from "thirdweb";
 
-export function PurchasedCard() {
+export function PurchasedCard({
+  purchasedCourses,
+}: {
+  purchasedCourses: { title: string; transactionDate: string; price: string }[];
+}) {
   return (
     <Card
       className="mt-6 w-[78vw] mx-auto shadow-lg"
@@ -47,7 +51,7 @@ export function PurchasedCard() {
               onPointerEnterCapture={undefined}
               onPointerLeaveCapture={undefined}
             >
-              21
+              {purchasedCourses.length}
             </Typography>
           </div>
           <div className="flex flex-col items-center">
@@ -67,7 +71,11 @@ export function PurchasedCard() {
               onPointerEnterCapture={undefined}
               onPointerLeaveCapture={undefined}
             >
-              $100,000
+              {purchasedCourses.reduce(
+                (acc, course) => acc + Number(toEther(BigInt(course.price))),
+                0
+              )}{" "}
+              ETH
             </Typography>
           </div>
         </div>

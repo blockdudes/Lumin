@@ -125,15 +125,15 @@ export const POST = async (req: Request) => {
           console.log("NEW FILE: ", newFile);
         }
 
-        if ((value as File).type === "text/html") {
-          console.log("HTML FILE: ");
-          const htmlContent = await (value as File).text();
-          newFile = new File([htmlContent], "content.txt", {
-            type: "text/plain",
-          });
+        // if ((value as File).type === "text/html") {
+        //   console.log("HTML FILE: ");
+        //   const htmlContent = await (value as File).text();
+        //   newFile = new File([htmlContent], "content.txt", {
+        //     type: "text/plain",
+        //   });
 
-          console.log("NEW FILE: ", newFile);
-        }
+        //   console.log("NEW FILE: ", newFile);
+        // }
 
         // PINATA
         // const filePinataDataResult = await pinata.pinFileToIPFS(value as File);
@@ -142,11 +142,13 @@ export const POST = async (req: Request) => {
         if (newFile) {
           console.log("NEW FILE: ", newFile);
           value = newFile;
+          newFile = null
         }
 
-        if (newFile) {
-          value = newFile;
-        }
+
+        // if (newFile) {
+        //   value = newFile;
+        // }
 
         const arrayBufferImg = await (value as File).arrayBuffer();
         const bufferImg = Buffer.from(arrayBufferImg);

@@ -30,7 +30,6 @@ import {
   useActiveWallet,
   useIsAutoConnecting,
 } from "thirdweb/react";
-import { primary } from "@/constants/colors";
 import { useAppSelector } from "@/lib/hooks";
 
 export function Sidebar() {
@@ -41,6 +40,8 @@ export function Sidebar() {
   const { disconnect } = useDisconnect();
   const wallet = useActiveWallet();
   const isAutoConnecting = useIsAutoConnecting();
+
+  const primary = useAppSelector((state) => state.marketplace.primary);
 
   const handleLogout = () => {
     if (!wallet) {
@@ -74,7 +75,7 @@ export function Sidebar() {
         >
           <div
             className=" py-4 flex items-center gap-2 "
-            onClick={() => router.push(`/${marketplaceId}`)}
+            onClick={() => router.push(`/`)}
           >
             <CubeTransparentIcon
               className={` h-12 w-12 text-${primary}-500 `}
@@ -150,7 +151,7 @@ export function Sidebar() {
                   onPointerLeaveCapture={undefined}
                 >
                   <ListItem
-                    onClick={() => router.push(`/${marketplaceId}/dashboard`)}
+                    onClick={() => router.push(`/dashboard`)}
                     placeholder={undefined}
                     onPointerEnterCapture={undefined}
                     onPointerLeaveCapture={undefined}
@@ -226,7 +227,7 @@ export function Sidebar() {
                     placeholder={undefined}
                     onPointerEnterCapture={undefined}
                     onPointerLeaveCapture={undefined}
-                    onClick={() => router.push(`/${marketplaceId}/course`)}
+                    onClick={() => router.push(`/course`)}
                   >
                     <ListItemPrefix
                       placeholder={undefined}
@@ -294,7 +295,7 @@ export function Sidebar() {
                   onPointerLeaveCapture={undefined}
                 >
                   <ListItem
-                    onClick={() => router.push(`/${marketplaceId}/owned`)}
+                    onClick={() => router.push(`/owned`)}
                     placeholder={undefined}
                     onPointerEnterCapture={undefined}
                     onPointerLeaveCapture={undefined}

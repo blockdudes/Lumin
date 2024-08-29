@@ -26,7 +26,7 @@ const ConnectWalletButton = () => {
         }
       }}
       onDisconnect={() => {
-        router.push(`/${marketplaceId}`);
+        router.push(`/`);
       }}
     />
   );

@@ -2,13 +2,15 @@
 
 import { useParams, useRouter } from "next/navigation";
 import toast from "react-hot-toast";
-import { primary } from "../../constants/colors";
 import { useAppSelector } from "@/lib/hooks";
 
 export default function Home() {
   const marketplaceId = useAppSelector(
     (state) => state.marketplace.marketplace
   )?.id;
+  const primary = useAppSelector(
+    (state) => state.marketplace.primary
+  );
   const router = useRouter();
 
 

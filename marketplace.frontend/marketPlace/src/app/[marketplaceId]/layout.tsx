@@ -6,17 +6,28 @@ import { Sidebar } from "@/components/rootComponents/sidebar";
 import { setMarketplace } from "@/lib/features/marketplace/marketplaceSlice";
 import { useAppDispatch } from "@/lib/hooks";
 import { useParams } from "next/navigation";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Toaster } from "react-hot-toast";
+import axios from "axios";
 
 function Layout({ children }: { children: React.ReactNode }) {
+  const subdomain = (typeof window !== "undefined" && window.location.href.match(/^https?:\/\/([^.]+)\./)?.[1]) || null;
   const dispatch = useAppDispatch();
-  const { marketplaceId } = useParams<{ marketplaceId: string }>();
-  fetch(`/api/marketplace/${marketplaceId}`)
-    .then((res) => res.json())
-    .then((data) => {
-      dispatch(setMarketplace(data.data));
-    });
+
+  useEffect(() => {
+    if (subdomain) {
+      axios.get(`api/getMarketPlaceId/${subdomain}`).then((res) => {
+        console.log(res.data.id);
+        fetch(`api/marketplace/${res.data.id}`)
+          .then((res) => res.json())
+          .then((data) => {
+            dispatch(setMarketplace(data.data));
+          });
+      }).catch((err) => {
+        console.log(err);
+      })
+    }
+  }, [subdomain]);
 
   return (
     <div className="w-full flex ">

@@ -6,11 +6,11 @@ schema:
 dataSources:
   - kind: ethereum/contract
     name: Marketplace
-    network: mainnet
+    network: testnet
     source:
-      address: '0xa6ED33Df93BDDBDf811fC1a41C615324c808bE0b'
+      address: '0x343F0c794d0fba5678665Fc8523bc06e096DED18'
       abi: MarketplaceABI
-      startBlock: 20575700
+      startBlock: 44962
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -38,6 +38,7 @@ dataSources:
           handler: handleMarketplaceFeeUpdated
         - event: CategoryAddedToMarketplace(indexed uint256,string)
           handler: handleCategoryAddedToMarketplace
+
 
 
 

@@ -87,8 +87,7 @@ export const POST = async (req: Request) => {
 
     // pinata
 
-    let chaptersPinata: { [key: string]: { file?: string; type?: string } } =
-      {};
+    let chaptersPinata: { [key: string]: { file?: string; type?: string } } = {};
 
     for (let [key, value] of Array.from(data.entries())) {
       const chapterPinataData = {}; // PINATA
@@ -98,22 +97,32 @@ export const POST = async (req: Request) => {
         const chapterIndex = key.split("-")[1];
         // chapterData[chapterIndex] = JSON.parse(value as string);
 
-        if (!chaptersPinata[`chapter-${chapterIndex}`]) {
-          chaptersPinata[`chapter-${chapterIndex}`] = {};
+        if (!chaptersPinata[`chapter - ${chapterIndex}`]) {
+          chaptersPinata[`chapter - ${chapterIndex}`] = {};
         }
 
         // PINATA
         // const chapterJsonDataResult = await pinata.pinJSONToIPFS(JSON.parse(value as string));
-        // console.log("chapterJsonDataResult", `https://gateway.pinata.cloud/ipfs/${chapterJsonDataResult.IpfsHash}`);
-        // console.log("chapterIndex", chaptersPinata[`chapter-${chapterIndex}`]['content']);
-        chaptersPinata[`chapter-${chapterIndex}`] = JSON.parse(value as string);
+        // console.log("chapterJsonDataResult", https://gateway.pinata.cloud/ipfs/${chapterJsonDataResult.IpfsHash});
+        // console.log("chapterIndex", chaptersPinata[chapter-${chapterIndex}]['content']);
+        chaptersPinata[`chapter - ${chapterIndex}`] = JSON.parse(value as string);
       } else if (key.startsWith("files-")) {
         console.log("FILE: ", value);
         const fileIndex = key.split("-")[1];
         // chapterFiles[fileIndex] = value as File;
 
-        if (!chaptersPinata[`chapter-${fileIndex}`]) {
-          chaptersPinata[`chapter-${fileIndex}`] = {};
+        if (!chaptersPinata[`chapter - ${fileIndex}`]) {
+          chaptersPinata[`chapter - ${fileIndex}`] = {};
+        }
+
+        if ((value as File).type === "text/html") {
+          console.log("HTML FILE: ");
+          const htmlContent = await (value as File).text();
+          newFile = new File([htmlContent], "content.txt", {
+            type: "text/plain",
+          });
+
+          console.log("NEW FILE: ", newFile);
         }
 
         if ((value as File).type === "text/html") {
@@ -128,7 +137,12 @@ export const POST = async (req: Request) => {
 
         // PINATA
         // const filePinataDataResult = await pinata.pinFileToIPFS(value as File);
-        // chaptersPinata[`chapter${fileIndex}`] = { file: `https://gateway.pinata.cloud/ipfs/${filePinataDataResult.IpfsHash}` };
+        // chaptersPinata[chapter${fileIndex}] = { file: https://gateway.pinata.cloud/ipfs/${filePinataDataResult.IpfsHash} };
+
+        if (newFile) {
+          console.log("NEW FILE: ", newFile);
+          value = newFile;
+        }
 
         if (newFile) {
           value = newFile;
@@ -149,15 +163,15 @@ export const POST = async (req: Request) => {
 
         const fileResult = await pinata.pinFileToIPFS(readableStream, options);
         chaptersPinata[
-          `chapter-${fileIndex}`
-        ].file = `https://gateway.pinata.cloud/ipfs/${fileResult.IpfsHash}`;
-        chaptersPinata[`chapter-${fileIndex}`].type = (value as File).type;
+          `chapter - ${fileIndex}`
+        ].file = `https://ipfs.io/ipfs/${fileResult.IpfsHash}`;
+        chaptersPinata[`chapter - ${fileIndex}`].type = (value as File).type;
       }
     }
     // for (const [index, data] of Object.entries(chapterData)) {
-    //   const chapterFolder = chaptersFolder.folder(`chapter-${index}`);
+    //   const chapterFolder = chaptersFolder.folder(chapter-${index});
     //   if (!chapterFolder) {
-    //     return Response.json({ error: `Failed to create folder for chapter-${index}` }, { status: 500 });
+    //     return Response.json({ error: Failed to create folder for chapter-${index} }, { status: 500 });
     //   }
     //   chapterFolder.file('chapter-data.json', JSON.stringify(data, null, 2));
     //   const file = chapterFiles[index];

@@ -73,11 +73,11 @@ export function Sidebar() {
           onPointerLeaveCapture={undefined}
         >
           <div
-            className="mb-2 py-4 flex items-center gap-2 cursor-pointer"
+            className=" py-4 flex items-center gap-2 "
             onClick={() => router.push(`/${marketplaceId}`)}
           >
             <CubeTransparentIcon
-              className={`mb-4 h-12 w-12 text-${primary}-500`}
+              className={` h-12 w-12 text-${primary}-500 `}
             />
             <Typography
               variant="h5"

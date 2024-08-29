@@ -88,10 +88,14 @@ const CourseDetails = () => {
           </p>
         </object>
       );
+    } else if (type === "text/javascript") {
+      return <iframe src={url} className="min-w-full min-h-full" />;
     } else {
       return <p>Unsupported file type</p>;
     }
   };
+
+  console.log("courseDetails", courseDetails);
 
   return (
     <div className="pr-[350px]">

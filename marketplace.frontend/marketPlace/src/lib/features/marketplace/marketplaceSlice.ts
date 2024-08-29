@@ -4,10 +4,14 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 
 interface MarketplaceState {
   marketplace: Marketplace | null;
+  primary: string | null;
+  secondary: string | null;
 }
 
 const initialState: MarketplaceState = {
   marketplace: null,
+  primary: null,
+  secondary: null,
 };
 
 export const marketplaceSlice = createSlice({
@@ -16,6 +20,9 @@ export const marketplaceSlice = createSlice({
   reducers: {
     setMarketplace: (state, action: PayloadAction<Marketplace>) => {
       state.marketplace = action.payload;
+      var theme = action.payload.theme.split("-");
+      state.primary = theme[0];
+      state.secondary = theme[1];
     },
   },
 });

@@ -89,6 +89,8 @@ const CourseDetails = () => {
           </p>
         </object>
       );
+    } else if (type.startsWith("text/")) {
+      return <iframe src={url} className="min-w-full min-h-full" />;
     } else {
       return <p>Unsupported file type</p>;
     }

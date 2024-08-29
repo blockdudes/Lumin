@@ -125,12 +125,26 @@ export const POST = async (req: Request) => {
           console.log("NEW FILE: ", newFile);
         }
 
+        if ((value as File).type === "text/html") {
+          console.log("HTML FILE: ");
+          const htmlContent = await (value as File).text();
+          newFile = new File([htmlContent], "content.txt", {
+            type: "text/plain",
+          });
+
+          console.log("NEW FILE: ", newFile);
+        }
+
         // PINATA
         // const filePinataDataResult = await pinata.pinFileToIPFS(value as File);
         // chaptersPinata[chapter${fileIndex}] = { file: https://gateway.pinata.cloud/ipfs/${filePinataDataResult.IpfsHash} };
 
         if (newFile) {
           console.log("NEW FILE: ", newFile);
+          value = newFile;
+        }
+
+        if (newFile) {
           value = newFile;
         }
 

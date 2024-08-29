@@ -2,14 +2,15 @@ import { Card, CardBody, Typography } from "@material-tailwind/react";
 
 import { BanknotesIcon } from "@heroicons/react/24/outline";
 import { Course } from "@/types/types";
-import { primary } from "@/constants/colors";
 import { toEther } from "thirdweb";
+import { useAppSelector } from "@/lib/hooks";
 
 export function PurchasedCard({
   purchasedCourses,
 }: {
   purchasedCourses: { title: string; transactionDate: string; price: string }[];
 }) {
+  const primary = useAppSelector((state) => state.marketplace.primary);
   return (
     <Card
       className="mt-6 w-[78vw] mx-auto shadow-lg"

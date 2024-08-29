@@ -44,7 +44,7 @@ const Owned = () => {
   }, [account]);
 
   const handleOpen = (course: Course) => {
-    router.push(`/${marketplaceId}/owned/${course.resourceHash}`);
+    router.push(`/owned/${course.resourceHash}`);
   };
 
   const handleCategoryChange = (categories: string[]) => {

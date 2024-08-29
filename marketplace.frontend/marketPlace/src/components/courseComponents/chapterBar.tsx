@@ -4,7 +4,7 @@ import { Card, Typography, Button, IconButton } from "@material-tailwind/react";
 import { PaperAirplaneIcon, TrashIcon } from "@heroicons/react/24/solid";
 import { Chapter, FetchedResource } from "@/types/types";
 import toast from "react-hot-toast";
-import { primary } from "@/constants/colors";
+import { useAppSelector } from "@/lib/hooks";
 
 export function ChapterBar({
   selectedChapterIndex,
@@ -17,6 +17,7 @@ export function ChapterBar({
   setSelectedChapterIndex: (index: number) => void;
   hasStarted: boolean; // Declare the new prop type
 }) {
+  const primary = useAppSelector((state) => state.marketplace.primary);
   return (
     <div className="w-[350px] h-screen">
       <Card

@@ -8,7 +8,6 @@ import {
   DialogFooter,
 } from "@material-tailwind/react";
 import { useRouter, useParams } from "next/navigation";
-import { primary } from "@/constants/colors";
 import toast from "react-hot-toast";
 import {
   prepareContractCall,
@@ -33,6 +32,7 @@ export function CoursePurchaseDialog({
   handleOpen: () => void;
   resource: Course;
 }) {
+  const primary = useAppSelector((state) => state.marketplace.primary);
   const marketplaceId = useAppSelector(
     (state) => state.marketplace.marketplace
   )?.id;
@@ -75,7 +75,7 @@ export function CoursePurchaseDialog({
       if (res.status === "success") {
         toast.dismiss(loader);
         toast.success("Course purchased successfully");
-        router.push(`/${marketplaceId}/owned/${resource.resourceHash}`);
+        router.push(`/owned/${resource.resourceHash}`);
       } else {
         toast.dismiss(loader);
         toast.error("Error purchasing course");

@@ -47,7 +47,7 @@ export function ChapterBar({
                     className="!font-bold"
                     color={
                       hasStarted && selectedChapterIndex === index
-                        ? "blue"
+                        ? "green"
                         : "black"
                     }
                     placeholder={undefined}

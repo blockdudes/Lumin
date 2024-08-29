@@ -269,6 +269,7 @@ export function Sidebar() {
               placeholder={undefined}
               onPointerEnterCapture={undefined}
               onPointerLeaveCapture={undefined}
+              onClick={handleLogout}
             >
               <ListItemPrefix
                 placeholder={undefined}

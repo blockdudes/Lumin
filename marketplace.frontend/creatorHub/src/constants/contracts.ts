@@ -1,7 +1,7 @@
 import { client } from "@/lib/client";
 import { Chain, getContract } from "thirdweb";
 
-export const contractAddress = "0xa6ed33df93bddbdf811fc1a41c615324c808be0b";
+export const contractAddress = "0x48adf8Da7dF6Ab6f353BA90Ec58Cf148aebAAC14";
 
 export const contract = (chain: Chain) =>
   getContract({

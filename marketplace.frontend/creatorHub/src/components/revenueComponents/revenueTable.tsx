@@ -62,7 +62,8 @@ export function RevenueTable({
                   onPointerEnterCapture={undefined}
                   onPointerLeaveCapture={undefined}
                 >
-                  {new Date(Number(transaction.creation)).toDateString()}
+                  {/* {transaction.creation} */}
+                  {new Date(Number(transaction.creation) * 1000).toDateString()}
                 </Typography>
               </td>
               <td className="py-4 px-6">

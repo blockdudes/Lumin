@@ -36,3 +36,9 @@ export type Marketplace = {
   isOwnedResourcesMarketplace: boolean;
   theme: string;
 };
+
+
+export type SubdomainId = {
+  id: string;
+  subdomain: string;
+}

@@ -31,6 +31,9 @@ export const GET = async (
 
     const marketplaces = get_marketplaces.data.marketplaces[0] || [];
 
+
+    console.log('marketplaces',marketplaces)
+
     return new Response(JSON.stringify({ data: marketplaces }), {
       status: 200,
     });

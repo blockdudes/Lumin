@@ -71,13 +71,13 @@ export function Sidebar() {
           onPointerLeaveCapture={undefined}
         >
           <div
-            className="mb-2 py-4 flex items-center gap-2 cursor-pointer"
+            className=" py-4 flex items-center gap-2 cursor-pointer"
             onClick={() => router.push("/")}
           >
-            <div className="flex items-center justify-center">
-              <CubeTransparentIcon className="mb-4 h-12 w-12 text-green-500" />
+            <div className="">
+              <CubeTransparentIcon className="h-12 w-12 text-green-500" />
             </div>
-            <div className="flex items-center justify-center">
+            <div className="">
               <Typography
                 variant="h5"
                 color="blue-gray"

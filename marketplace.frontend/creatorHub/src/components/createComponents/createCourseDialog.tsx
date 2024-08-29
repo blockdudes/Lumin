@@ -41,6 +41,7 @@ export function CreateCourseDialog({
   const [isCustomCategory, setIsCustomCategory] = useState<boolean>(false);
   const [thumbnail, setThumbnail] = useState<File | null>(null);
   const [category, setCategory] = useState<string>("x");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const [openAddCategoryDialog, setOpenAddCategoryDialog] =
     useState<boolean>(false);
@@ -58,6 +59,7 @@ export function CreateCourseDialog({
   });
 
   const handleCreateCourse = async () => {
+    setIsLoading(true);
     var loader = toast.loading("Creating Course", {
       duration: Infinity,
     });
@@ -147,6 +149,7 @@ export function CreateCourseDialog({
       toast.error("Error creating course");
       console.error(e);
     }
+    setIsLoading(false);
     toast.dismiss(loader);
   };
 
@@ -297,10 +300,23 @@ export function CreateCourseDialog({
             color="blue"
             onClick={handleCreateCourse}
             placeholder={undefined}
+            disabled={isLoading}
             onPointerEnterCapture={undefined}
             onPointerLeaveCapture={undefined}
           >
-            <span>Confirm</span>
+            <span>
+              {isLoading ? (
+                <div className="flex items-center px-6 ">
+                  <Spinner
+                    onPointerEnterCapture={undefined}
+                    onPointerLeaveCapture={undefined}
+                    className="w-4 h-4"
+                  />
+                </div>
+              ) : (
+                "Confirm"
+              )}
+            </span>
           </Button>
         </DialogFooter>
       </Dialog>

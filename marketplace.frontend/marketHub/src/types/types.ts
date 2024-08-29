@@ -7,3 +7,8 @@ export type Marketplace = {
   categories: string[];
   createdAt: string;
 };
+
+export type SubdomainId = {
+  id: string;
+  subdomain: string;
+}

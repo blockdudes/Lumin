@@ -5,7 +5,6 @@ import { Course, FetchedResource } from "@/types/types";
 import { ChapterBar } from "@/components/courseComponents/chapterBar";
 import { setIsAppLoading } from "@/lib/features/appLoader/appLoaderSlice";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
-import { primary } from "@/constants/colors";
 import MDEditor from "@uiw/react-md-editor";
 import { useActiveAccount } from "thirdweb/react";
 import { setOwnedResources } from "@/lib/features/ownedResources/ownedResourcesSlice";
@@ -13,6 +12,7 @@ import { setOwnedResources } from "@/lib/features/ownedResources/ownedResourcesS
 const CourseDetails = () => {
   const navigate = useRouter();
   const { hash } = useParams<{ hash: string }>();
+  const primary = useAppSelector((state) => state.marketplace.primary);
   const dispatch = useAppDispatch();
   const [selectedChapterIndex, setSelectedChapterIndex] = useState(0);
   const [hasStarted, setHasStarted] = useState(false);

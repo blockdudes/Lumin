@@ -1,22 +1,18 @@
 "use client";
 import { Breadcrumbs } from "@material-tailwind/react";
-import { useParams, usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { useAppSelector } from "@/lib/hooks";
 
 export default function DynamicBreadcrumb() {
   const pathname = usePathname();
-  const marketplaceId = useAppSelector(
-    (state) => state.marketplace.marketplace
-  )?.id;
-  const pathnames = (pathname.split(`/${marketplaceId}/`)[1] ?? "").split("/");
+  const pathnames = pathname.split("/").filter((x) => x);
 
   return (
     <Breadcrumbs
-      className="bg-transparent"
       placeholder={undefined}
       onPointerEnterCapture={undefined}
       onPointerLeaveCapture={undefined}
+      className="bg-transparent"
     >
       <Link href="/" className="opacity-60">
         <svg
@@ -29,10 +25,7 @@ export default function DynamicBreadcrumb() {
         </svg>
       </Link>
       {pathnames.map((name, index) => {
-        // Include marketplaceId in the route
-        const routeTo = `/${marketplaceId}/${pathnames
-          .slice(0, index + 1)
-          .join("/")}`;
+        const routeTo = `/${pathnames.slice(0, index + 1).join("/")}`;
         const isLast = index === pathnames.length - 1;
 
         return isLast ? (

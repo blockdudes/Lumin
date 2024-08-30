@@ -11,3 +11,274 @@ $ next start -p 9000
 
  ✓ Starting...
  ✓ Ready in 258ms
+$ next start -p 9000
+  ▲ Next.js 14.2.5
+  - Local:        http://localhost:9000
+
+ ✓ Starting...
+ ✓ Ready in 269ms
+DATABASE CONNECTED 2!
+hash 0x5b0965a3aa4d3ec8d8959bde80bac6639bc13c4bee970a54b72bcc9fc204da99
+title Demo Course
+description lorem ipsum doler sit amet 
+price 0.001
+category web3
+resource:  null
+data [
+  [
+    'hash',
+    '0x5b0965a3aa4d3ec8d8959bde80bac6639bc13c4bee970a54b72bcc9fc204da99'
+  ],
+  [ 'title', 'Demo Course' ],
+  [ 'description', 'lorem ipsum doler sit amet ' ],
+  [ 'price', '0.001' ],
+  [ 'category', 'web3' ],
+  [ 'allowListingAccess', 'true' ],
+  [
+    'thumbnail',
+    File {
+      size: 138555,
+      type: 'image/png',
+      name: 'logo.png',
+      lastModified: 1724998255467
+    }
+  ],
+  [
+    'chapter-0',
+    `{"title":"Chapter: 1","description":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.","content":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen \\n\\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen \\n\\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen \\n\\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."}`
+  ],
+  [
+    'files-0',
+    File {
+      size: 549194,
+      type: 'image/png',
+      name: 'bg.png',
+      lastModified: 1724998255468
+    }
+  ],
+  [ 'type-0', 'image/png' ]
+]
+FILE:  File {
+  size: 549194,
+  type: 'image/png',
+  name: 'bg.png',
+  lastModified: 1724998255468
+}
+chaptersPinata {
+  'chapter - 0': {
+    title: 'Chapter: 1',
+    description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    content: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen \n" +
+      '\n' +
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen \n" +
+      '\n' +
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen \n" +
+      '\n' +
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    file: 'https://ipfs.io/ipfs/Qmbz6M8DpmNTNXoNEDa26mqyG83gVsz3wLBj9yyrpncLfs',
+    type: 'image/png'
+  }
+}
+newResource:  {
+  hash: '0x5b0965a3aa4d3ec8d8959bde80bac6639bc13c4bee970a54b72bcc9fc204da99',
+  resource: {
+    'chapter - 0': {
+      title: 'Chapter: 1',
+      description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+      content: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen \n" +
+        '\n' +
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen \n" +
+        '\n' +
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen \n" +
+        '\n' +
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+      file: 'https://ipfs.io/ipfs/Qmbz6M8DpmNTNXoNEDa26mqyG83gVsz3wLBj9yyrpncLfs',
+      type: 'image/png'
+    }
+  },
+  title: 'Demo Course',
+  price: '0.001',
+  category: 'web3',
+  description: 'lorem ipsum doler sit amet ',
+  thumbnail: 'https://gateway.pinata.cloud/ipfs/QmUmVpcvfC8n2ZWKQnYMAgaBQkjTdsVFUPMCKK7fFBXGcp',
+  allowListingAccess: true,
+  _id: new ObjectId('66d1627411607b1eff7e86bc'),
+  __v: 0
+}
+thumbnailUrl https://gateway.pinata.cloud/ipfs/QmUmVpcvfC8n2ZWKQnYMAgaBQkjTdsVFUPMCKK7fFBXGcp
+identifier 0xc699dc72Da10141eE105f9C70aDe50d3F72e81eb
+inside
+{
+  data: { users: [ [Object] ], purchases: [] },
+  loading: false,
+  networkStatus: 7
+}
+[
+  {
+    __typename: 'Resource',
+    id: '97857688874940457269321772272235536728712204157121359233641255051656318039818',
+    image_url: 'https://gateway.pinata.cloud/ipfs/QmUmVpcvfC8n2ZWKQnYMAgaBQkjTdsVFUPMCKK7fFBXGcp',
+    price: '1000000000000000',
+    resourceHash: '0x5b0965a3aa4d3ec8d8959bde80bac6639bc13c4bee970a54b72bcc9fc204da99',
+    title: 'Demo Course',
+    description: 'lorem ipsum doler sit amet ',
+    category: 'web3',
+    allowListingAccess: true,
+    transactionDate: '1724998271',
+    resource_earning: 0
+  }
+]
+identifier 0xc699dc72Da10141eE105f9C70aDe50d3F72e81eb
+inside
+{
+  data: { users: [ [Object] ], purchases: [] },
+  loading: false,
+  networkStatus: 7
+}
+[
+  {
+    __typename: 'Resource',
+    id: '97857688874940457269321772272235536728712204157121359233641255051656318039818',
+    image_url: 'https://gateway.pinata.cloud/ipfs/QmUmVpcvfC8n2ZWKQnYMAgaBQkjTdsVFUPMCKK7fFBXGcp',
+    price: '1000000000000000',
+    resourceHash: '0x5b0965a3aa4d3ec8d8959bde80bac6639bc13c4bee970a54b72bcc9fc204da99',
+    title: 'Demo Course',
+    description: 'lorem ipsum doler sit amet ',
+    category: 'web3',
+    allowListingAccess: true,
+    transactionDate: '1724998271',
+    resource_earning: 0
+  }
+]
+identifier 0xc699dc72Da10141eE105f9C70aDe50d3F72e81eb
+inside
+{
+  data: { users: [ [Object] ], purchases: [] },
+  loading: false,
+  networkStatus: 7
+}
+[
+  {
+    __typename: 'Resource',
+    id: '97857688874940457269321772272235536728712204157121359233641255051656318039818',
+    image_url: 'https://gateway.pinata.cloud/ipfs/QmUmVpcvfC8n2ZWKQnYMAgaBQkjTdsVFUPMCKK7fFBXGcp',
+    price: '1000000000000000',
+    resourceHash: '0x5b0965a3aa4d3ec8d8959bde80bac6639bc13c4bee970a54b72bcc9fc204da99',
+    title: 'Demo Course',
+    description: 'lorem ipsum doler sit amet ',
+    category: 'web3',
+    allowListingAccess: true,
+    transactionDate: '1724998271',
+    resource_earning: 0
+  }
+]
+identifier 0xc699dc72Da10141eE105f9C70aDe50d3F72e81eb
+inside
+{
+  data: { users: [ [Object] ], purchases: [] },
+  loading: false,
+  networkStatus: 7
+}
+[
+  {
+    __typename: 'Resource',
+    id: '97857688874940457269321772272235536728712204157121359233641255051656318039818',
+    image_url: 'https://gateway.pinata.cloud/ipfs/QmUmVpcvfC8n2ZWKQnYMAgaBQkjTdsVFUPMCKK7fFBXGcp',
+    price: '1000000000000000',
+    resourceHash: '0x5b0965a3aa4d3ec8d8959bde80bac6639bc13c4bee970a54b72bcc9fc204da99',
+    title: 'Demo Course',
+    description: 'lorem ipsum doler sit amet ',
+    category: 'web3',
+    allowListingAccess: true,
+    transactionDate: '1724998271',
+    resource_earning: 0
+  }
+]
+identifier 0xc699dc72Da10141eE105f9C70aDe50d3F72e81eb
+inside
+{
+  data: { users: [ [Object] ], purchases: [] },
+  loading: false,
+  networkStatus: 7
+}
+[
+  {
+    __typename: 'Resource',
+    id: '97857688874940457269321772272235536728712204157121359233641255051656318039818',
+    image_url: 'https://gateway.pinata.cloud/ipfs/QmUmVpcvfC8n2ZWKQnYMAgaBQkjTdsVFUPMCKK7fFBXGcp',
+    price: '1000000000000000',
+    resourceHash: '0x5b0965a3aa4d3ec8d8959bde80bac6639bc13c4bee970a54b72bcc9fc204da99',
+    title: 'Demo Course',
+    description: 'lorem ipsum doler sit amet ',
+    category: 'web3',
+    allowListingAccess: true,
+    transactionDate: '1724998271',
+    resource_earning: 0
+  }
+]
+identifier 0xc699dc72Da10141eE105f9C70aDe50d3F72e81eb
+inside
+{
+  data: { users: [ [Object] ], purchases: [] },
+  loading: false,
+  networkStatus: 7
+}
+[
+  {
+    __typename: 'Resource',
+    id: '97857688874940457269321772272235536728712204157121359233641255051656318039818',
+    image_url: 'https://gateway.pinata.cloud/ipfs/QmUmVpcvfC8n2ZWKQnYMAgaBQkjTdsVFUPMCKK7fFBXGcp',
+    price: '1000000000000000',
+    resourceHash: '0x5b0965a3aa4d3ec8d8959bde80bac6639bc13c4bee970a54b72bcc9fc204da99',
+    title: 'Demo Course',
+    description: 'lorem ipsum doler sit amet ',
+    category: 'web3',
+    allowListingAccess: true,
+    transactionDate: '1724998271',
+    resource_earning: 0
+  }
+]
+identifier 0xc699dc72Da10141eE105f9C70aDe50d3F72e81eb
+inside
+{
+  data: { users: [ [Object] ], purchases: [] },
+  loading: false,
+  networkStatus: 7
+}
+[
+  {
+    __typename: 'Resource',
+    id: '97857688874940457269321772272235536728712204157121359233641255051656318039818',
+    image_url: 'https://gateway.pinata.cloud/ipfs/QmUmVpcvfC8n2ZWKQnYMAgaBQkjTdsVFUPMCKK7fFBXGcp',
+    price: '1000000000000000',
+    resourceHash: '0x5b0965a3aa4d3ec8d8959bde80bac6639bc13c4bee970a54b72bcc9fc204da99',
+    title: 'Demo Course',
+    description: 'lorem ipsum doler sit amet ',
+    category: 'web3',
+    allowListingAccess: true,
+    transactionDate: '1724998271',
+    resource_earning: 0
+  }
+]
+identifier 0xc699dc72Da10141eE105f9C70aDe50d3F72e81eb
+inside
+{
+  data: { users: [ [Object] ], purchases: [] },
+  loading: false,
+  networkStatus: 7
+}
+[
+  {
+    __typename: 'Resource',
+    id: '97857688874940457269321772272235536728712204157121359233641255051656318039818',
+    image_url: 'https://gateway.pinata.cloud/ipfs/QmUmVpcvfC8n2ZWKQnYMAgaBQkjTdsVFUPMCKK7fFBXGcp',
+    price: '1000000000000000',
+    resourceHash: '0x5b0965a3aa4d3ec8d8959bde80bac6639bc13c4bee970a54b72bcc9fc204da99',
+    title: 'Demo Course',
+    description: 'lorem ipsum doler sit amet ',
+    category: 'web3',
+    allowListingAccess: true,
+    transactionDate: '1724998271',
+    resource_earning: 0
+  }
+]

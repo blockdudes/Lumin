@@ -1178,3 +1178,589 @@ marketplaces {
 }
 galaxytools.marketplace.dev.blockdudes.com
 galaxytools.marketplace.dev.blockdudes.com
+$ next start -p 9007
+  ▲ Next.js 14.2.5
+  - Local:        http://localhost:9007
+
+ ✓ Starting...
+ ✓ Ready in 265ms
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+params { subdomain: 'abv' }
+abv.marketplace.dev.blockdudes.com
+abc.marketplace.dev.blockdudes.com
+abc.marketplace.dev.blockdudes.com
+abc.marketplace.dev.blockdudes.com
+abc.marketplace.dev.blockdudes.com
+abc.marketplace.dev.blockdudes.com
+abc.marketplace.dev.blockdudes.com
+abc.marketplace.dev.blockdudes.com
+abc.marketplace.dev.blockdudes.com
+abc.marketplace.dev.blockdudes.com
+abc.marketplace.dev.blockdudes.com
+abc.marketplace.dev.blockdudes.com
+abc.marketplace.dev.blockdudes.com
+abc.marketplace.dev.blockdudes.com
+abc.marketplace.dev.blockdudes.com
+abc.marketplace.dev.blockdudes.com
+abc.marketplace.dev.blockdudes.com
+abc.marketplace.dev.blockdudes.com
+abc.marketplace.dev.blockdudes.com
+abc.marketplace.dev.blockdudes.com
+abc.marketplace.dev.blockdudes.com
+abc.marketplace.dev.blockdudes.com
+abc.marketplace.dev.blockdudes.com
+abc.marketplace.dev.blockdudes.com
+abc.marketplace.dev.blockdudes.com
+abc.marketplace.dev.blockdudes.com
+abc.marketplace.dev.blockdudes.com
+DATABASE CONNECTED 2!
+abv
+abv.marketplace.dev.blockdudes.com
+marketplaces []
+abc.marketplace.dev.blockdudes.com
+abc.marketplace.dev.blockdudes.com
+abc.marketplace.dev.blockdudes.com
+abc.marketplace.dev.blockdudes.com
+params { subdomain: 'abc' }
+DATABASE CONNECTED!
+abc
+abc.marketplace.dev.blockdudes.com
+abc.marketplace.dev.blockdudes.com
+abc.marketplace.dev.blockdudes.com
+marketplaces []
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+params { subdomain: 'blockchain' }
+DATABASE CONNECTED!
+blockchain
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+marketplaces []
+samx9090.marketplace.dev.blockdudes.com
+samx9090.marketplace.dev.blockdudes.com
+samx9090.marketplace.dev.blockdudes.com
+samx9090.marketplace.dev.blockdudes.com
+samx9090.marketplace.dev.blockdudes.com
+samx9090.marketplace.dev.blockdudes.com
+samx9090.marketplace.dev.blockdudes.com
+samx9090.marketplace.dev.blockdudes.com
+samx9090.marketplace.dev.blockdudes.com
+samx9090.marketplace.dev.blockdudes.com
+samx9090.marketplace.dev.blockdudes.com
+samx9090.marketplace.dev.blockdudes.com
+samx9090.marketplace.dev.blockdudes.com
+samx9090.marketplace.dev.blockdudes.com
+samx9090.marketplace.dev.blockdudes.com
+samx9090.marketplace.dev.blockdudes.com
+samx9090.marketplace.dev.blockdudes.com
+samx9090.marketplace.dev.blockdudes.com
+samx9090.marketplace.dev.blockdudes.com
+samx9090.marketplace.dev.blockdudes.com
+samx9090.marketplace.dev.blockdudes.com
+samx9090.marketplace.dev.blockdudes.com
+samx9090.marketplace.dev.blockdudes.com
+samx9090.marketplace.dev.blockdudes.com
+samx9090.marketplace.dev.blockdudes.com
+samx9090.marketplace.dev.blockdudes.com
+samx9090.marketplace.dev.blockdudes.com
+samx9090.marketplace.dev.blockdudes.com
+samx9090.marketplace.dev.blockdudes.com
+samx9090.marketplace.dev.blockdudes.com
+samx9090.marketplace.dev.blockdudes.com
+params { subdomain: 'samx9090' }
+DATABASE CONNECTED!
+samx9090
+samx9090.marketplace.dev.blockdudes.com
+samx9090.marketplace.dev.blockdudes.com
+samx9090.marketplace.dev.blockdudes.com
+samx9090.marketplace.dev.blockdudes.com
+marketplaces []
+samx9090.marketplace.dev.blockdudes.com
+samx9090.marketplace.dev.blockdudes.com
+samx9090.marketplace.dev.blockdudes.com
+params { subdomain: 'samx9090' }
+DATABASE CONNECTED!
+samx9090
+samx9090.marketplace.dev.blockdudes.com
+samx9090.marketplace.dev.blockdudes.com
+marketplaces []
+samx9090.marketplace.dev.blockdudes.com
+samx9090.marketplace.dev.blockdudes.com
+samx9090.marketplace.dev.blockdudes.com
+samx9090.marketplace.dev.blockdudes.com
+samx9090.marketplace.dev.blockdudes.com
+params { subdomain: 'samx9090' }
+DATABASE CONNECTED!
+samx9090
+samx9090.marketplace.dev.blockdudes.com
+marketplaces []
+samx9090.marketplace.dev.blockdudes.com
+samx9090.marketplace.dev.blockdudes.com
+samx9090.marketplace.dev.blockdudes.com
+samx9090.marketplace.dev.blockdudes.com
+samx9090.marketplace.dev.blockdudes.com
+samx9090.marketplace.dev.blockdudes.com
+samx9090.marketplace.dev.blockdudes.com
+samx9090.marketplace.dev.blockdudes.com
+samx9090.marketplace.dev.blockdudes.com
+samx9090.marketplace.dev.blockdudes.com
+samx9090.marketplace.dev.blockdudes.com
+samx9090.marketplace.dev.blockdudes.com
+samx9090.marketplace.dev.blockdudes.com
+samx9090.marketplace.dev.blockdudes.com
+samx9090.marketplace.dev.blockdudes.com
+samx9090.marketplace.dev.blockdudes.com
+hell.marketplace.dev.blockdudes.com
+hell.marketplace.dev.blockdudes.com
+hell.marketplace.dev.blockdudes.com
+hell.marketplace.dev.blockdudes.com
+hell.marketplace.dev.blockdudes.com
+hell.marketplace.dev.blockdudes.com
+hell.marketplace.dev.blockdudes.com
+hell.marketplace.dev.blockdudes.com
+hell.marketplace.dev.blockdudes.com
+hell.marketplace.dev.blockdudes.com
+hell.marketplace.dev.blockdudes.com
+hell.marketplace.dev.blockdudes.com
+hell.marketplace.dev.blockdudes.com
+hell.marketplace.dev.blockdudes.com
+hell.marketplace.dev.blockdudes.com
+hell.marketplace.dev.blockdudes.com
+hell.marketplace.dev.blockdudes.com
+hell.marketplace.dev.blockdudes.com
+hell.marketplace.dev.blockdudes.com
+hell.marketplace.dev.blockdudes.com
+hell.marketplace.dev.blockdudes.com
+hell.marketplace.dev.blockdudes.com
+hell.marketplace.dev.blockdudes.com
+hell.marketplace.dev.blockdudes.com
+hell.marketplace.dev.blockdudes.com
+hell.marketplace.dev.blockdudes.com
+hell.marketplace.dev.blockdudes.com
+hell.marketplace.dev.blockdudes.com
+hell.marketplace.dev.blockdudes.com
+hell.marketplace.dev.blockdudes.com
+params { subdomain: 'hell' }
+DATABASE CONNECTED!
+hell
+hell.marketplace.dev.blockdudes.com
+hell.marketplace.dev.blockdudes.com
+hell.marketplace.dev.blockdudes.com
+marketplaces {
+  __typename: 'Marketplace',
+  id: '107326797057064929146443492551666891917005435472870330018748642721920382806421',
+  description: 'hell',
+  marketplaceName: 'hell',
+  image_url: 'https://gateway.pinata.cloud/ipfs/QmZBnwUn2HLpQwNpTsA661MaaJFo3DuVY9cc5XB2yVW5g2',
+  feePercent: '2',
+  categories: [ 'web3' ],
+  createdAt: '1724992856',
+  isOwnedResourcesMarketplace: false,
+  theme: 'blue-gray'
+}
+hell.marketplace.dev.blockdudes.com
+hell.marketplace.dev.blockdudes.com
+hell.marketplace.dev.blockdudes.com
+hell.marketplace.dev.blockdudes.com
+hell.marketplace.dev.blockdudes.com
+hell.marketplace.dev.blockdudes.com
+hell.marketplace.dev.blockdudes.com
+hell.marketplace.dev.blockdudes.com
+hell.marketplace.dev.blockdudes.com
+hell.marketplace.dev.blockdudes.com
+hell.marketplace.dev.blockdudes.com
+hell.marketplace.dev.blockdudes.com
+hell.marketplace.dev.blockdudes.com
+hell.marketplace.dev.blockdudes.com
+hell.marketplace.dev.blockdudes.com
+hell.marketplace.dev.blockdudes.com
+hell.marketplace.dev.blockdudes.com
+hell.marketplace.dev.blockdudes.com
+hell.marketplace.dev.blockdudes.com
+hell.marketplace.dev.blockdudes.com
+hell.marketplace.dev.blockdudes.com
+hell.marketplace.dev.blockdudes.com
+hell.marketplace.dev.blockdudes.com
+params { subdomain: 'hell' }
+DATABASE CONNECTED!
+hell
+hell.marketplace.dev.blockdudes.com
+hell.marketplace.dev.blockdudes.com
+marketplaces {
+  __typename: 'Marketplace',
+  id: '107326797057064929146443492551666891917005435472870330018748642721920382806421',
+  description: 'hell',
+  marketplaceName: 'hell',
+  image_url: 'https://gateway.pinata.cloud/ipfs/QmZBnwUn2HLpQwNpTsA661MaaJFo3DuVY9cc5XB2yVW5g2',
+  feePercent: '2',
+  categories: [ 'web3' ],
+  createdAt: '1724992856',
+  isOwnedResourcesMarketplace: false,
+  theme: 'blue-gray'
+}
+hell.marketplace.dev.blockdudes.com
+hell.marketplace.dev.blockdudes.com
+block-room.marketplace.dev.blockdudes.com
+block-room.marketplace.dev.blockdudes.com
+block-room.marketplace.dev.blockdudes.com
+block-room.marketplace.dev.blockdudes.com
+block-room.marketplace.dev.blockdudes.com
+block-room.marketplace.dev.blockdudes.com
+block-room.marketplace.dev.blockdudes.com
+block-room.marketplace.dev.blockdudes.com
+block-room.marketplace.dev.blockdudes.com
+block-room.marketplace.dev.blockdudes.com
+block-room.marketplace.dev.blockdudes.com
+block-room.marketplace.dev.blockdudes.com
+block-room.marketplace.dev.blockdudes.com
+block-room.marketplace.dev.blockdudes.com
+block-room.marketplace.dev.blockdudes.com
+block-room.marketplace.dev.blockdudes.com
+block-room.marketplace.dev.blockdudes.com
+block-room.marketplace.dev.blockdudes.com
+block-room.marketplace.dev.blockdudes.com
+block-room.marketplace.dev.blockdudes.com
+block-room.marketplace.dev.blockdudes.com
+block-room.marketplace.dev.blockdudes.com
+block-room.marketplace.dev.blockdudes.com
+block-room.marketplace.dev.blockdudes.com
+block-room.marketplace.dev.blockdudes.com
+block-room.marketplace.dev.blockdudes.com
+block-room.marketplace.dev.blockdudes.com
+block-room.marketplace.dev.blockdudes.com
+block-room.marketplace.dev.blockdudes.com
+params { subdomain: 'block-room' }
+DATABASE CONNECTED!
+block-room
+block-room.marketplace.dev.blockdudes.com
+block-room.marketplace.dev.blockdudes.com
+block-room.marketplace.dev.blockdudes.com
+block-room.marketplace.dev.blockdudes.com
+block-room.marketplace.dev.blockdudes.com
+block-room.marketplace.dev.blockdudes.com
+marketplaces {
+  __typename: 'Marketplace',
+  id: '107869230238342131034656808549518737189765660217750305609872030554338068141237',
+  description: 'Block room ',
+  marketplaceName: 'Block room',
+  image_url: 'https://gateway.pinata.cloud/ipfs/QmUxTe47gGRZk6nnjAmf5NQUYTXfZFXdqkitqEZS9mdmhS',
+  feePercent: '2',
+  categories: [ 'web3' ],
+  createdAt: '1724992672',
+  isOwnedResourcesMarketplace: false,
+  theme: 'blue-gray'
+}
+block-room.marketplace.dev.blockdudes.com
+block-room.marketplace.dev.blockdudes.com
+block-room.marketplace.dev.blockdudes.com
+block-room.marketplace.dev.blockdudes.com
+params { subdomain: 'block-room' }
+DATABASE CONNECTED!
+block-room
+block-room.marketplace.dev.blockdudes.com
+marketplaces {
+  __typename: 'Marketplace',
+  id: '107869230238342131034656808549518737189765660217750305609872030554338068141237',
+  description: 'Block room ',
+  marketplaceName: 'Block room',
+  image_url: 'https://gateway.pinata.cloud/ipfs/QmUxTe47gGRZk6nnjAmf5NQUYTXfZFXdqkitqEZS9mdmhS',
+  feePercent: '2',
+  categories: [ 'web3' ],
+  createdAt: '1724992672',
+  isOwnedResourcesMarketplace: false,
+  theme: 'blue-gray'
+}
+block-room.marketplace.dev.blockdudes.com
+block-room.marketplace.dev.blockdudes.com
+block-room.marketplace.dev.blockdudes.com
+block-room.marketplace.dev.blockdudes.com
+block-room.marketplace.dev.blockdudes.com
+block-room.marketplace.dev.blockdudes.com
+block-room.marketplace.dev.blockdudes.com
+block-room.marketplace.dev.blockdudes.com
+block-room.marketplace.dev.blockdudes.com
+block-room.marketplace.dev.blockdudes.com
+block-room.marketplace.dev.blockdudes.com
+block-room.marketplace.dev.blockdudes.com
+block-room.marketplace.dev.blockdudes.com
+block-room.marketplace.dev.blockdudes.com
+block-room.marketplace.dev.blockdudes.com
+block-room.marketplace.dev.blockdudes.com
+block-room.marketplace.dev.blockdudes.com
+block-room.marketplace.dev.blockdudes.com
+block-room.marketplace.dev.blockdudes.com
+block-room.marketplace.dev.blockdudes.com
+block-room.marketplace.dev.blockdudes.com
+block-room.marketplace.dev.blockdudes.com
+stratx.marketplace.dev.blockdudes.com
+stratx.marketplace.dev.blockdudes.com
+stratx.marketplace.dev.blockdudes.com
+stratx.marketplace.dev.blockdudes.com
+stratx.marketplace.dev.blockdudes.com
+stratx.marketplace.dev.blockdudes.com
+stratx.marketplace.dev.blockdudes.com
+stratx.marketplace.dev.blockdudes.com
+stratx.marketplace.dev.blockdudes.com
+stratx.marketplace.dev.blockdudes.com
+stratx.marketplace.dev.blockdudes.com
+stratx.marketplace.dev.blockdudes.com
+stratx.marketplace.dev.blockdudes.com
+stratx.marketplace.dev.blockdudes.com
+stratx.marketplace.dev.blockdudes.com
+stratx.marketplace.dev.blockdudes.com
+stratx.marketplace.dev.blockdudes.com
+stratx.marketplace.dev.blockdudes.com
+stratx.marketplace.dev.blockdudes.com
+stratx.marketplace.dev.blockdudes.com
+stratx.marketplace.dev.blockdudes.com
+stratx.marketplace.dev.blockdudes.com
+stratx.marketplace.dev.blockdudes.com
+stratx.marketplace.dev.blockdudes.com
+stratx.marketplace.dev.blockdudes.com
+stratx.marketplace.dev.blockdudes.com
+stratx.marketplace.dev.blockdudes.com
+stratx.marketplace.dev.blockdudes.com
+stratx.marketplace.dev.blockdudes.com
+stratx.marketplace.dev.blockdudes.com
+stratx.marketplace.dev.blockdudes.com
+stratx.marketplace.dev.blockdudes.com
+stratx.marketplace.dev.blockdudes.com
+stratx.marketplace.dev.blockdudes.com
+stratx.marketplace.dev.blockdudes.com
+stratx.marketplace.dev.blockdudes.com
+stratx.marketplace.dev.blockdudes.com
+stratx.marketplace.dev.blockdudes.com
+stratx.marketplace.dev.blockdudes.com
+stratx.marketplace.dev.blockdudes.com
+params { subdomain: 'stratx' }
+DATABASE CONNECTED!
+stratx
+stratx.marketplace.dev.blockdudes.com
+stratx.marketplace.dev.blockdudes.com
+stratx.marketplace.dev.blockdudes.com
+marketplaces []
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+params { subdomain: 'doomx' }
+DATABASE CONNECTED!
+doomx
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+marketplaces {
+  __typename: 'Marketplace',
+  id: '295731523289595569323754405443594774845057992597602601329143293824125622680',
+  description: 'doomx ',
+  marketplaceName: 'doomx',
+  image_url: 'https://gateway.pinata.cloud/ipfs/QmUxTe47gGRZk6nnjAmf5NQUYTXfZFXdqkitqEZS9mdmhS',
+  feePercent: '3',
+  categories: [ 'web3' ],
+  createdAt: '1724992073',
+  isOwnedResourcesMarketplace: false,
+  theme: 'blue-gray'
+}
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+params { subdomain: 'doomx' }
+DATABASE CONNECTED!
+doomx
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+marketplaces {
+  __typename: 'Marketplace',
+  id: '295731523289595569323754405443594774845057992597602601329143293824125622680',
+  description: 'doomx ',
+  marketplaceName: 'doomx',
+  image_url: 'https://gateway.pinata.cloud/ipfs/QmUxTe47gGRZk6nnjAmf5NQUYTXfZFXdqkitqEZS9mdmhS',
+  feePercent: '3',
+  categories: [ 'web3' ],
+  createdAt: '1724992073',
+  isOwnedResourcesMarketplace: false,
+  theme: 'blue-gray'
+}
+doomx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+params { subdomain: 'nextx' }
+DATABASE CONNECTED!
+nextx
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+marketplaces []
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+params { subdomain: 'doomx' }
+DATABASE CONNECTED!
+doomx
+doomx.marketplace.dev.blockdudes.com
+marketplaces {
+  __typename: 'Marketplace',
+  id: '295731523289595569323754405443594774845057992597602601329143293824125622680',
+  description: 'doomx ',
+  marketplaceName: 'doomx',
+  image_url: 'https://gateway.pinata.cloud/ipfs/QmUxTe47gGRZk6nnjAmf5NQUYTXfZFXdqkitqEZS9mdmhS',
+  feePercent: '3',
+  categories: [ 'web3' ],
+  createdAt: '1724992073',
+  isOwnedResourcesMarketplace: false,
+  theme: 'blue-gray'
+}
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+params { subdomain: 'doomx' }
+DATABASE CONNECTED!
+doomx
+doomx.marketplace.dev.blockdudes.com
+marketplaces {
+  __typename: 'Marketplace',
+  id: '295731523289595569323754405443594774845057992597602601329143293824125622680',
+  description: 'doomx ',
+  marketplaceName: 'doomx',
+  image_url: 'https://gateway.pinata.cloud/ipfs/QmUxTe47gGRZk6nnjAmf5NQUYTXfZFXdqkitqEZS9mdmhS',
+  feePercent: '3',
+  categories: [ 'web3' ],
+  createdAt: '1724992073',
+  isOwnedResourcesMarketplace: false,
+  theme: 'blue-gray'
+}
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+doomx.marketplace.dev.blockdudes.com
+abc.marketplace.dev.blockdudes.com
+abc.marketplace.dev.blockdudes.com
+abc.marketplace.dev.blockdudes.com

@@ -23,7 +23,12 @@ const MarketplacePage = () => {
   useEffect(() => {
     dispatch(setIsAppLoading(true));
     if (account) {
-      fetch(`/api/createdMarketplace/${account.address}`)
+      fetch(`/api/createdMarketplace/${account.address}`, {
+        cache: "no-cache",
+        next: {
+          revalidate: 0
+        }
+      })
         .then((res) => res.json())
         .then((data) => {
           setData(data.data);

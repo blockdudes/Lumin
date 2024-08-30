@@ -10,7 +10,7 @@ dataSources:
     source:
       address: "0x343F0c794d0fba5678665Fc8523bc06e096DED18"
       abi: MarketplaceABI
-      startBlock: 46080
+      startBlock: 47330
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7

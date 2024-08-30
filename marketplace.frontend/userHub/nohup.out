@@ -39,3 +39,27 @@ $ next start -p 9005
 
  ✓ Starting...
  ✓ Ready in 306ms
+$ next start -p 9005
+ ⨯ Failed to start server
+Error: listen EADDRINUSE: address already in use :::9005
+    at Server.setupListenHandle [as _listen2] (node:net:1904:16)
+    at listenInCluster (node:net:1961:12)
+    at Server.listen (node:net:2063:7)
+    at /root/code/marketplace/marketplace.frontend/userHub/node_modules/next/dist/server/lib/start-server.js:280:16
+    at new Promise (<anonymous>)
+    at startServer (/root/code/marketplace/marketplace.frontend/userHub/node_modules/next/dist/server/lib/start-server.js:191:11)
+    at Module.nextStart (/root/code/marketplace/marketplace.frontend/userHub/node_modules/next/dist/cli/next-start.js:25:40)
+    at /root/code/marketplace/marketplace.frontend/userHub/node_modules/next/dist/bin/next:105:856 {
+  code: 'EADDRINUSE',
+  errno: -98,
+  syscall: 'listen',
+  address: '::',
+  port: 9005
+}
+error: script "start" exited with code 1
+$ next start -p 9005
+  ▲ Next.js 14.2.5
+  - Local:        http://localhost:9005
+
+ ✓ Starting...
+ ✓ Ready in 305ms

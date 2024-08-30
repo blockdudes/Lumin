@@ -8,7 +8,7 @@ import {
   Input,
 } from "@material-tailwind/react";
 import { prepareContractCall, sendAndConfirmTransaction } from "thirdweb";
-import { tenderlyEduChain } from "@/constants/chains";
+import { eduChain } from "@/constants/chains";
 import { contract } from "@/constants/contracts";
 import toast from "react-hot-toast";
 import { useActiveAccount } from "thirdweb/react";
@@ -24,7 +24,7 @@ export function AddCategoryDialog({ open, onClose }: AddCategoryDialogProps) {
   const [categoryName, setCategoryName] = useState<string>("");
 
   const tx = prepareContractCall({
-    contract: contract(tenderlyEduChain),
+    contract: contract(eduChain),
     method: "function addCategory(string memory _category) public",
     params: [categoryName],
     gas: BigInt(10000000),
@@ -39,7 +39,7 @@ export function AddCategoryDialog({ open, onClose }: AddCategoryDialogProps) {
       });
       console.log(res);
       if (res.status === "success") {
-        
+
         toast.success("Category Added Successfully", { id: loader });
         onClose();
       } else {

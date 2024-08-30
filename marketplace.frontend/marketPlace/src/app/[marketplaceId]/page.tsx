@@ -29,7 +29,7 @@ export default function Home() {
         Connect your wallet to.{" "}
       </p>
       <img
-        src="/hero_Marketplace.png"
+        src="https://i.imghippo.com/files/3gpUk1724938100.png"
         alt="logo"
         className="mt-8 fixed right-0 top-48 -z-50 h-[70%] "
       />

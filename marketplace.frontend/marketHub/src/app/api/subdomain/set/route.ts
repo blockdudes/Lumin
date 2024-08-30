@@ -4,8 +4,8 @@ import { SubdomainIdData } from "@/models/subdomainId";
 export const POST = async (req: Request) => {
     try {
         const data = await req.json();
-        console.log(data)
-        const subdomain = data.subdomain;
+
+        const subdomain = data.subdomain.toLowerCase().replace(/ /g, '-');
         const marketplaceId = data.marketplaceId;
         await connection();
         const response = await SubdomainIdData.create({subdomain: subdomain, id: marketplaceId});      

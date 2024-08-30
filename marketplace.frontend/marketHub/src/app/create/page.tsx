@@ -1,6 +1,6 @@
 "use client";
 import { MultiSelect } from "@/components/createComponents/multiselect";
-import { tenderlyEduChain } from "@/constants/chains";
+import { eduChain } from "@/constants/chains";
 import { contract } from "@/constants/contracts";
 import {
   Button,
@@ -17,6 +17,19 @@ import toast from "react-hot-toast";
 import { prepareContractCall, sendAndConfirmTransaction } from "thirdweb";
 import { useActiveAccount, useReadContract } from "thirdweb/react";
 import axios from "axios";
+import { ethers } from "ethers";
+import MarketplaceABI from "../MarketplaceABI.json";
+
+
+const saveSubdomain = async (subdomain: string, marketplaceId: string) => {
+  try {
+    const response = await axios.post("/api/subdomain/set", {subdomain: subdomain, marketplaceId: marketplaceId});
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+}
 
 const CreateCourse = () => {
   const router = useRouter();
@@ -32,7 +45,7 @@ const CreateCourse = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const account = useActiveAccount();
   const { data: categoryOptions } = useReadContract({
-    contract: contract(tenderlyEduChain),
+    contract: contract(eduChain),
     method: "function getCategories() external view returns (string[])",
     params: [],
   });
@@ -114,7 +127,7 @@ const CreateCourse = () => {
       }
 
       const tx = prepareContractCall({
-        contract: contract(tenderlyEduChain),
+        contract: contract(eduChain),
         method:
           "function registerMarketplace(uint256 feePercent, string memory marketplaceName, string memory description, string memory image_url, string[] memory _categories, string memory theme, bool isOwnedResourcesMarketplace ) external",
         params: [
@@ -140,6 +153,12 @@ const CreateCourse = () => {
         transaction: tx,
       });
       if (res.status === "success") {
+        const iface = new ethers.utils.Interface(MarketplaceABI);
+        const parsedLog = iface.parseLog(res.logs[0]);
+        console.log(parsedLog)
+        const hex = parsedLog.args[0]._hex
+        let marketplaceId = ethers.BigNumber.from(hex).toString();
+        await saveSubdomain(marketplaceName, marketplaceId);
         toast.dismiss(loader);
         toast.success("Marketplace created successfully");
         setIsLoading(false);
@@ -317,9 +336,9 @@ const CreateCourse = () => {
               options={
                 categoryOptions !== undefined
                   ? categoryOptions.map((option) => ({
-                      value: option,
-                      label: option,
-                    }))
+                    value: option,
+                    label: option,
+                  }))
                   : undefined
               }
               onChange={handleCategoryChange}

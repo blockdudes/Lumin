@@ -1,12 +1,12 @@
 "use client";
-import { tenderlyEduChain, eduChain } from "@/constants/chains";
+import { eduChain } from "../../constants/chains";
 import { client } from "@/lib/client";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { ConnectButton, useSwitchActiveWalletChain } from "thirdweb/react";
 
 const ConnectWalletButton = () => {
-  const allowedChains = [tenderlyEduChain, eduChain];
+  const allowedChains = [eduChain, eduChain];
   const router = useRouter();
   const switchChain = useSwitchActiveWalletChain();
 
@@ -18,7 +18,7 @@ const ConnectWalletButton = () => {
       onConnect={(wallet) => {
         const activeChain = wallet.getChain();
         if (!(activeChain && allowedChains.includes(activeChain))) {
-          switchChain(tenderlyEduChain);
+          switchChain(eduChain);
         }
       }}
       onDisconnect={() => {

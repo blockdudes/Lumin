@@ -24,3 +24,15 @@ export type FetchedResource = {
   content: string;
   type: string;
 };
+
+
+export interface IUserResourceData extends Document {
+  title: string;
+  description: string;
+  price: string;
+  category: string;
+  hash: string;
+  thumbnail: string;
+  resource: any;
+  allowListingAccess: boolean;
+}

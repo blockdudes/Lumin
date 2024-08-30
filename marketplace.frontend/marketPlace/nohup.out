@@ -1,0 +1,1180 @@
+$ next start -p 9002
+  ▲ Next.js 14.2.5
+  - Local:        http://localhost:9002
+
+ ✓ Starting...
+ ✓ Ready in 282ms
+$ next start -p 9003
+  ▲ Next.js 14.2.5
+  - Local:        http://localhost:9003
+
+ ✓ Starting...
+ ✓ Ready in 264ms
+$ next start -p 9007
+  ▲ Next.js 14.2.5
+  - Local:        http://localhost:9007
+
+ ✓ Starting...
+ ✓ Ready in 258ms
+abc.localhost:9007
+abc.localhost:9007
+abc.localhost:9007
+abc.localhost:9007
+params { subdomain: 'abc' }
+DATABASE CONNECTED 2!
+abc
+abc.localhost:9007
+marketplaces []
+localhost:9007
+abc.localhost:9007
+abc.localhost:9007
+abc.localhost:9007
+params { subdomain: 'abc' }
+DATABASE CONNECTED!
+abc
+abc.localhost:9007
+abc.localhost:9007
+marketplaces []
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+params { subdomain: 'blockchain' }
+DATABASE CONNECTED!
+blockchain
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+marketplaces []
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+params { subdomain: 'abv' }
+DATABASE CONNECTED!
+abv
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+marketplaces []
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+params { subdomain: 'blockchain' }
+DATABASE CONNECTED!
+blockchain
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+marketplaces []
+blockchain.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+params { subdomain: 'abv' }
+DATABASE CONNECTED!
+abv
+abv.marketplace.dev.blockdudes.com
+marketplaces []
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+params { subdomain: 'abv' }
+DATABASE CONNECTED!
+abv
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+params { subdomain: 'abv' }
+DATABASE CONNECTED!
+abv
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+marketplaces []
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+params { subdomain: 'abv' }
+DATABASE CONNECTED!
+abv
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+params { subdomain: 'abv' }
+DATABASE CONNECTED!
+abv
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+params { subdomain: 'abv' }
+DATABASE CONNECTED!
+abv
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+params { subdomain: 'abv' }
+DATABASE CONNECTED!
+abv
+abv.marketplace.dev.blockdudes.com
+marketplaces []
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+params { subdomain: 'abv' }
+DATABASE CONNECTED!
+abv
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+marketplaces []
+abv.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+params { subdomain: 'blockchain' }
+DATABASE CONNECTED!
+blockchain
+blockchain.marketplace.dev.blockdudes.com
+marketplaces []
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+params { subdomain: 'blockchain' }
+DATABASE CONNECTED!
+blockchain
+blockchain.marketplace.dev.blockdudes.com
+marketplaces []
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+params { subdomain: 'blockchain' }
+DATABASE CONNECTED!
+blockchain
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+abv.marketplace.dev.blockdudes.com
+params { subdomain: 'abv' }
+DATABASE CONNECTED!
+abv
+abv.marketplace.dev.blockdudes.com
+marketplaces []
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+params { subdomain: 'blockchain' }
+DATABASE CONNECTED!
+blockchain
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+params { subdomain: 'blockchain' }
+DATABASE CONNECTED!
+blockchain
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+marketplaces []
+blockchain.marketplace.dev.blockdudes.com
+marketplaces []
+blockchain.marketplace.dev.blockdudes.com
+blockchain.localhost:9007
+blockchain.localhost:9007
+blockchain.localhost:9007
+blockchain.localhost:9007
+blockchain.localhost:9007
+blockchain.localhost:9007
+blockchain.localhost:9007
+blockchain.localhost:9007
+blockchain.localhost:9007
+blockchain.localhost:9007
+blockchain.localhost:9007
+blockchain.localhost:9007
+blockchain.localhost:9007
+blockchain.localhost:9007
+blockchain.localhost:9007
+blockchain.localhost:9007
+blockchain.localhost:9007
+blockchain.localhost:9007
+blockchain.localhost:9007
+blockchain.localhost:9007
+blockchain.localhost:9007
+blockchain.localhost:9007
+blockchain.localhost:9007
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+blockchain.localhost:9007
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+blockchain.localhost:9007
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+params { subdomain: 'blockchain' }
+DATABASE CONNECTED!
+blockchain
+blockchain.localhost:9007
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+marketplaces []
+blockchain.localhost:9007
+blockchain.localhost:9007
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+blockchain.localhost:9007
+blockchain.marketplace.dev.blockdudes.com
+blockchain.localhost:9007
+params { subdomain: 'blockchain' }
+DATABASE CONNECTED!
+blockchain
+blockchain.localhost:9007
+blockchain.localhost:9007
+safasf.marketplace.dev.blockdudes.com
+blockchain.localhost:9007
+marketplaces []
+blockchain.localhost:9007
+blockchain.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+blockchain.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+params { subdomain: 'safasf' }
+DATABASE CONNECTED!
+safasf
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+marketplaces []
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+params { subdomain: 'safasf' }
+DATABASE CONNECTED!
+safasf
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+marketplaces []
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+params { subdomain: 'safasf' }
+DATABASE CONNECTED!
+safasf
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+marketplaces []
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+params { subdomain: 'safasf' }
+DATABASE CONNECTED!
+safasf
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+marketplaces []
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+params { subdomain: 'safasf' }
+DATABASE CONNECTED!
+safasf
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+marketplaces []
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+params { subdomain: 'safasf' }
+DATABASE CONNECTED!
+safasf
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+marketplaces []
+safasf.marketplace.dev.blockdudes.com
+error: script "start" was terminated by signal SIGHUP (Terminal hung up)
+error: script "start" was terminated by signal SIGHUP (Terminal hung up)
+error: script "start" was terminated by signal SIGHUP (Terminal hung up)
+$ next start -p 9007
+  ▲ Next.js 14.2.5
+  - Local:        http://localhost:9007
+
+ ✓ Starting...
+ ✓ Ready in 280ms
+abc.marketplace.dev.blockdudes.com
+abc.marketplace.dev.blockdudes.com
+abc.marketplace.dev.blockdudes.com
+abc.marketplace.dev.blockdudes.com
+abc.marketplace.dev.blockdudes.com
+abc.marketplace.dev.blockdudes.com
+abc.marketplace.dev.blockdudes.com
+abc.marketplace.dev.blockdudes.com
+abc.marketplace.dev.blockdudes.com
+abc.marketplace.dev.blockdudes.com
+abc.marketplace.dev.blockdudes.com
+abc.marketplace.dev.blockdudes.com
+abc.marketplace.dev.blockdudes.com
+abc.marketplace.dev.blockdudes.com
+abc.marketplace.dev.blockdudes.com
+abc.marketplace.dev.blockdudes.com
+abc.marketplace.dev.blockdudes.com
+abc.marketplace.dev.blockdudes.com
+abc.marketplace.dev.blockdudes.com
+abc.marketplace.dev.blockdudes.com
+abc.marketplace.dev.blockdudes.com
+abc.marketplace.dev.blockdudes.com
+abc.marketplace.dev.blockdudes.com
+abc.marketplace.dev.blockdudes.com
+abc.marketplace.dev.blockdudes.com
+abc.marketplace.dev.blockdudes.com
+abc.marketplace.dev.blockdudes.com
+abc.marketplace.dev.blockdudes.com
+abc.marketplace.dev.blockdudes.com
+abc.marketplace.dev.blockdudes.com
+params { subdomain: 'abc' }
+abc.marketplace.dev.blockdudes.com
+abc.marketplace.dev.blockdudes.com
+DATABASE CONNECTED 2!
+abc
+abc.marketplace.dev.blockdudes.com
+marketplaces []
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+params { subdomain: 'nextx' }
+DATABASE CONNECTED!
+nextx
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+marketplaces []
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+params { subdomain: 'nextx' }
+DATABASE CONNECTED!
+nextx
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+marketplaces []
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+params { subdomain: 'nextx' }
+DATABASE CONNECTED!
+nextx
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+marketplaces []
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+safasf.marketplace.dev.blockdudes.com
+params { subdomain: 'safasf' }
+DATABASE CONNECTED!
+safasf
+safasf.marketplace.dev.blockdudes.com
+marketplaces []
+safasf.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+nextx.marketplace.dev.blockdudes.com
+params { subdomain: 'nextx' }
+DATABASE CONNECTED!
+nextx
+nextx.marketplace.dev.blockdudes.com
+marketplaces []
+nextx.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+params { subdomain: 'galaxytools' }
+DATABASE CONNECTED!
+galaxytools
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+marketplaces []
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+params { subdomain: 'galaxytools' }
+DATABASE CONNECTED!
+galaxytools
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+marketplaces []
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+params { subdomain: 'galaxytools' }
+DATABASE CONNECTED!
+galaxytools
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+marketplaces []
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+params { subdomain: 'galaxytools' }
+DATABASE CONNECTED!
+galaxytools
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+marketplaces []
+www.marketplace.dev.blockdudes.com
+www.marketplace.dev.blockdudes.com
+www.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+params { subdomain: 'galaxytools' }
+DATABASE CONNECTED!
+galaxytools
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+marketplaces {
+  __typename: 'Marketplace',
+  id: '69719682704914859277472325565200615681222154315408716370966539356784451663804',
+  description: 'Contain all luts , animations etc',
+  marketplaceName: 'GalaxyTools',
+  image_url: 'https://gateway.pinata.cloud/ipfs/QmUxTe47gGRZk6nnjAmf5NQUYTXfZFXdqkitqEZS9mdmhS',
+  feePercent: '1',
+  categories: [ 'web3' ],
+  createdAt: '1724958948',
+  isOwnedResourcesMarketplace: false,
+  theme: 'yellow-white'
+}
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+params { subdomain: 'galaxytools' }
+DATABASE CONNECTED!
+galaxytools
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+marketplaces {
+  __typename: 'Marketplace',
+  id: '69719682704914859277472325565200615681222154315408716370966539356784451663804',
+  description: 'Contain all luts , animations etc',
+  marketplaceName: 'GalaxyTools',
+  image_url: 'https://gateway.pinata.cloud/ipfs/QmUxTe47gGRZk6nnjAmf5NQUYTXfZFXdqkitqEZS9mdmhS',
+  feePercent: '1',
+  categories: [ 'web3' ],
+  createdAt: '1724958948',
+  isOwnedResourcesMarketplace: false,
+  theme: 'yellow-white'
+}
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+params { subdomain: 'galaxytools' }
+DATABASE CONNECTED!
+galaxytools
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com
+marketplaces {
+  __typename: 'Marketplace',
+  id: '69719682704914859277472325565200615681222154315408716370966539356784451663804',
+  description: 'Contain all luts , animations etc',
+  marketplaceName: 'GalaxyTools',
+  image_url: 'https://gateway.pinata.cloud/ipfs/QmUxTe47gGRZk6nnjAmf5NQUYTXfZFXdqkitqEZS9mdmhS',
+  feePercent: '1',
+  categories: [ 'web3' ],
+  createdAt: '1724958948',
+  isOwnedResourcesMarketplace: false,
+  theme: 'yellow-white'
+}
+galaxytools.marketplace.dev.blockdudes.com
+galaxytools.marketplace.dev.blockdudes.com

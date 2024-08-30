@@ -14,7 +14,7 @@ import {
 } from "@material-tailwind/react";
 import { Chapter } from "@/types/types";
 import { prepareContractCall, sendAndConfirmTransaction } from "thirdweb";
-import { tenderlyEduChain } from "@/constants/chains";
+import { eduChain } from "@/constants/chains";
 import { contract } from "@/constants/contracts";
 import { ethers, hashMessage } from "ethers";
 import { useActiveAccount, useReadContract } from "thirdweb/react";
@@ -56,7 +56,7 @@ export function UpdateCourseDialog({
   const router = useRouter();
 
   const { data: categoryOptions } = useReadContract({
-    contract: contract(tenderlyEduChain),
+    contract: contract(eduChain),
     method: "function getCategories() external view returns (string[])",
     params: [],
     queryOptions: {
@@ -86,7 +86,7 @@ export function UpdateCourseDialog({
       }
 
       const tx = prepareContractCall({
-        contract: contract(tenderlyEduChain),
+        contract: contract(eduChain),
         method:
           "function updateResource(uint256 resourceId, (bool updateTitle, string title, bool updateDescription, string description, bool updateCategory, string category, bool updateImageUrl, string image_url, bool updatePrice, uint price, bool updateResourceIpfsHash, string resourceIpfsHash, bool updateAllowListingAccess, bool allowListingAccess) memory params ) public",
         params: [
@@ -144,7 +144,7 @@ export function UpdateCourseDialog({
     <>
       <Dialog
         open={open}
-        handler={() => {}}
+        handler={() => { }}
         placeholder={undefined}
         onPointerEnterCapture={undefined}
         onPointerLeaveCapture={undefined}

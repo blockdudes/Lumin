@@ -42,3 +42,14 @@ export type SubdomainId = {
   id: string;
   subdomain: string;
 }
+
+export interface IUserResourceData extends Document {
+  title: string;
+  description: string;
+  price: string;
+  category: string;
+  hash: string;
+  thumbnail: string;
+  resource: any;
+  allowListingAccess: boolean;
+}

@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { CourseCard } from "@/components/courseComponents/courseCard";
 import { MultiSelect } from "@/components/courseComponents/multiselect";
-import { tenderlyEduChain } from "@/constants/chains";
+import { eduChain } from "@/constants/chains";
 import { contract } from "@/constants/contracts";
 import { useActiveAccount, useReadContract } from "thirdweb/react";
 import { setIsAppLoading } from "@/lib/features/appLoader/appLoaderSlice";
@@ -15,7 +15,7 @@ const MarketplacePage = () => {
   const account = useActiveAccount();
   const [data, setData] = useState<Marketplace[]>([]);
   const { data: categoryOptions } = useReadContract({
-    contract: contract(tenderlyEduChain),
+    contract: contract(eduChain),
     method: "function getCategories() external view returns (string[])",
     params: [],
   });
@@ -45,10 +45,10 @@ const MarketplacePage = () => {
   const filteredData =
     selectedCategories.length > 0
       ? data.filter((marketplace) =>
-          marketplace.categories.some((category) =>
-            selectedCategories.includes(category)
-          )
+        marketplace.categories.some((category) =>
+          selectedCategories.includes(category)
         )
+      )
       : data;
 
   return (
@@ -59,9 +59,9 @@ const MarketplacePage = () => {
           options={
             categoryOptions !== undefined
               ? categoryOptions.map((option) => ({
-                  value: option,
-                  label: option,
-                }))
+                value: option,
+                label: option,
+              }))
               : undefined
           }
           onChange={handleCategoryChange}

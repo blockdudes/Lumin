@@ -16,7 +16,7 @@ import {
   toWei,
 } from "thirdweb";
 import { contract } from "@/constants/contracts";
-import { tenderlyEduChain } from "@/constants/chains";
+import { eduChain } from "@/constants/chains";
 import { Course } from "@/types/types";
 import { TypedData } from "abitype";
 import { SignableMessage, Hex, TypedDataDefinition } from "viem";
@@ -54,7 +54,7 @@ export function CoursePurchaseDialog({
     var loader = toast.loading("Purchasing course...");
     try {
       const tx = prepareContractCall({
-        contract: contract(tenderlyEduChain),
+        contract: contract(eduChain),
         method:
           "function purchaseResource(uint256 resourceId, uint256 marketplaceId) public payable",
         params: [BigInt(resource.id), BigInt(marketplaceId)],

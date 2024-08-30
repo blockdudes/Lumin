@@ -32,9 +32,8 @@ export const GET = async (
         },
       });
 
-      console.log("owner_marketplaces", owner_marketplaces);
-
       const marketplaces = owner_marketplaces.data.users[0].marketplaces;
+      console.log(marketplaces)
 
       const marketplacesWithPurchases = await Promise.all(
         marketplaces.map(async (marketplace: any) => {
@@ -72,7 +71,7 @@ export const GET = async (
 
           return {
             ...marketplace,
-            purchases: purchases.data.purchases,
+            purchases: purchases.data.purchases || [],
           };
         })
       );

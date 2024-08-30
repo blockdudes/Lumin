@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { CourseCard } from "@/components/courseComponents/courseCard";
 import { MultiSelect } from "@/components/courseComponents/multiselect";
 import { CoursePurchaseDialog } from "@/components/courseComponents/coursePurchaseDialog";
-import { tenderlyEduChain } from "@/constants/chains";
+import { eduChain } from "@/constants/chains";
 import { contract } from "@/constants/contracts";
 import { useActiveAccount, useReadContract } from "thirdweb/react";
 import { Course } from "@/types/types";
@@ -67,9 +67,9 @@ const Owned = () => {
           options={
             categoryOptions !== undefined
               ? categoryOptions.map((option) => ({
-                  value: option,
-                  label: option,
-                }))
+                value: option,
+                label: option,
+              }))
               : undefined
           }
           onChange={handleCategoryChange}

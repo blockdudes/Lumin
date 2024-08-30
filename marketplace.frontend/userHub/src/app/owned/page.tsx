@@ -7,7 +7,7 @@ import { setIsAppLoading } from "@/lib/features/appLoader/appLoaderSlice";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { Course } from "@/types/types";
 import { useActiveAccount, useReadContract } from "thirdweb/react";
-import { tenderlyEduChain } from "@/constants/chains";
+import { eduChain } from "@/constants/chains";
 import { contract } from "@/constants/contracts";
 import { setOwnedResources } from "@/lib/features/ownedResources/ownedResourcesSlice";
 
@@ -19,7 +19,7 @@ const Owned = () => {
   const account = useActiveAccount();
   const dispatch = useAppDispatch();
   const { data: categoryOptions } = useReadContract({
-    contract: contract(tenderlyEduChain),
+    contract: contract(eduChain),
     method: "function getCategories() external view returns (string[])",
     params: [],
   });
@@ -63,9 +63,9 @@ const Owned = () => {
           options={
             categoryOptions !== undefined
               ? categoryOptions.map((option) => ({
-                  value: option,
-                  label: option,
-                }))
+                value: option,
+                label: option,
+              }))
               : undefined
           }
           onChange={handleCategoryChange}

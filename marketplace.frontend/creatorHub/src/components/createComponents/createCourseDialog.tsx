@@ -14,7 +14,7 @@ import {
 } from "@material-tailwind/react";
 import { Chapter } from "@/types/types";
 import { prepareContractCall, sendAndConfirmTransaction } from "thirdweb";
-import { tenderlyEduChain } from "@/constants/chains";
+import { eduChain } from "@/constants/chains";
 import { contract } from "@/constants/contracts";
 import { ethers, hashMessage } from "ethers";
 import { useActiveAccount, useReadContract } from "thirdweb/react";
@@ -50,7 +50,7 @@ export function CreateCourseDialog({
   const router = useRouter();
 
   const { data: categoryOptions } = useReadContract({
-    contract: contract(tenderlyEduChain),
+    contract: contract(eduChain),
     method: "function getCategories() external view returns (string[])",
     params: [],
     queryOptions: {
@@ -67,11 +67,11 @@ export function CreateCourseDialog({
     try {
       const hash = hashMessage(
         courseName +
-          courseDescription +
-          coursePrice.toString() +
-          isPublic.toString() +
-          chapters.toString() +
-          Date.now().toString()
+        courseDescription +
+        coursePrice.toString() +
+        isPublic.toString() +
+        chapters.toString() +
+        Date.now().toString()
       );
 
       const formData = new FormData();
@@ -112,7 +112,7 @@ export function CreateCourseDialog({
       }
       console.log("Creating Course on Blockchain");
       const tx = prepareContractCall({
-        contract: contract(tenderlyEduChain),
+        contract: contract(eduChain),
         method:
           "function addResource(string memory title, string memory description, string memory category, string memory image_url, string memory resourceIpfsHash, bool allowListingAccess, uint256 price) external",
         params: [
@@ -161,7 +161,7 @@ export function CreateCourseDialog({
     <>
       <Dialog
         open={open}
-        handler={() => {}}
+        handler={() => { }}
         placeholder={undefined}
         onPointerEnterCapture={undefined}
         onPointerLeaveCapture={undefined}

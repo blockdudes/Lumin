@@ -86,6 +86,15 @@ export function handleResourcePurchased(event: ResourcePurchased): void {
 // }
 
 export function handleMarketplaceRegistered(event: MarketplaceRegistered): void {
+  let userId = Bytes.fromHexString(event.transaction.from.toHex());
+  let user = User.load(userId);
+  if (user == null) {
+    user = new User(userId);
+    user.id = userId;
+    log.info('Creating new user with ID: {}', [userId.toString()]);
+    user.save();
+  }
+
   let marketplaceId = event.params.id.toString();
   let entity = MarketplaceEntity.load(marketplaceId);
 

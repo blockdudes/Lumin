@@ -1,0 +1,41 @@
+$ next start -p 9003
+  ▲ Next.js 14.2.5
+  - Local:        http://localhost:9003
+
+ ✓ Starting...
+ ✓ Ready in 272ms
+error: script "start" was terminated by signal SIGHUP (Terminal hung up)
+$ next start -p 9003
+  ▲ Next.js 14.2.5
+  - Local:        http://localhost:9003
+
+ ✓ Starting...
+ ✓ Ready in 252ms
+$ next start -p 9004
+  ▲ Next.js 14.2.5
+  - Local:        http://localhost:9004
+
+ ✓ Starting...
+ ✓ Ready in 261ms
+$ next start -p 9006
+  ▲ Next.js 14.2.5
+  - Local:        http://localhost:9006
+
+ ✓ Starting...
+ ✓ Ready in 248ms
+$ next start -p 9005
+  ▲ Next.js 14.2.5
+  - Local:        http://localhost:9005
+
+ ✓ Starting...
+ ✓ Ready in 248ms
+error: script "start" was terminated by signal SIGKILL (Forced quit)
+error: script "start" was terminated by signal SIGHUP (Terminal hung up)
+error: script "start" was terminated by signal SIGHUP (Terminal hung up)
+error: script "start" was terminated by signal SIGHUP (Terminal hung up)
+$ next start -p 9005
+  ▲ Next.js 14.2.5
+  - Local:        http://localhost:9005
+
+ ✓ Starting...
+ ✓ Ready in 306ms

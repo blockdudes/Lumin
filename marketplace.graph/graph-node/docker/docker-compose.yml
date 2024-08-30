@@ -19,8 +19,8 @@ services:
       postgres_pass: let-me-in
       postgres_db: graph-node
       ipfs: 'ipfs:5001'
-      # ethereum: 'testnet:https://rpc.open-campus-codex.gelato.digital'
-      ethereum: 'mainnet:https://virtual.mainnet.rpc.tenderly.co/fb47656a-9c0a-4215-8df3-f520a29b2548'
+      ethereum: 'testnet:https://rpc.open-campus-codex.gelato.digital'
+      # ethereum: 'mainnet:https://virtual.mainnet.rpc.tenderly.co/fb47656a-9c0a-4215-8df3-f520a29b2548'
       GRAPH_LOG: info
   ipfs:
     image: ipfs/kubo:v0.17.0

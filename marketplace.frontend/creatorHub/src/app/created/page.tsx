@@ -7,7 +7,7 @@ import { Course } from "@/types/types";
 import { setIsAppLoading } from "@/lib/features/appLoader/appLoaderSlice";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { useActiveAccount, useReadContract } from "thirdweb/react";
-import { tenderlyEduChain } from "@/constants/chains";
+import { eduChain } from "@/constants/chains";
 import { contract } from "@/constants/contracts";
 import { setCreatedResources } from "@/lib/features/createdResources/createdResourcesSlice";
 import { UpdateCourseDialog } from "@/components/courseComponents/updateCourseDialog";
@@ -22,7 +22,7 @@ const CreatedCourses = () => {
   );
   const setData = (newData: Course[]) => dispatch(setCreatedResources(newData));
   const { data: categoryOptions } = useReadContract({
-    contract: contract(tenderlyEduChain),
+    contract: contract(eduChain),
     method: "function getCategories() external view returns (string[])",
     params: [],
   });
@@ -76,9 +76,9 @@ const CreatedCourses = () => {
           options={
             categoryOptions !== undefined
               ? categoryOptions.map((option) => ({
-                  value: option,
-                  label: option,
-                }))
+                value: option,
+                label: option,
+              }))
               : undefined
           }
           onChange={handleCategoryChange}

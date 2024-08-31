@@ -3,9 +3,8 @@ import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
-  gql,
+  gql, NormalizedCacheObject, HttpLink, ApolloLink
 } from "@apollo/client";
-import { NormalizedCacheObject, HttpLink, ApolloLink } from '@apollo/client'
 
 const clientId = process.env.NEXT_PUBLIC_THIRDWEB_CLIENT_ID;
 

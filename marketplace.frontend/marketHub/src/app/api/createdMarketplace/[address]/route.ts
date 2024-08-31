@@ -68,7 +68,10 @@ export const GET = async (
             variables: {
               identifier: marketplace.id,
             },
+<<<<<<< HEAD
             fetchPolicy: 'network-only',
+=======
+>>>>>>> e5c8a9d37ed1edd31d0b51cb698b65d9f721704a
           });
 
           return {

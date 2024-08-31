@@ -5,7 +5,10 @@ import {
   ApolloProvider,
   gql,
 } from "@apollo/client";
+<<<<<<< HEAD
 import { NormalizedCacheObject, HttpLink, ApolloLink } from '@apollo/client'
+=======
+>>>>>>> e5c8a9d37ed1edd31d0b51cb698b65d9f721704a
 
 const clientId = process.env.NEXT_PUBLIC_THIRDWEB_CLIENT_ID;
 

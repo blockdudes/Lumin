@@ -59,7 +59,7 @@ const MarketplacePage = () => {
   return (
     <div className="flex flex-col justify-center w-full h-full">
       <div className="flex gap-2 items-center">
-        <div className="text-2xl font-bold">Courses</div>
+        <div className="text-2xl font-bold">Markets</div>
         <MultiSelect
           options={
             categoryOptions !== undefined

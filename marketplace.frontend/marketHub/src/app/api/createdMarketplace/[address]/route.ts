@@ -30,6 +30,7 @@ export const GET = async (
         variables: {
           identifier: identifier,
         },
+        fetchPolicy: 'network-only',
       });
 
       const marketplaces = owner_marketplaces.data.users[0].marketplaces;
@@ -67,6 +68,7 @@ export const GET = async (
             variables: {
               identifier: marketplace.id,
             },
+            fetchPolicy: 'network-only',
           });
 
           return {

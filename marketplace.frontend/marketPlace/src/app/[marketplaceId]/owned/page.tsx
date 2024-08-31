@@ -28,7 +28,12 @@ const Owned = () => {
   useEffect(() => {
     dispatch(setIsAppLoading(true));
     if (account) {
-      fetch(`/api/marketplacePurchase/${marketplaceId}`)
+      fetch(`/api/marketplacePurchase/${marketplaceId}`, {
+        cache: "no-cache",
+        next: {
+          revalidate: 0,
+        },
+      })
         .then((res) => res.json())
         .then((data) => {
           console.log("data", data);

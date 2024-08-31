@@ -16,7 +16,12 @@ const CreatorDashboard = () => {
   useEffect(() => {
     dispatch(setIsAppLoading(true));
     if (account) {
-      fetch(`/api/boughtResources/${account.address}`)
+      fetch(`/api/boughtResources/${account.address}`, {
+        cache: "no-cache",
+        next: {
+          revalidate: 0,
+        },
+      })
         .then((res) => res.json())
         .then((data) => {
           console.log(data);

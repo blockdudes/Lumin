@@ -44,6 +44,7 @@ export const GET = async (
                     }
                     }
             `,
+        fetchPolicy: 'network-only',
       });
       console.log(data);
       const new_resources = data.data.users[0].ownedResources.map(

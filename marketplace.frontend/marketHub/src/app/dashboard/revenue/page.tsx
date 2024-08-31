@@ -20,7 +20,12 @@ const RevenuePage = () => {
   useEffect(() => {
     dispatch(setIsAppLoading(true));
     if (account) {
-      fetch(`/api/createdMarketplace/${account.address}`)
+      fetch(`/api/createdMarketplace/${account.address}`, {
+        cache: "no-cache",
+        next: {
+          revalidate: 0
+        }
+      })
         .then((res) => res.json())
         .then((data) => {
           const resources = data.data.map((resource: any) => {

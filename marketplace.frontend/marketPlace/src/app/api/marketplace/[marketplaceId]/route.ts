@@ -27,6 +27,7 @@ export const GET = async (
       variables: {
         identifier: identifier,
       },
+      fetchPolicy: "network-only",
     });
 
     const marketplaces = get_marketplaces.data.marketplaces[0] || [];

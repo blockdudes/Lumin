@@ -28,7 +28,12 @@ const Owned = () => {
   useEffect(() => {
     dispatch(setIsAppLoading(true));
     if (account && categoryOptions) {
-      fetch(`/api/getAllowListedResource`)
+      fetch(`/api/getAllowListedResource`, {
+        cache: "no-cache",
+        next: {
+          revalidate: 0,
+        },
+      })
         .then((res) => res.json())
         .then((data) => {
           setData(

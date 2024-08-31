@@ -17,8 +17,8 @@ const CourseDetails = () => {
   const [hasStarted, setHasStarted] = useState(false);
   const [courseDetails, setCourseDetails] = useState<
     | (Course & {
-        resource: FetchedResource[];
-      })
+      resource: FetchedResource[];
+    })
     | null
   >(null);
   const account = useActiveAccount();
@@ -39,7 +39,12 @@ const CourseDetails = () => {
       if (!account) {
         return;
       }
-      await fetch(`/api/getAllowListedResource`)
+      await fetch(`/api/getAllowListedResource`, {
+        cache: "no-cache",
+        next: {
+          revalidate: 0,
+        },
+      })
         .then((res) => res.json())
         .then((data) => {
           setAllResources(data.data);
@@ -50,7 +55,12 @@ const CourseDetails = () => {
         });
     }
     dispatch(setIsAppLoading(true));
-    await fetch(`/api/resources/fetch/${hash}`)
+    await fetch(`/api/resources/fetch/${hash}`, {
+      cache: "no-cache",
+      next: {
+        revalidate: 0,
+      },
+    })
       .then((res) => res.json())
       .then((data) => {
         const courseDetails = {
@@ -133,11 +143,10 @@ const CourseDetails = () => {
           {courseDetails.resource.map((chapter, index) => (
             <div
               key={chapter.title}
-              className={`transition-opacity duration-500 ${
-                index === selectedChapterIndex
+              className={`transition-opacity duration-500 ${index === selectedChapterIndex
                   ? "opacity-100"
                   : "opacity-0 hidden"
-              }`}
+                }`}
             >
               <h2 className="text-2xl font-bold">{chapter.title}</h2>
               <p className="text-lg text-gray-800 font-medium">

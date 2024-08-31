@@ -38,6 +38,7 @@ export const GET = async (
         variables: {
           identifier: identifier,
         },
+        fetchPolicy: "network-only"
       });
 
       const purchases = purchase_marketplace.data.purchases.map(

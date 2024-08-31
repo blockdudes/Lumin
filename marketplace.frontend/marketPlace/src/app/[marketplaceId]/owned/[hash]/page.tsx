@@ -40,7 +40,12 @@ const CourseDetails = () => {
       if (!account) {
         return;
       }
-      const data = await fetch(`/api/getAllowListedResource`)
+      const data = await fetch(`/api/getAllowListedResource`, {
+        cache: "no-cache",
+        next: {
+          revalidate: 0,
+        },
+      })
         .then((res) => res.json())
         .then((data) => {
           setAllResources(data.data);
@@ -51,7 +56,12 @@ const CourseDetails = () => {
         });
     }
     dispatch(setIsAppLoading(true));
-    await fetch(`/api/resources/fetch/${hash}`)
+    await fetch(`/api/resources/fetch/${hash}`, {
+      cache: "no-cache",
+      next: {
+        revalidate: 0,
+      },
+    })
       .then((res) => res.json())
       .then((data) => {
         const courseDetails = {

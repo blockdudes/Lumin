@@ -46,6 +46,7 @@ export const GET = async (
       variables: {
         identifier: identifier,
       },
+      fetchPolicy: "network-only",
     });
 
     const totalRevenue = user_data.data.purchases.reduce(

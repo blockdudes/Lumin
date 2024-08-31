@@ -21,6 +21,7 @@ export const GET = async (request: any) => {
           }
         }
       `,
+      fetchPolicy: "network-only",
     });
 
     if (listedResources.data.resources.length === 0) {

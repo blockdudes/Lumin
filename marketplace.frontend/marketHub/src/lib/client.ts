@@ -3,8 +3,9 @@ import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
-  gql, NormalizedCacheObject, HttpLink, ApolloLink
+  gql,
 } from "@apollo/client";
+import { NormalizedCacheObject, HttpLink, ApolloLink } from '@apollo/client'
 
 const clientId = process.env.NEXT_PUBLIC_THIRDWEB_CLIENT_ID;
 
@@ -16,14 +17,14 @@ export const client = createThirdwebClient({
   clientId: clientId,
 });
 
+
 const httpLink = new HttpLink({
-  uri: `${process.env.NEXT_PUBLIC_APOLLO_CLIENT_URL}/graphql`,
+  uri: process.env.NEXT_PUBLIC_APOLLO_CLIENT_URL,
   fetch: function (uri, options) {
     return fetch(uri, {
       ...options ?? {},
       headers: {
         ...options?.headers ?? {},
-        Authorization: `Bearer ${process.env.NEXT_PUBLIC_APOLLO_TOKEN_ID}`
       },
       next: {
         revalidate: 0
@@ -31,8 +32,7 @@ const httpLink = new HttpLink({
     })
   }
 })
-
-export const apolloClient = new ApolloClient({
+export const apolloClient: ApolloClient<NormalizedCacheObject> = new ApolloClient({
   cache: new InMemoryCache(),
   link: ApolloLink.from([httpLink]),
   defaultOptions: {
@@ -45,4 +45,5 @@ export const apolloClient = new ApolloClient({
       errorPolicy: 'all'
     }
   }
-});
+})
+

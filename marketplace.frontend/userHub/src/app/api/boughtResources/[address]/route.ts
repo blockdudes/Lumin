@@ -31,6 +31,7 @@ export const GET = async (
       variables: {
         identifier: identifier,
       },
+      fetchPolicy: "network-only"
     });
 
     if (purchased_resources.data.purchases.length === 0) {

@@ -34,7 +34,12 @@ const CreatedCourseDetails = () => {
     dispatch(setIsAppLoading(true));
     if (!resource) {
       if (account) {
-        fetch(`/api/resources/${account.address}`)
+        fetch(`/api/resources/${account.address}`, {
+          cache: "no-cache",
+          next: {
+            revalidate: 0,
+          },
+        })
           .then((res) => res.json())
           .then((data) => {
             console.log("data", data);
@@ -42,7 +47,12 @@ const CreatedCourseDetails = () => {
           });
       }
     }
-    fetch(`/api/resources/fetch/${hash}`)
+    fetch(`/api/resources/fetch/${hash}`, {
+      cache: "no-cache",
+      next: {
+        revalidate: 0,
+      },
+    })
       .then((res) => res.json())
       .then((data) => {
         const courseDetails = {
